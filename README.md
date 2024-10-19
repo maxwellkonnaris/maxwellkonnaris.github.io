@@ -1,12 +1,12 @@
 Undergoing complete overhaul of website and will be reuploaded shortly.
 
-maxwellkonnaris.com/
-├── index.html
-├── resume.html
-├── volunteering/teaching.html
-├── contact.html
-├── journey.html
-├── style.css
-├── script.js
-└── images/
-    └── blah.jpg
+maxwellkonnaris.com/<br>
+├── index.html<br>
+├── resume.html<br>
+├── volunteering/teaching.html<br>
+├── contact.html<br>
+├── journey.html<br>
+├── style.css<br>
+├── script.js<br>
+└── images/<br>
+    └── blah.jpg<br>
