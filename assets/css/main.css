@@ -772,20 +772,25 @@ body {
 			}
 
 				#header nav a:before {
-					-moz-transition: all 0.2s ease-in-out;
-					-webkit-transition: all 0.2s ease-in-out;
-					-ms-transition: all 0.2s ease-in-out;
-					transition: all 0.2s ease-in-out;
-					border-radius: 100%;
-					border: solid 1px #fff;
-					display: block;
-					font-size: 1.75em;
-					height: 2.5em;
-					line-height: 2.5em;
-					position: relative;
-					text-align: center;
-					top: 0;
-					width: 2.5em;
+				    -moz-transition: all 0.2s ease-in-out;
+				    -webkit-transition: all 0.2s ease-in-out;
+				    -ms-transition: all 0.2s ease-in-out;
+				    transition: all 0.2s ease-in-out;
+				    border-radius: 100%;
+				    border: solid 1px #fff;
+				    display: block;
+				    
+				    /* Decrease the icon font size */
+				    font-size: 1.25em; /* Change this to control icon size */
+				    
+				    /* Adjust the size of the circle around the icons */
+				    height: 2em; /* Adjust height of the circle */
+				    line-height: 2em; /* Adjust line height to match circle size */
+				    width: 2em; /* Adjust width of the circle */
+				    
+				    position: relative;
+				    text-align: center;
+				    top: 0;
 				}
 
 				#header nav a:hover {
