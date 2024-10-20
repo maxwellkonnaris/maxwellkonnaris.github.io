@@ -66,9 +66,8 @@ input, select, textarea {
 	appearance: none;
 }
 
-
-/* Navbar styles */
-#navbar {
+/* Styles for the top navbar */
+#top-navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -77,78 +76,74 @@ input, select, textarea {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 1000; /* Ensure the navbar stays on top */
+    z-index: 1000; /* Ensures the navbar stays on top */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
 }
 
-.navbar-left {
+#top-navbar .navbar-left {
     display: flex;
     align-items: center;
 }
 
-.navbar-left .logo {
+#top-navbar .logo {
     height: 40px; /* Adjust the height of your logo */
     margin-right: 10px;
 }
 
-.navbar-left .name {
+#top-navbar .name {
     font-size: 24px;
     font-weight: bold;
     color: #333333; /* Set your desired text color */
 }
 
-.navbar-right .nav-links {
+#top-navbar .navbar-right .nav-links {
     list-style: none;
     display: flex;
     margin: 0;
     padding: 0;
 }
 
-.navbar-right .nav-links li {
+#top-navbar .navbar-right .nav-links li {
     margin-left: 20px;
 }
 
-.navbar-right .nav-links a {
+#top-navbar .navbar-right .nav-links a {
     text-decoration: none;
     color: #333333; /* Set your desired link color */
     font-size: 16px;
 }
 
-.navbar-right .nav-links a:hover {
+#top-navbar .navbar-right .nav-links a:hover {
     color: #007BFF; /* Optional: Change color on hover */
 }
 
 /* Adjust body padding to prevent content from being hidden behind the navbar */
 body {
-    padding-top: 50px; /* Adjust based on navbar height */
+    padding-top: 70px; /* Adjust based on navbar height */
 }
 
+/* Responsive Navbar */
 @media (max-width: 768px) {
-    .navbar-right .nav-links {
+    #top-navbar {
         flex-direction: column;
-        background-color: #ffffff;
-        position: absolute;
-        top: 60px; /* Adjust based on navbar height */
-        right: 0;
+        align-items: flex-start;
+    }
+
+    #top-navbar .navbar-right .nav-links {
+        flex-direction: column;
         width: 100%;
-        display: none; /* Hide menu by default */
     }
 
-    .navbar-right .nav-links li {
-        margin: 10px 0;
-        text-align: center;
+    #top-navbar .navbar-right .nav-links li {
+        margin-left: 0;
+        width: 100%;
     }
 
-    /* Toggle menu button */
-    .navbar-right .menu-toggle {
+    #top-navbar .navbar-right .nav-links a {
         display: block;
-        cursor: pointer;
+        padding: 10px;
+        width: 100%;
     }
-}
-
-/* Show the menu when active */
-.navbar-right .nav-links.active {
-    display: flex;
 }
 
 /* Basic */
