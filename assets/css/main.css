@@ -99,7 +99,7 @@ input, select, textarea {
 #top-navbar .name {
     font-size: 24px;
     font-weight: bold;
-    color: #333333; /* Set your desired text color */
+    color: #ffffff; /* Set your desired text color */
 }
 
 #top-navbar .navbar-right .nav-links {
@@ -115,12 +115,12 @@ input, select, textarea {
 
 #top-navbar .navbar-right .nav-links a {
     text-decoration: none;
-    color: #333333; /* Set your desired link color */
+    color: #ffffff; /* Set your desired link color */
     font-size: 16px;
 }
 
 #top-navbar .navbar-right .nav-links a:hover {
-    color: #007BFF; /* Optional: Change color on hover */
+    color: #EFBF04; /* Optional: Change color on hover */
 }
 
 /* Adjust body padding to prevent content from being hidden behind the navbar */
