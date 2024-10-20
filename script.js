@@ -1,6 +1,7 @@
 // script.js
 
-// Placeholder for future JavaScript code
-document.addEventListener('DOMContentLoaded', function() {
-    // Example: Initialize widgets or handle form submissions
+document.getElementById('hamburger').addEventListener('click', function() {
+    var navLinks = document.getElementById('nav-links');
+    navLinks.classList.toggle('active');
 });
+
