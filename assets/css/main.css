@@ -128,6 +128,33 @@ body {
     padding-top: 50px; /* Adjust based on navbar height */
 }
 
+@media (max-width: 768px) {
+    .navbar-right .nav-links {
+        flex-direction: column;
+        background-color: #ffffff;
+        position: absolute;
+        top: 60px; /* Adjust based on navbar height */
+        right: 0;
+        width: 100%;
+        display: none; /* Hide menu by default */
+    }
+
+    .navbar-right .nav-links li {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    /* Toggle menu button */
+    .navbar-right .menu-toggle {
+        display: block;
+        cursor: pointer;
+    }
+}
+
+/* Show the menu when active */
+.navbar-right .nav-links.active {
+    display: flex;
+}
 
 
 /* Basic */
