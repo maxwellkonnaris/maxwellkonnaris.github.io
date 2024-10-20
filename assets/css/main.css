@@ -135,7 +135,6 @@ input, select, textarea {
 body {
     padding-top: 20px;
 }
-
 /* Responsive Navbar */
 @media (max-width: 768px) {
     #top-navbar {
@@ -151,7 +150,7 @@ body {
     }
 
     #top-navbar .navbar-right .nav-links.active {
-        display: flex;
+        display: flex; /* Make sure this switches to flex properly */
     }
 
     #top-navbar .navbar-right .nav-links li {
@@ -167,9 +166,11 @@ body {
     }
 
     #hamburger {
-        display: block;
+        display: block; /* Make sure hamburger menu is visible on mobile */
+        cursor: pointer; /* Optional: better UX for users */
     }
 }
+
 
 
 
