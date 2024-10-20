@@ -72,33 +72,60 @@ input, select, textarea {
 	appearance: none;
 }
 
-/* Style for the unordered list inside the navbar */
-.jersey-navlinks2-bar ul {
+/* Navbar styles */
+#navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff; /* Set your desired background color */
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure the navbar stays on top */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-left .logo {
+    height: 40px; /* Adjust the height of your logo */
+    margin-right: 10px;
+}
+
+.navbar-left .name {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333333; /* Set your desired text color */
+}
+
+.navbar-right .nav-links {
     list-style: none;
-    display: flex; /* Aligns the items in a row */
+    display: flex;
     margin: 0;
     padding: 0;
 }
 
-.jersey-navlinks2-bar ul li {
-    margin-right: 16px; /* Space between each link */
+.navbar-right .nav-links li {
+    margin-left: 20px;
 }
 
-.jersey-navlinks2-bar ul li a {
-    font-size: 16px;
-    color: #333; /* Dark muted color */
+.navbar-right .nav-links a {
     text-decoration: none;
-    padding: 8px 0;
-    transition: color 0.3s ease, border-bottom 0.3s ease;
+    color: #333333; /* Set your desired link color */
+    font-size: 16px;
 }
 
-.jersey-navlinks2-bar ul li a:hover {
-    color: #007BFF; /* Blue color on hover */
-    border-bottom: 2px solid #007BFF; /* Simple underline hover effect */
+.navbar-right .nav-links a:hover {
+    color: #007BFF; /* Optional: Change color on hover */
 }
 
-.jersey-navlinks2-modal__toggle {
-    cursor: pointer;
+/* Adjust body padding to prevent content from being hidden behind the navbar */
+body {
+    padding-top: 50px; /* Adjust based on navbar height */
 }
 
 
