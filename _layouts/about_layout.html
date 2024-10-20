@@ -1,0 +1,60 @@
+<!-- _layouts/about_layout.html -->
+
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>{{ page.title }}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<!-- Sidebar Section -->
+<div id="sidebar">
+    <div class="profile">
+        <img src="/images/profile-pic.png" alt="Profile Image" class="profile-pic" />
+        <h2>Maxwell Konnaris</h2>
+        <p>Data Scientist & Computational Biologist</p>
+        
+        <!-- Social Links -->
+        <nav class="social-links">
+            <ul>
+                <li><a href="https://x.com/MaxwellKonnaris" class="icon brands fa-twitter">X</a></li>
+                <li><a href="https://github.com/maxwellkonnaris/" class="icon brands fa-github">GitHub</a></li>
+                <li><a href="https://scholar.google.com/citations?user=X1QvekEAAAAJ&hl=en" class="icon solid fa-graduation-cap">Scholar</a></li>
+                <li><a href="https://www.linkedin.com/in/maxwell-konnaris" class="icon brands fa-linkedin-in">LinkedIn</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="contact-info">
+        <p>Email: <a href="mailto:your-email@example.com">maxwellkonnaris@gmail.com</a></p>
+    </div>
+</div>
+
+<!-- Main Content Area -->
+<div id="main-content">
+    
+    <!-- Top Navigation Bar -->
+    <nav id="top-navbar">
+        <ul>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/resume.html">Resume/CV</a></li>
+            <li><a href="/projects.html">Projects</a></li>
+            <li><a href="/journey.html">Journey</a></li>
+            <li><a href="/photography.html">Photography</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Content Area (Markdown will be injected here) -->
+    <div class="content-area">
+        {{ content }}
+    </div>
+
+</div>
+
+</body>
+</html>
