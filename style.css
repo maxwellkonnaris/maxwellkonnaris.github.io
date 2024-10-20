@@ -1,5 +1,4 @@
 /* style.css */
-
 /* Reset and Global Styles */
 * {
     margin: 0;
@@ -11,6 +10,7 @@ body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
     color: #333;
+    padding-top: 60px; /* Adjust padding based on navbar height */
 }
 
 /* Styles for the top navbar */
@@ -18,13 +18,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #141212; /* Set your desired background color */
+    background-color: #141212;
     padding: 10px 20px;
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 1000; /* Ensures the navbar stays on top */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 #top-navbar .navbar-left {
@@ -33,14 +33,19 @@ body {
 }
 
 #top-navbar .logo {
-    height: 40px; /* Adjust the height of your logo */
-    margin-right: 10px;
+    height: 40px;
+    margin-right: 15px;
 }
 
 #top-navbar .name {
     font-size: 24px;
     font-weight: bold;
-    color: #333333; /* Set your desired text color */
+    color: #ffffff;
+}
+
+#top-navbar .navbar-right {
+    display: flex;
+    align-items: center;
 }
 
 #top-navbar .navbar-right .nav-links {
@@ -56,17 +61,17 @@ body {
 
 #top-navbar .navbar-right .nav-links a {
     text-decoration: none;
-    color: #333333; /* Set your desired link color */
+    color: #ffffff;
     font-size: 16px;
 }
 
 #top-navbar .navbar-right .nav-links a:hover {
-    color: #007BFF; /* Optional: Change color on hover */
+    color: #007BFF;
 }
 
-/* Adjust body padding to prevent content from being hidden behind the navbar */
-body {
-    padding-top: 20px; /* Adjust based on navbar height */
+/* Hamburger for mobile screens */
+#top-navbar .navbar-right .hamburger {
+    display: none; /* Hidden by default */
 }
 
 /* Responsive Navbar */
@@ -77,33 +82,26 @@ body {
     }
 
     #top-navbar .navbar-right .nav-links {
+        display: none;
+    }
+
+    #top-navbar .navbar-right.active .nav-links {
+        display: flex;
         flex-direction: column;
         width: 100%;
-    }
-
-    #top-navbar .navbar-right .nav-links li {
-        margin-left: 0;
-        width: 100%;
-    }
-
-    #top-navbar .navbar-right .nav-links a {
-        display: block;
+        background-color: #141212;
+        position: absolute;
+        top: 60px;
+        left: 0;
         padding: 10px;
-        width: 100%;
     }
-}
 
-/* Header Image */
-.header-image {
-    width: 100%;
-    height: auto;
-}
-
-/* Container */
-.container {
-    width: 85%;
-    margin: auto;
-    padding: 20px;
+    #top-navbar .navbar-right .hamburger {
+        display: block;
+        cursor: pointer;
+        font-size: 24px;
+        color: #ffffff;
+    }
 }
 
 /* Footer */
@@ -112,9 +110,96 @@ body {
     color: #f2f2f2;
     text-align: center;
     padding: 10px 0;
-    position: fixed;
+    position: relative; /* Change to relative to allow footer to sit below content */
     width: 100%;
-    bottom: 0;
+}
+
+
+/* General Styles */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+.contact-container {
+    max-width: 600px;
+    margin: 100px auto 40px auto; /* Adjust top margin if using fixed navbar */
+    padding: 20px;
+    background-color: #ffffff; /* White background for the form */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.contact-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 32px;
+    color: #333333;
+}
+
+.contact-container p {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #666666;
+    font-size: 16px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333333;
+    font-weight: 600;
+}
+
+.form-group label span {
+    color: #e74c3c; /* Red color for required fields */
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #333333;
+    background-color: #fafafa;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #007BFF; /* Blue border on focus */
+    background-color: #ffffff;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    background-color: #007BFF; /* Button background color */
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+@media (max-width: 768px) {
+    .contact-container {
+        margin: 80px 20px 20px 20px;
+    }
 }
 
 /* Responsive Design */
