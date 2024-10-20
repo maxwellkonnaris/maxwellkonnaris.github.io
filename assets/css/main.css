@@ -77,13 +77,13 @@ input, select, textarea {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #141212; /* Set your desired background color */
+    background-color: #141212;
     padding: 10px 20px;
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 1000; /* Ensures the navbar stays on top */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 #top-navbar .navbar-left {
@@ -92,14 +92,14 @@ input, select, textarea {
 }
 
 #top-navbar .logo {
-    height: 40px; /* Adjust the height of your logo */
+    height: 40px;
     margin-right: 10px;
 }
 
 #top-navbar .name {
     font-size: 24px;
     font-weight: bold;
-    color: #ffffff; /* Set your desired text color */
+    color: #ffffff;
 }
 
 #top-navbar .navbar-right .nav-links {
@@ -115,34 +115,49 @@ input, select, textarea {
 
 #top-navbar .navbar-right .nav-links a {
     text-decoration: none;
-    color: #ffffff; /* Set your desired link color */
+    color: #ffffff;
     font-size: 16px;
 }
 
 #top-navbar .navbar-right .nav-links a:hover {
-    color: #FFD700; /* Optional: Change color on hover */
+    color: #FFD700;
+}
+
+/* Styles for hamburger menu */
+#hamburger {
+    display: none;
+    font-size: 30px;
+    color: #ffffff;
+    cursor: pointer;
 }
 
 /* Adjust body padding to prevent content from being hidden behind the navbar */
 body {
-    padding-top: 20px; /* Adjust based on navbar height */
+    padding-top: 20px;
 }
 
 /* Responsive Navbar */
 @media (max-width: 768px) {
     #top-navbar {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
     }
 
     #top-navbar .navbar-right .nav-links {
+        display: none;
         flex-direction: column;
         width: 100%;
+    }
+
+    #top-navbar .navbar-right .nav-links.active {
+        display: flex;
     }
 
     #top-navbar .navbar-right .nav-links li {
         margin-left: 0;
         width: 100%;
+        text-align: center;
     }
 
     #top-navbar .navbar-right .nav-links a {
@@ -150,7 +165,12 @@ body {
         padding: 10px;
         width: 100%;
     }
+
+    #hamburger {
+        display: block;
+    }
 }
+
 
 
 /* Basic */
@@ -307,7 +327,7 @@ body {
 		transform: translate3d(0,0,0);
 	/* Set your background with this */
 
-		background: #011753 url("images/bg.png") bottom left;
+		background: #011426 url("images/bg.png") bottom left;
 		background-repeat: repeat-x;
 		height: 100%;
 		left: 0;
