@@ -13,28 +13,84 @@ body {
     color: #333;
 }
 
-/* Navigation Bar */
-.navbar {
-    background-color: #444;
-    overflow: hidden;
+/* Styles for the top navbar */
+#top-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #141212; /* Set your desired background color */
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Ensures the navbar stays on top */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
 }
 
-.navbar a {
-    float: left;
-    display: block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 20px;
+#top-navbar .navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+#top-navbar .logo {
+    height: 40px; /* Adjust the height of your logo */
+    margin-right: 10px;
+}
+
+#top-navbar .name {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333333; /* Set your desired text color */
+}
+
+#top-navbar .navbar-right .nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+#top-navbar .navbar-right .nav-links li {
+    margin-left: 20px;
+}
+
+#top-navbar .navbar-right .nav-links a {
     text-decoration: none;
+    color: #333333; /* Set your desired link color */
+    font-size: 16px;
 }
 
-.navbar a:hover {
-    background-color: #ddd;
-    color: #444;
+#top-navbar .navbar-right .nav-links a:hover {
+    color: #007BFF; /* Optional: Change color on hover */
 }
 
-.navbar .social {
-    float: right;
+/* Adjust body padding to prevent content from being hidden behind the navbar */
+body {
+    padding-top: 20px; /* Adjust based on navbar height */
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+    #top-navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #top-navbar .navbar-right .nav-links {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #top-navbar .navbar-right .nav-links li {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    #top-navbar .navbar-right .nav-links a {
+        display: block;
+        padding: 10px;
+        width: 100%;
+    }
 }
 
 /* Header Image */
