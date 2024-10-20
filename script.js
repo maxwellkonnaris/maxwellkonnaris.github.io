@@ -1,7 +1,12 @@
 // script.js
 
-document.getElementById('hamburger').addEventListener('click', function() {
-    var navLinks = document.getElementById('nav-links');
-    navLinks.classList.toggle('active');
+document.addEventListener("DOMContentLoaded", function () {
+    const hamburger = document.getElementById("hamburger");
+    const navLinks = document.querySelector(".navbar-right .nav-links");
+
+    hamburger.addEventListener("click", function () {
+        navLinks.classList.toggle("active");
+    });
 });
+
 
