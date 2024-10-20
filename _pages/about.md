@@ -16,7 +16,8 @@ I have experience in:
 - **Model Misspecification**
 - **Partially Identified Systems**
 - **Multivariate Statistical Learning**
-- **Bioinformatics and Genomics**
+- **Deep learning for Image Analysis**
+- **Bioinformatics, Genomics, and Computational Biology**
 - **Healthcare Innovation**
 - **Cell and Molecular Biology**
 - **Sports Medicine and Rehabilitation**
