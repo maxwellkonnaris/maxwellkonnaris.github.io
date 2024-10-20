@@ -31,6 +31,30 @@
 		    </ul>
 		</div>
 	 </div>
+
+	   <h1>Ask about my Research</h1>
+		    <div id="chatbox">
+		        <input type="text" id="userInput" placeholder="Ask me anything">
+		        <button onclick="sendMessage()">Send</button>
+		        <div id="response"></div>
+		    </div>
+		
+		    <script>
+		        async function sendMessage() {
+		            const userInput = document.getElementById('userInput').value;
+		            
+		            const response = await fetch('/chat', {
+		                method: 'POST',
+		                headers: {
+		                    'Content-Type': 'application/json',
+		                },
+		                body: JSON.stringify({ message: userInput })
+		            });
+		
+		            const data = await response.json();
+		            document.getElementById('response').innerText = data.message;
+		        }
+		    </script>
         <h1>Projects</h1>
         <!-- Project 1 -->
         <div class="project">
