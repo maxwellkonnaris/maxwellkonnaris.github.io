@@ -120,7 +120,7 @@ input, select, textarea {
 }
 
 #top-navbar .navbar-right .nav-links a:hover {
-    color: #EFBF04; /* Optional: Change color on hover */
+    color: #FFD700; /* Optional: Change color on hover */
 }
 
 /* Adjust body padding to prevent content from being hidden behind the navbar */
