@@ -77,7 +77,7 @@ input, select, textarea {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #ffffff; /* Set your desired background color */
+    background-color: #141212; /* Set your desired background color */
     padding: 10px 20px;
     position: fixed;
     top: 0;
@@ -125,7 +125,7 @@ input, select, textarea {
 
 /* Adjust body padding to prevent content from being hidden behind the navbar */
 body {
-    padding-top: 70px; /* Adjust based on navbar height */
+    padding-top: 20px; /* Adjust based on navbar height */
 }
 
 /* Responsive Navbar */
