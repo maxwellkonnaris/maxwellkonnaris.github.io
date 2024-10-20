@@ -1,0 +1,96 @@
+/* Reset default styling */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100%;
+}
+
+/* Sidebar */
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.profile h2, .profile p {
+    color: white;
+}
+
+.social-links ul {
+    padding: 0;
+    list-style: none;
+}
+
+.social-links ul li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.social-links ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5em;
+}
+
+.contact-info {
+    margin-top: 20px;
+    color: white;
+}
+
+/* Main content */
+#main-content {
+    margin-left: 250px; /* Same width as the sidebar */
+    padding: 20px;
+}
+
+#top-navbar {
+    position: fixed;
+    top: 0;
+    left: 250px;
+    width: calc(100% - 250px);
+    background-color: #444;
+    color: white;
+    padding: 15px;
+    box-sizing: border-box;
+    z-index: 999;
+}
+
+#top-navbar ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+#top-navbar ul li {
+    display: inline;
+}
+
+#top-navbar ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.content-area {
+    margin-top: 60px;
+    padding: 20px;
+    background-color: #f4f4f4;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    height: calc(100vh - 60px);
+}
