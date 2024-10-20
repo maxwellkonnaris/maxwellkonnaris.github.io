@@ -1,15 +1,17 @@
 <!-- index.html -->
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Maxwell Konnaris - Computational Biologist and Data Scientist</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<!DOCTYPE HTML>
 
-    <!-- Navigation Bar -->
+<html>
+	<head>
+		<title>Maxwell Konnaris Personal Home Page</title>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+
+        <!-- Navigation Bar -->
     <div class="navbar">
         <a href="index.html">Home</a>
         <a href="resume.html">Resume/CV</a>
@@ -22,22 +24,41 @@
             <a href="https://linkedin.com/in/maxwell-konnaris" target="_blank">LinkedIn</a>
         </div>
     </div>
+    
+	<body class="is-preload">
+		<div id="wrapper">
+			<div id="bg"></div>
+			<div id="overlay"></div>
+			<div id="main">
 
-    <!-- Header Image -->
-    <img src="images/.jpg" alt="Maxwell Konnaris" class="header-image">
+				<!-- Header -->
+					<header id="header">
+						<h1>Maxwell Konnaris</h1>
+						<p>Data Scientist &nbsp;&bull;&nbsp; Computational Biologist &nbsp;&bull;&nbsp; Physiologist</p>
+						<nav>
+							<ul>
+								<li><a href="https://x.com/MaxwellKonnaris" class="icon brands fa-twitter"><span class="label">X</span></a></li>
+								<li><a href="https://github.com/maxwellkonnaris/" class="icon brands fa-github"><span class="label">Github</span></a></li>
+								<li><a href="https://scholar.google.com" class="icon solid fa-graduation-cap"><span class="label">Google Scholar</span></a></li>
+								<li><a href="https://www.linkedin.com/in/maxwell-konnaris" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+							</ul>
+						</nav>
+					</header>
 
-    <!-- Main Content -->
-    <div class="container">
-        <h1>Undergoing complete overhaul of website, coming back soon..</h1>
-        <p>
-            
-        </p>
-    </div>
+				<!-- Footer -->
+					<footer id="footer">
+						<span class="copyright">&copy; 2024 Maxwell Konnaris <a href="http://html5up.net"></a>.</span>
+					</footer>
 
-    <!-- Footer -->
-    <div class="footer">
-        &copy; 2024 Maxwell Konnaris
-    </div>
+			</div>
+		</div>
+		<script>
+			window.onload = function() { document.body.classList.remove('is-preload'); }
+			window.ontouchmove = function() { return false; }
+			window.onorientationchange = function() { document.body.scrollTop = 0; }
+		</script>
+	</body>
+</html>
 
     <script src="script.js"></script>
 </body>
