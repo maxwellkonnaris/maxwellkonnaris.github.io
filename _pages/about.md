@@ -1,7 +1,7 @@
 ---
 layout: about_layout
 title: About Maxwell Konnaris
-permalink: /about/
+permalink: /about.html
 ---
 
 # About Me
