@@ -1,52 +1,51 @@
-<!-- contact.html -->
-
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Maxwell Konnaris - Contact</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Contact - Maxwell Konnaris</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <!-- Link to your main CSS and contact page CSS -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 </head>
-<body>
 
-    <!-- Navigation Bar -->
-    <div class="navbar">
-        <a href="index.html">About</a>
-        <a href="resume.html">Resume/CV</a>
-        <a href="projects.html">Projects</a>
-        <a href="volunteeringteaching.html">Volunteering & Teaching</a>
-        <a href="contact.html">Contact</a>
-        <a href="journey.html">Journey</a>
-        <div class="social">
-            <a href="https://github.com/maxwellkonnaris" target="_blank">GitHub</a>
-            <a href="https://linkedin.com/in/maxwell-konnaris" target="_blank">LinkedIn</a>
-        </div>
+<body>
+    <!-- Include the top navbar if desired -->
+    <div id="top-navbar">
+        <!-- Navbar content (copy from your existing navbar code) -->
     </div>
 
-    <!-- Main Content -->
-    <div class="container">
-
-        <!-- Contact Form -->
-        <h2>Contact Me</h2>
-        <form action="mailto:maxwellkonnaris@gmail.com" method="post" enctype="text/plain">
-            <label for="name">Name:</label><br>
-            <input type="text" id="name" name="name" required><br><br>
-
-            <label for="email">Email:</label><br>
-            <input type="email" id="email" name="email" required><br><br>
-
-            <label for="message">Message:</label><br>
-            <textarea id="message" name="message" rows="5" required></textarea><br><br>
-
-            <input type="submit" value="Send">
+    <!-- Contact Page Content -->
+    <div class="contact-container">
+        <h1>Contact Me</h1>
+        <form action="your-form-processing-url" method="post">
+            <div class="form-group">
+                <label for="name">Name<span>*</span></label>
+                <input type="text" id="name" name="name" required>
+            </div>
+        
+            <div class="form-group">
+                <label for="email">Email<span>*</span></label>
+                <input type="email" id="email" name="email" required>
+            </div>
+        
+            <div class="form-group">
+                <label for="subject">Subject<span>*</span></label>
+                <input type="text" id="subject" name="subject" required>
+            </div>
+        
+            <div class="form-group">
+                <label for="message">Message<span>*</span></label>
+                <textarea id="message" name="message" rows="6" required></textarea>
+            </div>
+        
+            <button type="submit">Send Message</button>
         </form>
     </div>
 
-    <!-- Footer -->
-    <div class="footer">
-        &copy; 2024 Maxwell Konnaris
-    </div>
-
-    <script src="script.js"></script>
+    <!-- Include footer if desired -->
+    <footer id="footer">
+        <!-- Footer content (copy from your existing footer code) -->
+    </footer>
 </body>
 </html>
