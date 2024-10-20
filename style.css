@@ -6,6 +6,11 @@
     box-sizing: border-box;
 }
 
+a {
+    text-decoration: none; /* Removes underline */
+    color: inherit; /* Inherits the color from its parent */
+}
+
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
