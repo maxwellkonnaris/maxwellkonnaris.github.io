@@ -1,12 +1,6 @@
 @import url(fontawesome-all.min.css);
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
 
-/*
-	Lens by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
-
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
 pre, a, abbr, acronym, address, big, cite,
@@ -70,6 +64,91 @@ input, select, textarea {
 	-webkit-appearance: none;
 	-ms-appearance: none;
 	appearance: none;
+}
+
+
+/* Navbar styles */
+#navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff; /* Set your desired background color */
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure the navbar stays on top */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-left .logo {
+    height: 40px; /* Adjust the height of your logo */
+    margin-right: 10px;
+}
+
+.navbar-left .name {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333333; /* Set your desired text color */
+}
+
+.navbar-right .nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-right .nav-links li {
+    margin-left: 20px;
+}
+
+.navbar-right .nav-links a {
+    text-decoration: none;
+    color: #333333; /* Set your desired link color */
+    font-size: 16px;
+}
+
+.navbar-right .nav-links a:hover {
+    color: #007BFF; /* Optional: Change color on hover */
+}
+
+/* Adjust body padding to prevent content from being hidden behind the navbar */
+body {
+    padding-top: 50px; /* Adjust based on navbar height */
+}
+
+@media (max-width: 768px) {
+    .navbar-right .nav-links {
+        flex-direction: column;
+        background-color: #ffffff;
+        position: absolute;
+        top: 60px; /* Adjust based on navbar height */
+        right: 0;
+        width: 100%;
+        display: none; /* Hide menu by default */
+    }
+
+    .navbar-right .nav-links li {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    /* Toggle menu button */
+    .navbar-right .menu-toggle {
+        display: block;
+        cursor: pointer;
+    }
+}
+
+/* Show the menu when active */
+.navbar-right .nav-links.active {
+    display: flex;
 }
 
 /* Basic */
