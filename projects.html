@@ -6,29 +6,48 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 		<style>
-			/* Ensure the page uses a flexbox layout to pin the footer */
-			body {
-				display: flex;
-				flex-direction: column;
-				min-height: 100vh; /* Full viewport height */
-				margin: 0;
-			}
+            body {
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+                margin: 0;
+                padding: 0;
+                font-family: Arial, sans-serif;
+                padding-bottom: 100px; /* Ensure space for the footer */
+            }
 
-			.container {
-				flex: 1; /* Allows the content area to expand, pushing the footer to the bottom */
-			}
+            .container {
+                flex: 1;
+                display: flex;
+                flex-direction: row;
+                align-items: flex-start;
+                justify-content: space-between;
+                padding: 100px 60px 60px; /* Adjust padding to avoid navbar overlap */
+                box-sizing: border-box;
+            }
 
 
-            /* Footer */
             .footer {
                 text-align: center;
-                padding: 5px;
+                padding: 10px; /* Adjust padding as needed */
                 background-color: #f1f1f1;
                 font-size: 12px;
                 color: #000;
                 position: fixed;
                 bottom: 0;
                 width: 100%;
+                box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for visual separation */
+            }
+
+            a {
+            color: inherit; /* Keeps the default text color */
+            text-decoration: none; /* Removes underline by default */
+            transition: color 0.3s ease; /* Smooth transition for color change */
+            }
+
+            a:hover {
+                color: blue; /* Changes text color to blue on hover */
+                text-decoration: underline; /* Adds underline on hover (optional) */
             }
 
             .footer .social-links {
@@ -44,6 +63,25 @@
 
             .footer .social-links a:hover {
                 color: #007BFF;
+            }
+
+            /* Navbar */
+            #top-navbar {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .navbar-left {
+                display: flex;
+                align-items: center;
+            }
+
+            .navbar-right ul {
+                display: flex;
+                list-style: none;
+                margin: 0;
+                padding: 0;
             }
 
             /* Responsive Navbar */
@@ -66,50 +104,30 @@
 		</style>
 </head>
 <body>
+
+    <!-- Navbar -->
+    <div id="top-navbar">
+        <div class="navbar-left">
+            <img src="images/profile-pic.png" alt="Logo" class="logo">
+            <span class="name"><a href="index.html">Maxwell Konnaris</a></span>
+        </div>
+        <div class="navbar-right">
+            <ul class="nav-links">
+                <li><a href="/about.html">About</a></li>
+                <li><a href="resume.html">CV</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="volunteeringteaching.html">Outreach</a></li>
+                <li><a href="journey.html">Journey</a></li>
+                <li><a href="hobbyblog.html">Blogs</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+
     <!-- Main Content -->
     <div class="container">
-        <!-- Navbar -->
-        <div id="top-navbar">
-            <div class="navbar-left">
-                <img src="images/profile-pic.png" alt="Logo" class="logo">
-                <span class="name"><a href="index.html">Maxwell Konnaris</a></span>
-            </div>
-            <div class="navbar-right">
-                <ul class="nav-links">
-                    <li><a href="/about.html">About</a></li>
-                    <li><a href="resume.html">Resume/CV</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="volunteeringteaching.html">Volunteering & Teaching</a></li>
-                    <li><a href="journey.html">Journey</a></li>
-                    <li><a href="hobbyblogs.html">Hobby Blogs</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-<!-- 
-        <h1>Ask about my Research</h1>
-        <div id="chatbox">
-            <input type="text" id="userInput" placeholder="Ask me anything">
-            <button>Send</button>
-            <div id="response"></div>
-        </div>
-
-        <h1>Projects</h1>
-        <div class="project">
-            <h2></h2>
-            <p><strong>Duration:</strong></p>
-            <img src="blah.jpg" alt="blaaaa" class="project-image">
-            <p></p>
-            <a href="https://github.com/maxwellkonnaris" target="_blank" class="project-link">View on GitHub</a>
-        </div>
-        <div class="project">
-            <h2></h2>
-            <p><strong>Duration:</strong></p>
-            <img src="blah.jpg" alt="blaaaa" class="project-image">
-            <p></p>
-            <a href="" target="_blank" class="project-link">Read More</a>
-        </div>
-    </div> -->
+        <p>This page is a work in progress.</p>
+    </div> 
 
     <!-- Footer -->
     <div class="footer">

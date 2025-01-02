@@ -16,28 +16,42 @@
     </style>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-		/* Ensure the page uses a flexbox layout to pin the footer */
-		body {
-			display: flex;
-			flex-direction: column;
-			min-height: 100vh; /* Full viewport height */
-			margin: 0;
-		}
 
 		.container {
 			flex: 1; /* Allows the content area to expand, pushing the footer to the bottom */
-		}
+            padding: 40px;
+        }
         
-        /* Footer */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            padding-bottom: 100px; /* Ensure space for the footer */
+        }
+
         .footer {
             text-align: center;
-            padding: 5px;
+            padding: 10px; /* Adjust padding as needed */
             background-color: #f1f1f1;
             font-size: 12px;
             color: #000;
             position: fixed;
             bottom: 0;
             width: 100%;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for visual separation */
+        }
+
+        a {
+            color: inherit; /* Keeps the default text color */
+            text-decoration: none; /* Removes underline by default */
+            transition: color 0.3s ease; /* Smooth transition for color change */
+        }
+
+        a:hover {
+            color: blue; /* Changes text color to blue on hover */
+            text-decoration: underline; /* Adds underline on hover (optional) */
         }
 
         .footer .social-links {
@@ -85,12 +99,12 @@
         </div>
         <div class="navbar-right">
             <ul class="nav-links">
-                <li><a href="about.html">About</a></li>
-                <li><a href="resume.html">Resume/CV</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="resume.html">CV</a></li>
                 <li><a href="projects.html">Projects</a></li>
-                <li><a href="volunteeringteaching.html">Volunteering & Teaching</a></li>
+                <li><a href="volunteeringteaching.html">Outreach</a></li>
                 <li><a href="journey.html">Journey</a></li>
-                <li><a href="hobbyblog.html">Hobby Blogs</a></li>
+                <li><a href="hobbyblog.html">Blogs</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
@@ -98,12 +112,10 @@
 
     <!-- Main Content -->
     <div class="container">
-        <h1>CV (Resume upon request)</h1>
+        <h1>CV</h1>
+        <p>Resume and letters of support available upon request. <b><a href="resume.pdf" download="assets/documents/MAXWELL KONNARIS CV JUL 2024.pdf">Download My CV (PDF)</a></b>. Last Update: July 2024</p>
 
-		<!-- Download Link -->
-		<a href="resume.pdf" download="assets/documents/MAXWELL KONNARIS CV JUL 2024.pdf">
-			Download My CV (PDF)
-		</a>
+        <br>
         
         <!-- Embed your resume PDF -->
         <iframe 

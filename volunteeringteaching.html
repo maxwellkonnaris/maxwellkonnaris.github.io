@@ -15,6 +15,7 @@
             min-height: 100vh; /* Full viewport height */
             margin: 0;
             color: #333;
+            padding-bottom: 100px;
         }
 
         /* Container for the main content */
@@ -23,6 +24,18 @@
             max-width: 1000px; /* Restrict the width for better readability */
             margin: 50px auto;
             padding: 0 10px;
+        }
+
+        .footer {
+                text-align: center;
+                padding: 10px; /* Adjust padding as needed */
+                background-color: #f1f1f1;
+                font-size: 12px;
+                color: #000;
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+                box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for visual separation */
         }
 
         /* Blog post headings */
@@ -56,17 +69,16 @@
             margin: 10px 0;
         }
 
-		/* Footer */
-		.footer {
-			text-align: center;
-			padding: 5px;
-			background-color: #f1f1f1;
-			font-size: 12px;
-			color: #000;
-			position: fixed;
-			bottom: 0;
-			width: 100%;
-		}
+        a {
+            color: inherit; /* Keeps the default text color */
+            text-decoration: none; /* Removes underline by default */
+            transition: color 0.3s ease; /* Smooth transition for color change */
+        }
+
+        a:hover {
+            color: blue; /* Changes text color to blue on hover */
+            text-decoration: underline; /* Adds underline on hover (optional) */
+        }
 
 		.footer .social-links {
 			margin-top: 10px;
@@ -126,11 +138,11 @@
         <div class="navbar-right">
             <ul class="nav-links">
                 <li><a href="/about.html">About</a></li>
-                <li><a href="resume.html">Resume/CV</a></li>
+                <li><a href="resume.html">CV</a></li>
                 <li><a href="projects.html">Projects</a></li>
-                <li><a href="volunteeringteaching.html">Volunteering & Teaching</a></li>
+                <li><a href="volunteeringteaching.html">Outreach</a></li>
                 <li><a href="journey.html">Journey</a></li>
-                <li><a href="hobbyblog.html">Hobby Blogs</a></li>
+                <li><a href="hobbyblog.html">Blogs</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
@@ -144,7 +156,7 @@
             <h2>Engineering Education for Middle School, High School, and Undergraduate Students in Underrepresented Communities and Developing Nations</h2>
             <img src="images/ghana.jpg" alt="Global Code 2018">
             <p>
-                I worked with E.L.i.T.E. based in Harlem, NYC and Global Code based in Accra, Ghana to develop curriculum, structure learning, 
+                I worked with <b><a href="http://www.elite-education.org/">E.L.i.T.E.</a></b> based in Harlem, NYC and <b><a href="https://globalcode.org.uk/">Global Code</a></b> based in Accra, Ghana to develop curriculum, structure learning, 
 				assist in hands-on material, and teach classroom lectures. Depending on the level of education (Middle/High/Undergraduate), the 
 				engineering material was tailored to beginner, intermediate, or advanced exposure. As an example, beginner level would be exposed to 
 				engineering principles integrated math, physics, and applied technology to create basic programs teaching students to translate their coursework
@@ -158,7 +170,7 @@
             <p>
                 During my graduate studies, I served as a teaching assistant for a graduate genomics course. This involved teaching lectures, 
 				grading papers and assignments, hosting office hours, and providing access to discuss interests in the field of genomics. 
-				I also had the opportunity to curate and lead several workshops such as an <a href="https://bootcamp.biostars.io/">annual data reproducibility bootcamp</a> focused on providing 
+				I also had the opportunity to curate and lead several workshops such as an <b><a href="https://bootcamp.biostars.io/">annual data reproducibility bootcamp</a></b> focused on providing 
 				hands-on guidance and material in fundamental/advanced techniques to improve productivity, rigor, and reproducibility in software/analytic 
 				development in the research and development setting. 
             </p>
@@ -171,16 +183,24 @@
             <img src="images/science-outreach.jpg" alt="High School Science Outreach">
             <p>
                 As a volunteer mentor, I guided middle school, high school, and undergraduate students through their professional development in pursuit of higher education.
-				I participated in several programs such as the <a href="https://prescientist.org/">Letters to a Pre-Scientist</a> (highly recommend) and CUNY mentorship programs. I believe its important to share lessons learned
+				I participated in several programs such as the <b><a href="https://prescientist.org/">Letters to a Pre-Scientist</a></b> (highly recommend) and CUNY mentorship programs. I believe its important to share lessons learned
 				through your path to help others seeking advice or displaying interest. 
             </p>
         </div>
 
 		<div class="experience">
             <h2>Genomix Graduate Student Leadership</h2>
-            <img src="images/science-outreach.jpg" alt="Work in Progress CCBB Conference at PSU">
+            <img src="images/ccbb.jpg" alt="Work in Progress CCBB Conference at PSU">
             <p>
-
+                I am the student representative of the bioinformatics graduate department through my active role as the president and board member of Genomix.
+                Genomix is a student run graduate organization focused on representing the bioinformatics and genomics community at Penn State University. It's focused
+                on integrating students across the university whose interest is in genomic analyses providing consulting, student development, outreach, and community.
+                In my time as Genomix president thus far, I have grown the club from 50 individuals to 180 through content generation, public presentations, social gatherings,
+                etc. With the help of my board members, I led our team to develop graduate school guides/resources to help take away stress across the timeline of a students graduate
+                studies. This can be found <b><a href="https://drive.google.com/drive/folders/1vWa8I7ItYKft7LCG62TSaILkHR98dQtX?usp=sharing">here</a></b>. I also helped to organize and participate in work in progress conferences designed to encourage different perspectives
+                across the community, but also provide a platform to discuss work in progress across the university for computational biology/bioinformatic research. This included a panel
+                of biologists and practitioners who shared their experiences using methods and fielded questions from the community of method developers encouraging a bridge to facilitate 
+                closing gaps in user experience and needs in meaningful biological analytic method development. 
             </p>
         </div>
 
