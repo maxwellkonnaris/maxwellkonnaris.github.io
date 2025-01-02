@@ -1,0 +1,71 @@
+{
+  "title": {
+    "media": {
+      "url": "",
+      "caption": "",
+      "credit": ""
+    },
+    "text": {
+      "headline": "Maxwell's Timeline"
+    }
+  },
+  "events": [
+    {
+      "media": {
+        "url": "images/athlete.jpg",
+        "caption": "Competitive Athlete",
+        "credit": "Personal Archive"
+      },
+      "start_date": {
+        "year": "2000"
+      },
+      "text": {
+        "headline": "Started as an Athlete",
+        "text": "<p>My early days as a competitive athlete sparked my interest in human health.</p>"
+      }
+    },
+    {
+      "media": {
+        "url": "images/education.jpg",
+        "caption": "Formal Education",
+        "credit": "Institution Archive"
+      },
+      "start_date": {
+        "year": "2012"
+      },
+      "text": {
+        "headline": "B.S. in Exercise Physiology",
+        "text": "<p>Studied exercise physiology with a focus on musculoskeletal injury and rehab.</p>"
+      }
+    },
+    {
+      "media": {
+        "url": "images/research.jpg",
+        "caption": "Research",
+        "credit": "Lab Archive"
+      },
+      "start_date": {
+        "year": "2022"
+      },
+      "text": {
+        "headline": "PhD in Bioinformatics",
+        "text": "<p>Focused on developing statistical methods for biological data analysis.</p>"
+      }
+    },
+    // ,
+    // {
+    //   "media": {
+    //     "url": "images/datascientist.jpg",
+    //     "caption": "Data Scientist",
+    //     "credit": "Professional Photo"
+    //   },
+    //   "start_date": {
+    //     "year": "2023"
+    //   },
+    //   "text": {
+    //     "headline": "Data Scientist Role",
+    //     "text": "<p>Joined industry as a data scientist, applying advanced analytics to real-world problems.</p>"
+    //   }
+    // }
+  ]
+}

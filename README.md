@@ -5,6 +5,7 @@ maxwellkonnaris.com/<br>
 ├── about.html<br>
 ├── resume.html<br>
 ├── volunteeringteaching.html<br>
+├── hobbyblog.html<br>
 ├── photography.html<br>
 ├── journey.html<br>
 ├── contact.html<br>

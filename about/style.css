@@ -1,6 +1,7 @@
 /* Reset default styling */
 body, html {
-    margin: 0;
+    margin: 20px; /* Adjust as needed */
+    box-sizing: border-box; /* Ensures padding and border are included in width/height */
     padding: 0;
     font-family: Arial, sans-serif;
     height: 100%;
@@ -94,3 +95,4 @@ body, html {
     overflow-y: auto;
     height: calc(100vh - 60px);
 }
+
