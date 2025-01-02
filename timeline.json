@@ -21,7 +21,7 @@
       },
       "text": {
         "headline": "Started as an Athlete",
-        "text": "<p>My early days as a competitive athlete sparked my interest in human health.</p>"
+        "text": "<p>My early days as a competitive athlete (primarily soccer) sparked my interest in human health.</p>"
       }
     },
     {
@@ -40,8 +40,22 @@
     },
     {
       "media": {
+        "url": "images/hss.jpg",
+        "caption": "Post-baccalaureate Research",
+        "credit": "Postbaccalaureate Archive"
+      },
+      "start_date": {
+        "year": "2018"
+      },
+      "text": {
+        "headline": "Postbaccalaureate Research",
+        "text": "<p>Clinical Trial and Exploratory Biomarker/Drug Target Research.</p>"
+      }
+    },
+    {
+      "media": {
         "url": "images/research.jpg",
-        "caption": "Research",
+        "caption": "Graduate School Research",
         "credit": "Lab Archive"
       },
       "start_date": {
@@ -49,7 +63,7 @@
       },
       "text": {
         "headline": "PhD in Bioinformatics",
-        "text": "<p>Focused on developing statistical methods for biological data analysis.</p>"
+        "text": "<p>Developing statistical methods for biological data analysis (Emphasis Genomics).</p>"
       }
     },
     // ,

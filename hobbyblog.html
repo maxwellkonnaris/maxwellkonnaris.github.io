@@ -21,27 +21,51 @@
 				flex: 1; /* Allows the content area to expand, pushing the footer to the bottom */
 			}
 
+			/* Responsive Navbar */
+			@media screen and (max-width: 768px) {
+            #top-navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
 
-			/* Footer styling */
-			.footer {
-				text-align: center;
-				padding: 20px;
-				background-color: #f1f1f1;
-				font-size: 14px;
-				color: #000; /* Default text color */
-			}
-			.footer .social-links {
-				margin-top: 10px; /* Add space between text and icons */
-			}
-			.footer .social-links a {
-				margin: 0 10px;
-				color: #000; /* Icon color matches footer text */
-				text-decoration: none;
-				font-size: 20px;
-			}
-			.footer .social-links a:hover {
-				color: #007BFF; /* Hover effect */
-			}
+            .navbar-right ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                padding-top: 10px;
+            }
+
+            .navbar-right li {
+                margin: 5px 10px;
+            }
+        	}
+			
+            /* Footer */
+            .footer {
+                text-align: center;
+                padding: 5px;
+                background-color: #f1f1f1;
+                font-size: 12px;
+                color: #000;
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+            }
+
+            .footer .social-links {
+                margin-top: 10px;
+            }
+
+            .footer .social-links a {
+                margin: 0 10px;
+                color: #000;
+                text-decoration: none;
+                font-size: 20px;
+            }
+
+            .footer .social-links a:hover {
+                color: #007BFF;
+            }
+
 		</style>
 </head>
 <body>

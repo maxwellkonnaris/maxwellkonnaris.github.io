@@ -6,73 +6,188 @@
     <meta charset="UTF-8">
     <title>Maxwell Konnaris - Volunteering & Teaching</title>
     <link rel="stylesheet" href="style.css">
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-		<style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Ensure the page uses a flexbox layout to pin the footer */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Full viewport height */
+            margin: 0;
+            color: #333;
+        }
 
-			/* Ensure the page uses a flexbox layout to pin the footer */
-			body {
-				display: flex;
-				flex-direction: column;
-				min-height: 100vh; /* Full viewport height */
-				margin: 0;
-			}
+        /* Container for the main content */
+        .container {
+            flex: 1; /* Allows the content area to expand, pushing the footer to the bottom */
+            max-width: 1000px; /* Restrict the width for better readability */
+            margin: 50px auto;
+            padding: 0 10px;
+        }
 
-			.container {
-				flex: 1; /* Allows the content area to expand, pushing the footer to the bottom */
-			}
+        /* Blog post headings */
+        .container h1 {
+            text-align: center;
+            margin-bottom: 50px;
+            font-weight: 700;
+            font-size: 2em;
+        }
 
-			/* Footer styling */
-			.footer {
-				text-align: center;
-				padding: 20px;
-				background-color: #f1f1f1;
-				font-size: 14px;
-				color: #000; /* Default text color */
-			}
-			.footer .social-links {
-				margin-top: 10px; /* Add space between text and icons */
-			}
-			.footer .social-links a {
-				margin: 0 10px;
-				color: #000; /* Icon color matches footer text */
-				text-decoration: none;
-				font-size: 20px;
-			}
-			.footer .social-links a:hover {
-				color: #007BFF; /* Hover effect */
-			}
-		</style>
+        /* Individual experience section */
+        .experience {
+            margin-bottom: 20px;
+        }
+
+        .experience h2 {
+            margin-bottom: 10px;
+            font-size: 1.4em;
+            font-weight: 600;
+        }
+
+        .experience p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        /* Image styling within each experience */
+        .experience img {
+            display: block;
+            max-width: 100%;
+            margin: 10px 0;
+        }
+
+		/* Footer */
+		.footer {
+			text-align: center;
+			padding: 5px;
+			background-color: #f1f1f1;
+			font-size: 12px;
+			color: #000;
+			position: fixed;
+			bottom: 0;
+			width: 100%;
+		}
+
+		.footer .social-links {
+			margin-top: 10px;
+		}
+
+		.footer .social-links a {
+			margin: 0 10px;
+			color: #000;
+			text-decoration: none;
+			font-size: 20px;
+		}
+
+		.footer .social-links a:hover {
+			color: #007BFF;
+		}
+
+        /* Navbar */
+        #top-navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .navbar-left {
+            display: flex;
+            align-items: center;
+        }
+
+		/* Responsive Navbar */
+        @media screen and (max-width: 768px) {
+            #top-navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .navbar-right ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                padding-top: 10px;
+            }
+
+            .navbar-right li {
+                margin: 5px 10px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-					<!-- Navbar -->
-					 <div id="top-navbar">
-						<div class="navbar-left">
-						    <img src="images/profile-pic.png" alt="Logo" class="logo">
-						    <span class="name"><a href="index.html">Maxwell Konnaris</a></span>
-						</div>
-						<div class="navbar-right">
-						    <ul class="nav-links">
-							<li><a href="/about.html">About</a></li>
-							<li><a href="resume.html">Resume/CV</a></li>
-							<li><a href="projects.html">Projects</a></li>
-							<li><a href="volunteeringteaching.html">Volunteering & Teaching</a></li>
-							<li><a href="journey.html">Journey</a></li>
-							<li><a href="hobbyblog.html">Hobby Blogs</a></li>
-							<li><a href="contact.html">Contact</a></li>
-						    </ul>
-						</div>
-					 </div>
+    <!-- Navbar -->
+    <div id="top-navbar">
+        <div class="navbar-left">
+            <img src="images/profile-pic.png" alt="Logo" class="logo">
+            <span class="name"><a href="index.html">Maxwell Konnaris</a></span>
+        </div>
+        <div class="navbar-right">
+            <ul class="nav-links">
+                <li><a href="/about.html">About</a></li>
+                <li><a href="resume.html">Resume/CV</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="volunteeringteaching.html">Volunteering & Teaching</a></li>
+                <li><a href="journey.html">Journey</a></li>
+                <li><a href="hobbyblog.html">Hobby Blogs</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </div>
 
     <!-- Main Content -->
-    <!-- <div class="container">
-        <h1>Volunteering & Teaching</h1>
+    <div class="container">
+        <h1>Teaching</h1>
 
-        <p></p>
-    </div> -->
+		<div class="experience">
+            <h2>Engineering Education for Middle School, High School, and Undergraduate Students in Underrepresented Communities and Developing Nations</h2>
+            <img src="images/ghana.jpg" alt="Global Code 2018">
+            <p>
+                I worked with E.L.i.T.E. based in Harlem, NYC and Global Code based in Accra, Ghana to develop curriculum, structure learning, 
+				assist in hands-on material, and teach classroom lectures. Depending on the level of education (Middle/High/Undergraduate), the 
+				engineering material was tailored to beginner, intermediate, or advanced exposure. As an example, beginner level would be exposed to 
+				engineering principles integrated math, physics, and applied technology to create basic programs teaching students to translate their coursework
+				to real life user experience. The advanced level would involve creating applications to provide solutions for real world problems often programming 
+				Raspberry Pis/Arduinos paired with circuitry/robotics and larger engineered prototypes.
+            </p>
+        </div>
+
+        <div class="experience">
+            <h2>University Teaching Assistant</h2>
+            <p>
+                During my graduate studies, I served as a teaching assistant for a graduate genomics course. This involved teaching lectures, 
+				grading papers and assignments, hosting office hours, and providing access to discuss interests in the field of genomics. 
+				I also had the opportunity to curate and lead several workshops such as an <a href="https://bootcamp.biostars.io/">annual data reproducibility bootcamp</a> focused on providing 
+				hands-on guidance and material in fundamental/advanced techniques to improve productivity, rigor, and reproducibility in software/analytic 
+				development in the research and development setting. 
+            </p>
+        </div>
+
+		<h1>Outreach and Mentorship</h1>
+
+		<div class="experience">
+            <h2>Mentorship for Aspiring/Interested STEM Professionals</h2>
+            <img src="images/science-outreach.jpg" alt="High School Science Outreach">
+            <p>
+                As a volunteer mentor, I guided middle school, high school, and undergraduate students through their professional development in pursuit of higher education.
+				I participated in several programs such as the <a href="https://prescientist.org/">Letters to a Pre-Scientist</a> (highly recommend) and CUNY mentorship programs. I believe its important to share lessons learned
+				through your path to help others seeking advice or displaying interest. 
+            </p>
+        </div>
+
+		<div class="experience">
+            <h2>Genomix Graduate Student Leadership</h2>
+            <img src="images/science-outreach.jpg" alt="Work in Progress CCBB Conference at PSU">
+            <p>
+
+            </p>
+        </div>
+
+    </div>
 
     <!-- Footer -->
-	<div class="footer">
+    <div class="footer">
         &copy; 2025 Maxwell Konnaris
         <div class="social-links">
             <a href="https://scholar.google.com/citations?user=X1QvekEAAAAJ&hl=en" target="_blank" title="Google Scholar">
