@@ -1,104 +1,205 @@
-<!-- index.html -->
-
 <!DOCTYPE HTML>
-
 <html>
-	<head>
-		<title>Maxwell Konnaris Personal Home Page</title>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-		<style>
-			/* Footer styling */
-			.footer {
-				text-align: center;
-				padding: 20px;
-				background-color: #f1f1f1;
-				font-size: 14px;
-				color: #000; /* Default text color */
-			}
-			.footer .social-links {
-				margin-top: 10px; /* Add space between text and icons */
-			}
-			.footer .social-links a {
-				margin: 0 10px;
-				color: #000; /* Icon color matches footer text */
-				text-decoration: none;
-				font-size: 20px;
-			}
-			.footer .social-links a:hover {
-				color: #007BFF; /* Hover effect */
-			}
-		</style>
-	</head>
-    
-	<body class="is-preload">
-		<div id="wrapper">
-			
-			<div id="bg"></div>
-			<div id="overlay"></div>
-			<div id="main">
+  <head>
+    <title>Maxwell Konnaris Personal Home Page</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
-				<!-- Header -->
-					<header id="header">
-						<h1>Maxwell Konnaris</h1>
-						<p>Data Scientist &nbsp;&bull;&nbsp; Computational Biologist &nbsp;&bull;&nbsp; Digital Health</p>
-						<nav>
-							<ul>
-								<li><a href="https://x.com/MaxwellKonnaris" class="icon brands fa-twitter"><span class="label">X</span></a></li>
-								<li><a href="https://github.com/maxwellkonnaris/" class="icon brands fa-github"><span class="label">Github</span></a></li>
-								<li><a href="https://scholar.google.com/citations?user=X1QvekEAAAAJ&hl=en" class="icon solid fa-graduation-cap"><span class="label">Google Scholar</span></a></li>
-								<li><a href="https://www.linkedin.com/in/maxwell-konnaris" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-							</ul>
-						</nav>
-					</header>
+    <!-- Link to your main.css -->
+    <link rel="stylesheet" href="assets/css/main.css" />
 
-					<!-- Navbar -->
-					 <div id="top-navbar">
-						<div class="navbar-left">
-						    <img src="images/profile-pic.png" alt="Logo" class="logo">
-						    <span class="name"><a href="index.html"></a></span>
-						</div>
-						<div class="navbar-right">
-							<ul class="nav-links">
-								<li><a href="/about.html">About</a></li>
-								<li><a href="resume.html">CV</a></li>
-								<li><a href="projects.html">Projects</a></li>
-								<li><a href="volunteeringteaching.html">Outreach</a></li>
-								<li><a href="journey.html">Journey</a></li>
-								<li><a href="hobbyblog.html">Blogs</a></li>
-								<li><a href="contact.html">Contact</a></li>
-							</ul>
-						</div>
-					 </div>
+    <!-- Font Awesome (for icons) -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
 
-				<!-- Footer -->
-				<div class="footer">
-					<div class="social-links">
-						<a href="https://scholar.google.com/citations?user=X1QvekEAAAAJ&hl=en" target="_blank" title="Google Scholar">
-							<i class="fas fa-graduation-cap"></i>
-						</a>
-						<a href="https://x.com/MaxwellKonnaris" target="_blank" title="Twitter">
-							<i class="fab fa-twitter"></i>
-						</a>
-						<a href="https://www.linkedin.com/in/maxwell-konnaris/" target="_blank" title="LinkedIn">
-							<i class="fab fa-linkedin"></i>
-						</a>
-						<a href="https://github.com/maxwellkonnaris" target="_blank" title="GitHub">
-							<i class="fab fa-github"></i>
-						</a>
-					</div>
-				</div>
+    <!-- Inline style overrides -->
+    <style>
+      /* General styling for the navbar */
+      #top-navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #141212;
+        padding: 10px 20px;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 9999;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
 
-			</div>
-		</div>
-		<script>
-			window.onload = function() { document.body.classList.remove('is-preload'); }
-			window.ontouchmove = function() { return false; }
-			window.onorientationchange = function() { document.body.scrollTop = 0; }
-		</script>
-		<script src="script.js"></script>
-	</body>
+      /* Hamburger button styling */
+      #hamburger {
+        background-color: #ffffff;
+        color: #141212;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        padding: 10px;
+        border-radius: 4px;
+        display: none; /* Hidden by default, shown in mobile view */
+      }
+
+      #hamburger:hover {
+        background-color: #ededed;
+      }
+
+      /* Dropdown styling for mobile nav */
+      @media (max-width: 768px) {
+        .navbar-right {
+          display: none;
+          flex-direction: column;
+          width: 100%;
+          background-color: #000;
+          position: absolute;
+          top: 60px;
+          left: 0;
+          z-index: 9998;
+          padding: 10px 0;
+        }
+
+        .navbar-right.active {
+          display: flex;
+        }
+
+        .nav-links {
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+        }
+
+        .nav-links li {
+          margin: 10px 0;
+        }
+
+        .nav-links a {
+          color: #000;
+          text-decoration: none;
+          font-size: 18px;
+          padding: 10px 20px;
+          display: block;
+          width: 100%;
+          text-align: center;
+        }
+
+        .nav-links a:hover {
+          background-color: #333;
+        }
+
+        #hamburger {
+          display: block; /* Show hamburger menu on mobile */
+        }
+      }
+
+      /* Content padding to prevent overlap */
+      body {
+        padding-top: 60px;
+      }
+    </style>
+  </head>
+
+  <body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+      <!-- Background and overlay -->
+      <div id="bg"></div>
+      <div id="overlay"></div>
+
+      <!-- Main content -->
+      <div id="main">
+        <!-- Header -->
+        <header id="header">
+          <h1>Maxwell Konnaris</h1>
+          <p>Data Scientist &bull; Computational Biologist &bull; Digital Health</p>
+          <nav>
+            <ul>
+              <li>
+                <a href="https://x.com/MaxwellKonnaris" class="icon brands fa-twitter" target="_blank">
+                  <span class="label">X</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/maxwellkonnaris/" class="icon brands fa-github" target="_blank">
+                  <span class="label">Github</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://scholar.google.com/citations?user=X1QvekEAAAAJ&hl=en" class="icon solid fa-graduation-cap" target="_blank">
+                  <span class="label">Google Scholar</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/maxwell-konnaris" class="icon brands fa-linkedin-in" target="_blank">
+                  <span class="label">LinkedIn</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </header>
+
+        <!-- Navbar -->
+        <div id="top-navbar">
+          <!-- Left side of the navbar -->
+          <div class="navbar-left">
+            <img src="images/profile-pic.png" alt="Logo" class="logo" style="height: 40px; margin-right: 10px;" />
+          </div>
+
+          <!-- Right side of the navbar -->
+          <div class="navbar-right">
+            <ul class="nav-links">
+              <li><a href="about.html">About</a></li>
+              <li><a href="resume.html">CV</a></li>
+              <li><a href="projects.html">Projects</a></li>
+              <li><a href="volunteeringteaching.html">Outreach</a></li>
+              <li><a href="journey.html">Journey</a></li>
+              <li><a href="hobbyblog.html">Blogs</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Hamburger button -->
+          <button id="hamburger" onclick="toggleNavbar()">☰</button>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+          <div class="social-links">
+            <a href="https://scholar.google.com/citations?user=X1QvekEAAAAJ&hl=en" target="_blank" title="Google Scholar">
+              <i class="fas fa-graduation-cap"></i>
+            </a>
+            <a href="https://x.com/MaxwellKonnaris" target="_blank" title="Twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/maxwell-konnaris/" target="_blank" title="LinkedIn">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://github.com/maxwellkonnaris" target="_blank" title="GitHub">
+              <i class="fab fa-github"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Remove preload class on page load -->
+    <script>
+      window.onload = function () {
+        document.body.classList.remove("is-preload");
+      };
+      window.ontouchmove = function () {
+        return false;
+      };
+      window.onorientationchange = function () {
+        document.body.scrollTop = 0;
+      };
+
+      // Toggle the mobile menu
+      function toggleNavbar() {
+        const navbar = document.querySelector(".navbar-right");
+        navbar.classList.toggle("active");
+      }
+    </script>
+  </body>
 </html>

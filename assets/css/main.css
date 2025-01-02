@@ -135,44 +135,34 @@ input, select, textarea {
 body {
     padding-top: 20px;
 }
-/* Responsive Navbar */
 @media (max-width: 768px) {
-    #top-navbar {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-    }
+  /* Hide the entire .navbar-right on mobile, then show it when active */
+  #top-navbar .navbar-right {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+  }
+  #top-navbar .navbar-right.active {
+    display: flex;
+  }
 
-    #top-navbar .navbar-right .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-    }
+  /* The link styles remain the same */
+  #top-navbar .navbar-right .nav-links li {
+    margin-left: 0;
+    width: 100%;
+    text-align: center;
+  }
+  #top-navbar .navbar-right .nav-links a {
+    display: block;
+    padding: 10px;
+    width: 100%;
+  }
 
-    #top-navbar .navbar-right .nav-links.active {
-        display: flex; /* Make sure this switches to flex properly */
-    }
-
-    #top-navbar .navbar-right .nav-links li {
-        margin-left: 0;
-        width: 100%;
-        text-align: center;
-    }
-
-    #top-navbar .navbar-right .nav-links a {
-        display: block;
-        padding: 10px;
-        width: 100%;
-    }
-
-    #hamburger {
-        display: block; /* Make sure hamburger menu is visible on mobile */
-        cursor: pointer; /* Optional: better UX for users */
-    }
+  #hamburger {
+    display: block;
+    cursor: pointer;
+  }
 }
-
-
-
 
 /* Basic */
 
