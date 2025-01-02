@@ -27,7 +27,6 @@
         top: 0;
         width: 100%;
         z-index: 9999;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       }
 
       /* Hamburger button styling */
@@ -57,7 +56,6 @@
           top: 60px;
           left: 0;
           z-index: 9998;
-          padding: 10px 0;
         }
 
         .navbar-right.active {
@@ -71,25 +69,29 @@
         }
 
         .nav-links li {
-          margin: 10px 0;
+		  height: 100%;
         }
 
-        .nav-links a {
-          color: #000;
-          text-decoration: none;
-          font-size: 18px;
-          padding: 10px 20px;
-          display: block;
-          width: 100%;
-          text-align: center;
-        }
+		.nav-links a {
+			color: #000;
+			text-decoration: none;
+			font-size: 18px;
+			display: block;
+			width: 100%;
+			text-align: center;
+		}
 
-        .nav-links a:hover {
-          background-color: #333;
-        }
+		.nav-links a:hover {
+			background-color: #333;
+			width: 100%;
+		}
 
         #hamburger {
           display: block; /* Show hamburger menu on mobile */
+		  position: absolute; /* Allows precise positioning */
+		  right: 10px; /* Adjust this value for spacing from the right edge */
+		  top: 5px; /* Adjust this value for spacing from the top edge */
+		  cursor: pointer;
         }
       }
 
@@ -143,7 +145,7 @@
         <div id="top-navbar">
           <!-- Left side of the navbar -->
           <div class="navbar-left">
-            <img src="images/profile-pic.png" alt="Logo" class="logo" style="height: 40px; margin-right: 10px;" />
+            <img src="images/profile-pic.png" alt="Logo" class="logo" />
           </div>
 
           <!-- Right side of the navbar -->
