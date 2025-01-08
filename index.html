@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
-    <!-- Link to your main.css -->
+    <!-- Link to your main.css (if you have global styles) -->
     <link rel="stylesheet" href="assets/css/main.css" />
 
     <!-- Font Awesome (for icons) -->
@@ -16,88 +16,112 @@
 
     <!-- Inline style overrides -->
     <style>
-      /* General styling for the navbar */
-      #top-navbar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        background-color: #141212;
-        padding: 10px 20px;
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 9999;
-      }
-
-      /* Hamburger button styling */
-      #hamburger {
-        background-color: #ffffff;
-        color: #141212;
-        border: none;
-        font-size: 24px;
-        cursor: pointer;
-        padding: 10px;
-        border-radius: 4px;
-        display: none; /* Hidden by default, shown in mobile view */
-      }
-
-      #hamburger:hover {
-        background-color: #ededed;
-      }
-
-      /* Dropdown styling for mobile nav */
-      @media (max-width: 768px) {
-        .navbar-right {
-          display: none;
-          flex-direction: column;
-          width: 100%;
-          background-color: #000;
-          position: absolute;
-          top: 60px;
-          left: 0;
-          z-index: 9998;
-        }
-
-        .navbar-right.active {
-          display: flex;
-        }
-
-        .nav-links {
-          flex-direction: column;
-          align-items: center;
-          width: 100%;
-        }
-
-        .nav-links li {
-		  height: 100%;
-        }
-
-		.nav-links a {
-			color: #000;
-			text-decoration: none;
-			font-size: 18px;
-			display: block;
-			width: 100%;
-			text-align: center;
-		}
-
-		.nav-links a:hover {
-			background-color: #333;
-			width: 100%;
-		}
-
-        #hamburger {
-          display: block; /* Show hamburger menu on mobile */
-		  position: absolute; /* Allows precise positioning */
-		  right: 10px; /* Adjust this value for spacing from the right edge */
-		  top: 5px; /* Adjust this value for spacing from the top edge */
-		  cursor: pointer;
-        }
-      }
-
-      /* Content padding to prevent overlap */
+      /* Remove any top padding or margins that were for the old navbar */
       body {
-        padding-top: 60px;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Basic styling for your header to center content */
+      #header {
+        text-align: center;
+        padding: 3rem 1rem;
+        margin-top: -10rem;
+      }
+
+      #header h1 {
+        margin-bottom: 0.5rem;
+      }
+
+      #header p {
+        margin-bottom: 2rem; /* Space below your title/description */
+      }
+
+      /* Social icons list */
+      #header nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0 auto;
+        display: inline-flex;
+        gap: 1rem;
+      }
+
+      #header nav ul li {
+        display: inline-block;
+      }
+
+      #header nav ul li a {
+        text-decoration: none;
+        color: inherit;
+        font-size: 1.5rem;
+      }
+
+      /* Add some margin to separate social links from the buttons */
+      #header nav {
+        margin-bottom: 5rem;
+      }
+
+      .overlay-nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem; /* Add space between buttons */
+      }
+
+      .overlay-nav a {
+        display: inline-block;
+        background-color: rgba(255, 255, 255, 0.1); /* Translucent background */
+        color: #ffffff; /* Black text */
+        padding: 0.75rem 1.25rem;
+        text-decoration: none;
+        border-radius: 12px; /* Rounded corners */
+        font-size: 1rem;
+        font-weight: bold; /* Make the font bold */
+        border: 3px solid #ffffff; /* Increased outline thickness */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.8); /* Add depth with a shadow */
+        transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+      }
+
+      .overlay-nav a:hover {
+        background-color: rgba(0, 0, 0, 0.8); /* Translucent black background on hover */
+        color: #ffffff; /* White text on hover */
+        transform: translateY(-2px); /* Slightly "lift" the button on hover */
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover for depth */
+      }
+
+      /* Footer styling (optional) */
+      .footer {
+        text-align: center;
+        padding: 1rem;
+      }
+
+      .social-links a {
+        margin: 0 0.5rem;
+        color: inherit;
+        font-size: 1.5rem;
+      }
+
+      #bg {
+        background-position: center -20%; /* Adjust '20%' to move the background down */
+        background-size: auto; /* Ensures the background scales well */
+      }
+
+      /* For smaller screens (tablets and below) */
+      @media screen and (max-width: 768px) {
+        #bg {
+          background-position: center 190%; /* Center the background on smaller screens */
+          background-size: cover; /* Ensures the background scales well */
+
+        }
+      }
+
+      /* For extra-small screens (phones) */
+      @media screen and (max-width: 480px) {
+        #bg {
+          background-position: center 180%; /* Optional: Position towards the top for very small screens */
+          background-size: cover; /* Ensures the background scales well */
+
+        }
       }
     </style>
   </head>
@@ -115,69 +139,94 @@
         <header id="header">
           <h1>Maxwell Konnaris</h1>
           <p>Data Scientist &bull; Computational Biologist &bull; Digital Health</p>
+
+          <!-- Social Media Icons -->
           <nav>
             <ul>
               <li>
-                <a href="https://x.com/MaxwellKonnaris" class="icon brands fa-twitter" target="_blank">
+                <a
+                  href="https://x.com/MaxwellKonnaris"
+                  class="icon brands fa-twitter"
+                  target="_blank"
+                  title="Twitter"
+                >
                   <span class="label">X</span>
                 </a>
               </li>
               <li>
-                <a href="https://github.com/maxwellkonnaris/" class="icon brands fa-github" target="_blank">
-                  <span class="label">Github</span>
+                <a
+                  href="https://github.com/maxwellkonnaris/"
+                  class="icon brands fa-github"
+                  target="_blank"
+                  title="GitHub"
+                >
+                  <span class="label">GitHub</span>
                 </a>
               </li>
               <li>
-                <a href="https://scholar.google.com/citations?user=X1QvekEAAAAJ&hl=en" class="icon solid fa-graduation-cap" target="_blank">
+                <a
+                  href="https://scholar.google.com/citations?user=X1QvekEAAAAJ&hl=en"
+                  class="icon solid fa-graduation-cap"
+                  target="_blank"
+                  title="Google Scholar"
+                >
                   <span class="label">Google Scholar</span>
                 </a>
               </li>
               <li>
-                <a href="https://www.linkedin.com/in/maxwell-konnaris" class="icon brands fa-linkedin-in" target="_blank">
+                <a
+                  href="https://www.linkedin.com/in/maxwell-konnaris"
+                  class="icon brands fa-linkedin-in"
+                  target="_blank"
+                  title="LinkedIn"
+                >
                   <span class="label">LinkedIn</span>
                 </a>
               </li>
             </ul>
           </nav>
+
+          <!-- Navigation as overlay-style buttons -->
+          <div class="overlay-nav">
+            <a href="about.html">About</a>
+            <a href="resume.html">CV</a>
+            <a href="projects.html">Projects</a>
+            <a href="volunteeringteaching.html">Outreach</a>
+            <a href="journey.html">Journey</a>
+            <a href="hobbyblog.html">Blogs</a>
+            <a href="contact.html">Contact</a>
+          </div>
         </header>
-
-        <!-- Navbar -->
-        <div id="top-navbar">
-          <!-- Left side of the navbar -->
-          <div class="navbar-left">
-            <img src="images/profile-pic.png" alt="Logo" class="logo" />
-          </div>
-
-          <!-- Right side of the navbar -->
-          <div class="navbar-right">
-            <ul class="nav-links">
-              <li><a href="about.html">About</a></li>
-              <li><a href="resume.html">CV</a></li>
-              <li><a href="projects.html">Projects</a></li>
-              <li><a href="volunteeringteaching.html">Outreach</a></li>
-              <li><a href="journey.html">Journey</a></li>
-              <li><a href="hobbyblog.html">Blogs</a></li>
-              <li><a href="contact.html">Contact</a></li>
-            </ul>
-          </div>
-
-          <!-- Hamburger button -->
-          <button id="hamburger" onclick="toggleNavbar()">☰</button>
-        </div>
 
         <!-- Footer -->
         <div class="footer">
           <div class="social-links">
-            <a href="https://scholar.google.com/citations?user=X1QvekEAAAAJ&hl=en" target="_blank" title="Google Scholar">
+            <a
+              href="https://scholar.google.com/citations?user=X1QvekEAAAAJ&hl=en"
+              target="_blank"
+              title="Google Scholar"
+            >
               <i class="fas fa-graduation-cap"></i>
             </a>
-            <a href="https://x.com/MaxwellKonnaris" target="_blank" title="Twitter">
+            <a
+              href="https://x.com/MaxwellKonnaris"
+              target="_blank"
+              title="Twitter"
+            >
               <i class="fab fa-twitter"></i>
             </a>
-            <a href="https://www.linkedin.com/in/maxwell-konnaris/" target="_blank" title="LinkedIn">
+            <a
+              href="https://www.linkedin.com/in/maxwell-konnaris/"
+              target="_blank"
+              title="LinkedIn"
+            >
               <i class="fab fa-linkedin"></i>
             </a>
-            <a href="https://github.com/maxwellkonnaris" target="_blank" title="GitHub">
+            <a
+              href="https://github.com/maxwellkonnaris"
+              target="_blank"
+              title="GitHub"
+            >
               <i class="fab fa-github"></i>
             </a>
           </div>
@@ -196,12 +245,6 @@
       window.onorientationchange = function () {
         document.body.scrollTop = 0;
       };
-
-      // Toggle the mobile menu
-      function toggleNavbar() {
-        const navbar = document.querySelector(".navbar-right");
-        navbar.classList.toggle("active");
-      }
     </script>
   </body>
 </html>
