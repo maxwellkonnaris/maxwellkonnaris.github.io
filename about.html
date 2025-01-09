@@ -3,10 +3,11 @@
 <head>
     <title>Maxwell Konnaris's About Page</title>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
+
     <style>
         body {
             display: flex;
@@ -18,26 +19,115 @@
             padding-bottom: 100px; /* Ensure space for the footer */
         }
 
+        /* NAVBAR */
+        #top-navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #141212;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 9999;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Navbar left section */
+        .navbar-left {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        }
+
+        .navbar-left .logo {
+        max-height: 40px;
+        /* Adjust as needed */
+        }
+
+        .navbar-left .name a {
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: bold;
+        }
+
+        .logo {
+            max-width: 40px;
+            margin-right: 10px;
+        }
+
+        .name a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .navbar-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #007BFF;
+        }
+
+        /* HAMBURGER MENU BUTTON (hidden by default, shown in mobile view) */
+        #hamburger {
+            background-color: #ffffff;
+            color: #141212;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 4px;
+            display: none; /* Hidden by default, shown in mobile view */
+            position: absolute; /* Allows precise positioning */
+            right: 10px; /* Adjust this value for spacing from the right edge */
+            top: 5px; /* Adjust this value for spacing from the top edge */
+        }
+
+        #hamburger:hover {
+            background-color: #ededed;
+        }
+
         .container {
             flex: 1;
+            width: 80%;
+            margin: 120px auto 60px; /* Space for the fixed navbar + bottom margin */
             display: flex;
-            flex-direction: row;
+            flex-direction: row;  /* By default, side-by-side */
             align-items: flex-start;
             justify-content: space-between;
             padding: 100px 60px 60px; /* Adjust padding to avoid navbar overlap */
             box-sizing: border-box;
-        }
 
-        .footer {
-            text-align: center;
-            padding: 10px; /* Adjust padding as needed */
-            background-color: #f1f1f1;
-            font-size: 12px;
-            color: #000;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for visual separation */
+            /* Border only on left & right */
+            border-left: 1px solid #ccc;
+            border-right: 1px solid #ccc;
+
+            /* Box-shadow only on left & right sides */
+            /* Two shadows: one positive x-offset (right), one negative x-offset (left) */
+   
         }
 
 
@@ -63,6 +153,26 @@
             text-decoration: underline;
         }
 
+        /* TIMELINE */
+        #timeline-embed {
+            width: 100%;
+            height: 300px; /* Reduced height to make the timeline smaller */
+            margin: 20px 0; /* Added margin to create spacing around the timeline */
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 10px; /* Adjust padding as needed */
+            background-color: #f1f1f1;
+            font-size: 12px;
+            color: #000;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for visual separation */
+        }
+
         .footer .social-links {
             margin-top: 10px;
         }
@@ -78,128 +188,117 @@
             color: #007BFF;
         }
 
-        #timeline-embed {
-            width: 100%;
-            height: 300px; /* Reduced height to make the timeline smaller */
-            margin: 20px 0; /* Added margin to create spacing around the timeline */
-        }
-        
-        /* General styling for the navbar */
-        #top-navbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background-color: #141212;
-            padding: 10px 20px;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 9999;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Hamburger button styling */
-        #hamburger {
-            background-color: #ffffff;
-            color: #141212;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            padding: 10px;
-            border-radius: 4px;
-            display: none; /* Hidden by default, shown in mobile view */
-            position: absolute; /* Allows precise positioning */
-            right: 10px; /* Adjust this value for spacing from the right edge */
-            top: 5px; /* Adjust this value for spacing from the top edge */
-        }
-
-        #hamburger:hover {
-            background-color: #ededed;
-        }
-
-        /* Dropdown styling for mobile nav */
+        /************************************************************
+         * MEDIA QUERIES FOR RESPONSIVENESS
+         ************************************************************/
         @media (max-width: 768px) {
-            .navbar-right {
-            display: none;
+            /* Stack the container contents vertically on smaller screens */
+            .container {
+                flex-direction: column;
+                padding: 140px 20px 60px;  /* More top padding so the nav doesn't overlap */
+                align-items: center;
+            }
+
+            .profile-pic {
+                max-width: 100%;
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+
+            .about-content {
+                font-size: 1rem;
+            }
+
+        /* Make the navbar-right hidden by default and show hamburger */
+        .navbar-right {
+            display: none; 
             flex-direction: column;
-            width: 100%;
+            gap: 0;
             position: absolute;
-            top: 0px;
+            top: 60px; /* Just below the fixed navbar */
             left: 0;
+            background-color: #fff; /* separate background for the dropdown */
+            width: 100%;
             z-index: 9998;
             padding: 10px 0;
-            }
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
 
-            .navbar-right.active {
-            display: flex;
-            width:100%;
-            }
-
-            .nav-links {
+        /* Display navbar links in vertical stack (dropdown) */
+        .nav-links {
             flex-direction: column;
-            align-items: center;
-            }
+            gap: 10px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
 
-            .nav-links li {
-            margin: 10px 0;
+        .nav-links li {
             width: 100%;
-            }
+        }
 
-            .nav-links a {
+        .nav-links a {
             color: #000;
-            text-decoration: none;
             font-size: 18px;
+            padding: 10px;
             display: block;
-            width: 100%;
             text-align: center;
-            }
+        }
 
-            .nav-links a:hover {
-            background-color: #333;
-            width: 100%;
-            }
+        .nav-links a:hover {
+            background-color: #ddd;
+        }
 
-            #hamburger {
-            display: block; /* Show hamburger menu on mobile */
-            position: absolute; /* Allows precise positioning */
-            right: 10px; /* Adjust this value for spacing from the right edge */
-            top: 5px; /* Adjust this value for spacing from the top edge */
-            cursor: pointer;
-            }
+        /* Show the hamburger menu on mobile */
+        #hamburger {
+            display: block;
+        }
+
+        /* Adjust iFrame height on smaller screens if necessary */
+        iframe {
+            height: 60vh;
+        }
+        }
+
+        /* Class toggled when the mobile menu button is clicked */
+        .navbar-right.active {
+        display: flex; /* show */
         }
     </style>
+
     <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
 </head>
 <body>
 
-    <!-- Navbar -->
+    <!-- NAVBAR -->
     <div id="top-navbar">
-    <!-- Left side of the navbar -->
-    <div class="navbar-left">
-        <img src="images/profile-pic.png" alt="Logo" class="logo" />
-        <span class="name"><a href="index.html">Maxwell Konnaris</a></span>
-    </div>
+        <!-- Left side of the navbar -->
+        <div class="navbar-left">
+          <img src="images/profile-pic.png" alt="Logo" class="logo"/>
+          <span class="name">
+            <a href="index.html">Maxwell Konnaris</a>
+          </span>
+        </div>
+    
+        <!-- Right side of the navbar -->
+        <div class="navbar-right">
+          <ul class="nav-links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="resume.html">CV</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="volunteeringteaching.html">Outreach</a></li>
+            <li><a href="journey.html">Journey</a></li>
+            <li><a href="hobbyblog.html">Blogs</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+    
+        <!-- Hamburger button (for mobile) -->
+        <button id="hamburger" onclick="toggleNavbar()">☰</button>
+      </div>
 
-    <!-- Right side of the navbar -->
-    <div class="navbar-right">
-        <ul class="nav-links">
-        <li><a href="about.html">About</a></li>
-        <li><a href="resume.html">CV</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="volunteeringteaching.html">Outreach</a></li>
-        <li><a href="journey.html">Journey</a></li>
-        <li><a href="hobbyblog.html">Blogs</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </div>
-
-    <!-- Hamburger button -->
-    <button id="hamburger" onclick="toggleNavbar()">☰</button>
-    </div>
-
-    <!-- Main Content -->
+    <!-- MAIN CONTENT -->
     <div class="container">
-        <img src="images/profile-pic-large.png" alt="Maxwell Konnaris" class="profile-pic" />
         <div class="about-content">
             <p>
                 Hi, my name is Maxwell Konnaris. I've always had an interest in human health, development, and performance which probably stems from my early days as a competitive athlete constantly dealing with injury. 
@@ -207,9 +306,16 @@
                 Eventually, I situated in my current role as a statistician and data scientist trained to develop statistical methods in the Silverman and Lazar Labs at Pennsylvania State University through the Bioinformatics PhD program. 
                 If you're interested in my journey or looking for advice on how to transition/merge your skills, follow my footsteps <a href="journey.html">here</a>.
             </p>
-            <!-- Timeline Embed -->
+        </div>
+        <img src="images/profile-pic-large.png" alt="Maxwell Konnaris" class="profile-pic" />
+    </div>
+
+    <div class="container">
+        <div class="about-content">
+            <!-- Timeline -->
             <div id="timeline-embed"></div>
             <br>
+
             <p>
                 For a more specific understanding of my professional background and accomplishments, check out my <a href="resume.html">Resume/CV</a>. This provides a concise overview of the skills and experiences that have shaped my career.
                 If you're more curious about my current research projects, visit the <a href="projects.html">Projects</a> page for a brief look at some of the personal and collaborative research areas I've been working on.
@@ -220,18 +326,7 @@
         </div>
     </div>
 
-    <!-- Timeline Initialization -->
-    <script>
-        var timeline = new TL.Timeline('timeline-embed', 'timeline.json');
-
-              // Toggle the mobile menu
-        function toggleNavbar() {
-            const navbar = document.querySelector(".navbar-right");
-            navbar.classList.toggle("active");
-        }
-    </script>
-
-    <!-- Footer -->
+    <!-- FOOTER -->
     <div class="footer">
         &copy; 2025 Maxwell Konnaris
         <div class="social-links">
@@ -249,5 +344,16 @@
             </a>
         </div>
     </div>
+
+    <!-- TIMELINE SCRIPT & NAV TOGGLE -->
+    <script>
+        var timeline = new TL.Timeline('timeline-embed', 'timeline.json');
+        
+        // Toggle the mobile menu
+        function toggleNavbar() {
+            const navbar = document.querySelector(".navbar-right");
+            navbar.classList.toggle("active");
+        }
+    </script>
 </body>
 </html>

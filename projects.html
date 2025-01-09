@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Maxwell Konnaris - Projects</title>
-    <!-- External Styles -->
-    <link rel="stylesheet" href="style.css">
 
-    <!-- Font Awesome for Icons -->
+    <title>Maxwell Konnaris - Projects</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
 
     <style>
         /* Body resets and general academic styling */
@@ -17,15 +17,12 @@
             font-family: "Arial", Times, serif;
             background-color: #fdfdfd; /* Subtle off-white to mimic paper */
             color: #000;
-            display: flex;
-            flex-direction: column;
             min-height: 100vh;
         }
 
         /* Navbar styling */
         #top-navbar {
             display: flex;
-            align-items: center;
             justify-content: space-between;
             background-color: #141212;
             padding: 10px 20px;
@@ -36,22 +33,41 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
+        /* Navbar left section */
+        .navbar-left {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        }
+
+        .navbar-left .logo {
+        max-height: 40px;
+        /* Adjust as needed */
+        }
+
+        .navbar-left .name a {
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: bold;
+        }
+
+        /* Hamburger button styling */
         #hamburger {
-            background-color: #ffffff;
-            color: #141212;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            padding: 10px;
-            border-radius: 4px;
-            display: none; /* Hidden by default; visible on mobile */
-            position: absolute;
-            right: 10px; /* Adjust for spacing from right edge */
-            top: 5px;   /* Adjust for spacing from top edge */
+        background-color: #ffffff; 
+        color: #141212; 
+        border: 1px solid #ccc; 
+        font-size: 20px;
+        cursor: pointer;
+        padding: 10px 10px;
+        border-radius: 3px;
+        margin-top: 2px;
+        display: none; /* Hidden on desktop */
+        transition: background-color 0.3s, color 0.3s;
         }
 
         #hamburger:hover {
-            background-color: #ededed;
+        background-color: #ededed;
         }
 
         /* Hide or show navbar items based on screen size */
@@ -100,9 +116,11 @@
                 width: 100%;
             }
 
+            /* Show the hamburger menu on mobile */
             #hamburger {
-                display: block; /* Show hamburger menu on mobile */
+                display: block;
             }
+
         }
 
         /* Container for main content: margin, width, padding, etc. */
@@ -200,6 +218,11 @@
             text-align: center;
         }
 
+        h2.center {
+            text-align: center; /* Horizontally centers the text */
+            margin: 0 auto; /* Ensures the element is horizontally centered if it has a specific width */
+        }
+
         /* Video section styling */
         .video-section {
             margin-top: 20px;
@@ -248,7 +271,7 @@
 
         <!-- First Project with Video Embed -->
         <section>
-            <h2>Rigor and Reproducibility of Network Biology Using Sequence Counts and Non-graph Data</h2>
+            <h2 class="center">Rigor and Reproducibility of Network Inference Methods from Sequencing and Non-graph Data</h2>
             <p>
 
             </p>
@@ -261,9 +284,8 @@
             </div>
         </section>
         
-
         <section>
-            <h2>Taxonomic Sequence Barcoding for Biomarker Identification</h2>
+            <h2 class="center">Machine Learning and AI Statistical (Theory / Rigor)</h2>
             <p>
 
             </p>
@@ -274,6 +296,26 @@
                 </video>
             </div> -->
         </section>
+
+        <section>
+            <h2 class="center">Drug Design, Biomarker Identification, and Diagnostics from Various Biological Sources</h2>
+            <br>
+            <ul>
+                <li>
+                    Genomic sequences can be mined to determine unique barcodes that identify a particular taxonomy. 
+                    These sequences can be used as diagnostic indicators to determine presence/absence of a particular strain, 
+                    but also reveal key insights about functional or disease pathways.
+                </li>
+            </ul>
+                
+            <div class="video-section">
+                <video controls autoplay loop muted width="100%">
+                    <source src="assets/documents/20250108_2203_Genomic Digital Rain_storyboard_01jh4g7xqdfyq9zd0re5cmj39n.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </section>
+        
     </div>
 
     <!-- Footer -->

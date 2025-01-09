@@ -3,10 +3,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <title>Maxwell Konnaris - Volunteering & Teaching</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
+
     <style>
         /* Ensure the page uses a flexbox layout to pin the footer */
         body {
@@ -21,7 +24,7 @@
         /* Container for the main content */
         .container {
             flex: 1; /* Allows the content area to expand, pushing the footer to the bottom */
-            max-width: 1000px; /* Restrict the width for better readability */
+            max-width: 80%; /* Restrict the width for better readability */
             margin: 50px auto;
             padding: 0 10px;
         }
@@ -106,17 +109,17 @@
 
         /* Hamburger button styling */
         #hamburger {
-            background-color: #ffffff;
-            color: #141212;
-            border: none;
-            font-size: 24px;
+            background-color: #ffffff; /* Keep the background clean */
+            color: #141212; /* Text color for good contrast */
+            border: 1px solid #ccc; /* Add a subtle border for structure */
+            font-size: 20px;
             cursor: pointer;
-            padding: 10px;
-            border-radius: 4px;
-            display: none; /* Hidden by default, shown in mobile view */
+            padding: 10px 10px; /* Adjust padding for better clickability */
+            border-radius: 3px; /* Slightly rounder corners for a modern look */
+            margin-top: 2px;
+            display: none; /* Hidden by default */
             position: absolute; /* Allows precise positioning */
-            right: 10px; /* Adjust this value for spacing from the right edge */
-            top: 5px; /* Adjust this value for spacing from the top edge */
+            transition: background-color 0.3s, color 0.3s; /* Smooth hover transitions */
         }
 
         #hamburger:hover {

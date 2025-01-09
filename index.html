@@ -21,53 +21,62 @@
         margin: 0;
         padding: 0;
       }
-
+    
       /* Basic styling for your header to center content */
       #header {
         text-align: center;
         padding: 3rem 1rem;
         margin-top: -10rem;
       }
-
+    
       #header h1 {
         margin-bottom: 0.5rem;
       }
-
+    
       #header p {
         margin-bottom: 2rem; /* Space below your title/description */
       }
-
-      /* Social icons list */
+    
+      /* Social Media Icons - Responsive Flexbox */
       #header nav ul {
         list-style: none;
         padding: 0;
         margin: 0 auto;
-        display: inline-flex;
-        gap: 1rem;
+        display: flex;
+        justify-content: center; /* Centers the icons */
+        flex-wrap: wrap; /* Allows the icons to wrap on smaller screens */
+        gap: 1rem; /* Adds space between icons */
       }
-
+    
       #header nav ul li {
         display: inline-block;
       }
-
+    
       #header nav ul li a {
         text-decoration: none;
         color: inherit;
-        font-size: 1.5rem;
+        font-size: 2rem; /* Large icon size for visibility */
+        transition: color 0.3s ease, transform 0.2s ease; /* Smooth hover effect */
       }
-
+    
+      #header nav ul li a:hover {
+        color: #007bff; /* Change color on hover */
+        transform: scale(1.2); /* Slightly enlarge the icon on hover */
+      }
+    
       /* Add some margin to separate social links from the buttons */
       #header nav {
         margin-bottom: 5rem;
       }
-
+    
+      /* Overlay buttons */
       .overlay-nav {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         gap: 1rem; /* Add space between buttons */
       }
-
+    
       .overlay-nav a {
         display: inline-block;
         background-color: rgba(255, 255, 255, 0.1); /* Translucent background */
@@ -81,49 +90,76 @@
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.8); /* Add depth with a shadow */
         transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
       }
-
+    
       .overlay-nav a:hover {
         background-color: rgba(0, 0, 0, 0.8); /* Translucent black background on hover */
         color: #ffffff; /* White text on hover */
         transform: translateY(-2px); /* Slightly "lift" the button on hover */
         box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover for depth */
       }
-
+    
       /* Footer styling (optional) */
       .footer {
         text-align: center;
         padding: 1rem;
       }
-
+    
       .social-links a {
         margin: 0 0.5rem;
         color: inherit;
         font-size: 1.5rem;
       }
-
+    
       #bg {
         background-position: center -20%; /* Adjust '20%' to move the background down */
         background-size: auto; /* Ensures the background scales well */
       }
-
-      /* For smaller screens (tablets and below) */
+    
+      /* Responsive adjustments */
       @media screen and (max-width: 768px) {
-        #bg {
-          background-position: center 190%; /* Center the background on smaller screens */
-          background-size: cover; /* Ensures the background scales well */
 
+        #header {
+          text-align: center;
+          padding: 3rem 1rem;
+          margin-top: -10rem;
+        }
+
+        #header nav ul {
+          gap: 0.75rem; /* Reduce the gap between icons */
+        }
+    
+        #header nav ul li a {
+          font-size: 1.75rem; /* Adjust size for tablets */
+        }
+    
+        #bg {
+          background-position: center 190%; /* Center background for tablets */
+          background-size: auto; /* Ensures the background scales well */
         }
       }
-
-      /* For extra-small screens (phones) */
+    
       @media screen and (max-width: 480px) {
-        #bg {
-          background-position: center 180%; /* Optional: Position towards the top for very small screens */
-          background-size: cover; /* Ensures the background scales well */
 
+        #header {
+          text-align: center;
+          padding: 3rem 1rem;
+          margin-top: -5rem;
+        }
+
+        #header nav ul {
+          gap: 1rem; /* Reduce the gap further for small screens */
+        }
+    
+        #header nav ul li a {
+          font-size: 1.5rem; /* Smaller icon size for phones */
+        }
+    
+        #bg {
+          background-position: center 20%; /* Position background for small screens */
+          background-size: auto; /* Ensures the background scales well */
         }
       }
-    </style>
+    </style>    
   </head>
 
   <body class="is-preload">
