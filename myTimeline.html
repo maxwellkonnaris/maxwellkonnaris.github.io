@@ -14,7 +14,7 @@
 
     /* Container that centers the SVG and controls overall width */
     .timeline-container {
-      max-width: 1600px; /* adjust as desired */
+      max-width: 1200px; /* adjust as desired */
       font-size: 30px;
       margin: 0 auto; /* center horizontally */
     }
@@ -54,7 +54,7 @@
     const data = [
       {
         category: "exercise physiology",
-        intervals: [{ start: 2012, end: 2014 }]
+        intervals: [{ start: 2012, end: 2016 }]
       },
       {
         category: "orthopedics / sports medicine / rehabilitation",
@@ -116,7 +116,7 @@
     const svg = d3.select("#myD3Timeline")
       .attr("viewBox", [0, 0, internalWidth, internalHeight]);
 
-    const margin = { top: 0, right: 20, bottom: 0, left: 300 };
+    const margin = { top: 0, right: 20, bottom: 0, left: 150 };
 
     /************************************************************
      * 2) SCALES
