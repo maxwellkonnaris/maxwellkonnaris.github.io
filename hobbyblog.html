@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Maxwell Konnaris - Blogs for Hobbies</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maxwell Konnaris - Blogs for Hobbies</title>
     <link rel="stylesheet" href="style.css">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 		<style>
@@ -19,6 +19,47 @@
                 font-family: Arial, sans-serif;
                 padding-bottom: 100px; /* Ensure space for the footer */
             }
+
+                        /* General styling for the navbar */
+                        #top-navbar {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                background-color: #141212;
+                padding: 10px 20px;
+                position: fixed;
+                top: 0;
+                width: 100%;
+                z-index: 9999;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+
+            .navbar-left .name a {
+                color: #ffffff;
+                text-decoration: none;
+                font-size: 18px;
+                font-weight: bold;
+            }
+
+            /* Hamburger button styling */
+            #hamburger {
+                background-color: #ffffff; /* Keep the background clean */
+                color: #141212; /* Text color for good contrast */
+                border: 1px solid #ccc; /* Add a subtle border for structure */
+                font-size: 20px;
+                cursor: pointer;
+                padding: 10px 10px; /* Adjust padding for better clickability */
+                border-radius: 3px; /* Slightly rounder corners for a modern look */
+                margin-top: 2px;
+                display: none; /* Hidden by default */
+                position: absolute; /* Allows precise positioning */
+                transition: background-color 0.3s, color 0.3s; /* Smooth hover transitions */
+            }
+
+            #hamburger:hover {
+                background-color: #ededed;
+            }
+            
             .container {
                 flex: 1;
                 width: 80%;
@@ -73,90 +114,57 @@
             .footer .social-links a:hover {
                 color: #007BFF;
             }
-                   
-        /* General styling for the navbar */
-        #top-navbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background-color: #141212;
-            padding: 10px 20px;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 9999;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
 
-        /* Hamburger button styling */
-        #hamburger {
-            background-color: #ffffff; /* Keep the background clean */
-            color: #141212; /* Text color for good contrast */
-            border: 1px solid #ccc; /* Add a subtle border for structure */
-            font-size: 20px;
-            cursor: pointer;
-            padding: 10px 10px; /* Adjust padding for better clickability */
-            border-radius: 3px; /* Slightly rounder corners for a modern look */
-            margin-top: 2px;
-            display: none; /* Hidden by default */
-            position: absolute; /* Allows precise positioning */
-            transition: background-color 0.3s, color 0.3s; /* Smooth hover transitions */
-        }
+            /* Dropdown styling for mobile nav */
+            @media (max-width: 768px) {
+                .navbar-right {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 0px;
+                left: 0;
+                z-index: 9998;
+                padding: 10px 0;
+                }
 
-        #hamburger:hover {
-            background-color: #ededed;
-        }
+                .navbar-right.active {
+                display: flex;
+                width:100%;
+                }
 
-        /* Dropdown styling for mobile nav */
-        @media (max-width: 768px) {
-            .navbar-right {
-            display: none;
-            flex-direction: column;
-            width: 100%;
-            position: absolute;
-            top: 0px;
-            left: 0;
-            z-index: 9998;
-            padding: 10px 0;
+                .nav-links {
+                flex-direction: column;
+                align-items: center;
+                }
+
+                .nav-links li {
+                margin: 10px 0;
+                width: 100%;
+                }
+
+                .nav-links a {
+                color: #000;
+                text-decoration: none;
+                font-size: 18px;
+                display: block;
+                width: 100%;
+                text-align: center;
+                }
+
+                .nav-links a:hover {
+                background-color: #333;
+                width: 100%;
+                }
+
+                #hamburger {
+                display: block; /* Show hamburger menu on mobile */
+                position: absolute; /* Allows precise positioning */
+                right: 10px; /* Adjust this value for spacing from the right edge */
+                top: 5px; /* Adjust this value for spacing from the top edge */
+                cursor: pointer;
+                }
             }
-
-            .navbar-right.active {
-            display: flex;
-            width:100%;
-            }
-
-            .nav-links {
-            flex-direction: column;
-            align-items: center;
-            }
-
-            .nav-links li {
-            margin: 10px 0;
-            width: 100%;
-            }
-
-            .nav-links a {
-            color: #000;
-            text-decoration: none;
-            font-size: 18px;
-            display: block;
-            width: 100%;
-            text-align: center;
-            }
-
-            .nav-links a:hover {
-            background-color: #333;
-            width: 100%;
-            }
-
-            #hamburger {
-            display: block; /* Show hamburger menu on mobile */
-            position: absolute; /* Allows precise positioning */
-            right: 10px; /* Adjust this value for spacing from the right edge */
-            top: 5px; /* Adjust this value for spacing from the top edge */
-            cursor: pointer;
-            }
-        }
 		</style>
 </head>
 <body>

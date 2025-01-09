@@ -15,6 +15,46 @@
             padding-bottom: 100px;
         }
 
+        /* General styling for the navbar */
+        #top-navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #141212;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 9999;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-left .name a {
+                color: #ffffff;
+                text-decoration: none;
+                font-size: 18px;
+                font-weight: bold;
+            }
+
+        /* Hamburger button styling */
+        #hamburger {
+            background-color: #ffffff; /* Keep the background clean */
+            color: #141212; /* Text color for good contrast */
+            border: 1px solid #ccc; /* Add a subtle border for structure */
+            font-size: 20px;
+            cursor: pointer;
+            padding: 10px 10px; /* Adjust padding for better clickability */
+            border-radius: 3px; /* Slightly rounder corners for a modern look */
+            margin-top: 2px;
+            display: none; /* Hidden by default */
+            position: absolute; /* Allows precise positioning */
+            transition: background-color 0.3s, color 0.3s; /* Smooth hover transitions */
+        }
+
+        #hamburger:hover {
+            background-color: #ededed;
+        }
+
         .container {
             flex: 1;
             max-width: 2500px;
@@ -119,39 +159,6 @@
         .footer .social-links a:hover {
             color: #007BFF;
         }
-               
-        /* General styling for the navbar */
-        #top-navbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background-color: #141212;
-            padding: 10px 20px;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 9999;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Hamburger button styling */
-        #hamburger {
-            background-color: #ffffff; /* Keep the background clean */
-            color: #141212; /* Text color for good contrast */
-            border: 1px solid #ccc; /* Add a subtle border for structure */
-            font-size: 20px;
-            cursor: pointer;
-            padding: 10px 10px; /* Adjust padding for better clickability */
-            border-radius: 3px; /* Slightly rounder corners for a modern look */
-            margin-top: 2px;
-            display: none; /* Hidden by default */
-            position: absolute; /* Allows precise positioning */
-            transition: background-color 0.3s, color 0.3s; /* Smooth hover transitions */
-        }
-
-        #hamburger:hover {
-            background-color: #ededed;
-        }
 
         /* Dropdown styling for mobile nav */
         @media (max-width: 768px) {
@@ -237,7 +244,7 @@
     <div class="container">
         <h2>Contact</h2>
         <p>Please reach out for connections and collaborations.</p>
-
+        <br>
         <div class="contact-content">
             <!-- Contact Form -->
             <div class="contact-form">

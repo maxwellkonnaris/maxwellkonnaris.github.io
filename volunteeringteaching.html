@@ -11,14 +11,45 @@
     <link rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
 
     <style>
-        /* Ensure the page uses a flexbox layout to pin the footer */
-        body {
+
+        /* General styling for the navbar */
+        #top-navbar {
             display: flex;
-            flex-direction: column;
-            min-height: 100vh; /* Full viewport height */
-            margin: 0;
-            color: #333;
-            padding-bottom: 100px;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #141212;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 9999;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-left .name a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* Hamburger button styling */
+        #hamburger {
+            background-color: #ffffff; /* Keep the background clean */
+            color: #141212; /* Text color for good contrast */
+            border: 1px solid #ccc; /* Add a subtle border for structure */
+            font-size: 20px;
+            cursor: pointer;
+            padding: 10px 10px; /* Adjust padding for better clickability */
+            border-radius: 3px; /* Slightly rounder corners for a modern look */
+            margin-top: 2px;
+            display: none; /* Hidden by default */
+            position: absolute; /* Allows precise positioning */
+            transition: background-color 0.3s, color 0.3s; /* Smooth hover transitions */
+        }
+
+        #hamburger:hover {
+            background-color: #ededed;
         }
 
         /* Container for the main content */
@@ -27,18 +58,6 @@
             max-width: 80%; /* Restrict the width for better readability */
             margin: 50px auto;
             padding: 0 10px;
-        }
-
-        .footer {
-                text-align: center;
-                padding: 10px; /* Adjust padding as needed */
-                background-color: #f1f1f1;
-                font-size: 12px;
-                color: #000;
-                position: fixed;
-                bottom: 0;
-                width: 100%;
-                box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for visual separation */
         }
 
         /* Blog post headings */
@@ -72,10 +91,16 @@
             margin: 10px 0;
         }
 
-        a {
-            color: inherit; /* Keeps the default text color */
-            text-decoration: none; /* Removes underline by default */
-            transition: color 0.3s ease; /* Smooth transition for color change */
+        .footer {
+                text-align: center;
+                padding: 10px; /* Adjust padding as needed */
+                background-color: #f1f1f1;
+                font-size: 12px;
+                color: #000;
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+                box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for visual separation */
         }
 
 		.footer .social-links {
@@ -92,39 +117,6 @@
 		.footer .social-links a:hover {
 			color: #007BFF;
 		}
-       
-        /* General styling for the navbar */
-        #top-navbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background-color: #141212;
-            padding: 10px 20px;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 9999;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Hamburger button styling */
-        #hamburger {
-            background-color: #ffffff; /* Keep the background clean */
-            color: #141212; /* Text color for good contrast */
-            border: 1px solid #ccc; /* Add a subtle border for structure */
-            font-size: 20px;
-            cursor: pointer;
-            padding: 10px 10px; /* Adjust padding for better clickability */
-            border-radius: 3px; /* Slightly rounder corners for a modern look */
-            margin-top: 2px;
-            display: none; /* Hidden by default */
-            position: absolute; /* Allows precise positioning */
-            transition: background-color 0.3s, color 0.3s; /* Smooth hover transitions */
-        }
-
-        #hamburger:hover {
-            background-color: #ededed;
-        }
 
         /* Dropdown styling for mobile nav */
         @media (max-width: 768px) {
