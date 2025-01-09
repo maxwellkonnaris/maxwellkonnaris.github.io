@@ -14,8 +14,10 @@
 
     /* Container that centers the SVG and controls overall width */
     .timeline-container {
-      max-width: 1200px; /* adjust as desired */
+      max-width: 1600px; /* adjust as desired */
       font-size: 30px;
+      padding-top: 40px;
+      padding-bottom: 40px;
       margin: 0 auto; /* center horizontally */
     }
 
@@ -111,12 +113,12 @@
      * 1) SETUP THE INTERNAL DIMENSIONS & SVG
      ************************************************************/
     const internalWidth = 1200;
-    const internalHeight = 350;
+    const internalHeight = 300;
 
     const svg = d3.select("#myD3Timeline")
       .attr("viewBox", [0, 0, internalWidth, internalHeight]);
 
-    const margin = { top: 0, right: 20, bottom: 0, left: 150 };
+    const margin = { top: 40, right: 20, bottom: 0, left: 150 };
 
     /************************************************************
      * 2) SCALES
