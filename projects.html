@@ -3,64 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Maxwell Konnaris - Projects</title>
+    <!-- External Styles -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Font Awesome for Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-		<style>
-            body {
-                display: flex;
-                flex-direction: column;
-                min-height: 100vh;
-                margin: 0;
-                padding: 0;
-                font-family: Arial, sans-serif;
-                padding-bottom: 100px; /* Ensure space for the footer */
-            }
 
-            .container {
-                flex: 1;
-                display: flex;
-                flex-direction: row;
-                align-items: flex-start;
-                justify-content: space-between;
-                padding: 100px 60px 60px; /* Adjust padding to avoid navbar overlap */
-                box-sizing: border-box;
-            }
+    <style>
+        /* Body resets and general academic styling */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Arial", Times, serif;
+            background-color: #fdfdfd; /* Subtle off-white to mimic paper */
+            color: #000;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-
-            .footer {
-                text-align: center;
-                padding: 10px; /* Adjust padding as needed */
-                background-color: #f1f1f1;
-                font-size: 12px;
-                color: #000;
-                position: fixed;
-                bottom: 0;
-                width: 100%;
-                box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for visual separation */
-            }
-
-            a {
-            color: inherit; /* Keeps the default text color */
-            text-decoration: none; /* Removes underline by default */
-            transition: color 0.3s ease; /* Smooth transition for color change */
-            }
-
-            .footer .social-links {
-                margin-top: 10px;
-            }
-
-            .footer .social-links a {
-                margin: 0 10px;
-                color: #000;
-                text-decoration: none;
-                font-size: 20px;
-            }
-
-            .footer .social-links a:hover {
-                color: #007BFF;
-            }
-       
-        /* General styling for the navbar */
+        /* Navbar styling */
         #top-navbar {
             display: flex;
             align-items: center;
@@ -74,7 +36,6 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        /* Hamburger button styling */
         #hamburger {
             background-color: #ffffff;
             color: #141212;
@@ -83,99 +44,237 @@
             cursor: pointer;
             padding: 10px;
             border-radius: 4px;
-            display: none; /* Hidden by default, shown in mobile view */
-            position: absolute; /* Allows precise positioning */
-            right: 10px; /* Adjust this value for spacing from the right edge */
-            top: 5px; /* Adjust this value for spacing from the top edge */
+            display: none; /* Hidden by default; visible on mobile */
+            position: absolute;
+            right: 10px; /* Adjust for spacing from right edge */
+            top: 5px;   /* Adjust for spacing from top edge */
         }
 
         #hamburger:hover {
             background-color: #ededed;
         }
 
-        /* Dropdown styling for mobile nav */
+        /* Hide or show navbar items based on screen size */
         @media (max-width: 768px) {
             .navbar-right {
-            display: none;
-            flex-direction: column;
-            width: 100%;
-            position: absolute;
-            top: 0px;
-            left: 0;
-            z-index: 9998;
-            padding: 10px 0;
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 0px;
+                left: 0;
+                z-index: 9998;
+                padding: 10px 0;
             }
 
             .navbar-right.active {
-            display: flex;
-            width:100%;
+                display: flex;
+                width: 100%;
+                background-color: #ffffff; 
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             }
 
             .nav-links {
-            flex-direction: column;
-            align-items: center;
+                flex-direction: column;
+                align-items: center;
             }
 
             .nav-links li {
-            margin: 10px 0;
-            width: 100%;
+                margin: 10px 0;
+                width: 100%;
+                list-style-type: none;
             }
 
             .nav-links a {
-            color: #000;
-            text-decoration: none;
-            font-size: 18px;
-            display: block;
-            width: 100%;
-            text-align: center;
+                color: #141212;
+                text-decoration: none;
+                font-size: 18px;
+                display: block;
+                width: 100%;
+                text-align: center;
             }
 
             .nav-links a:hover {
-            background-color: #333;
-            width: 100%;
+                background-color: #333;
+                color: #fff;
+                width: 100%;
             }
 
             #hamburger {
-            display: block; /* Show hamburger menu on mobile */
-            position: absolute; /* Allows precise positioning */
-            right: 10px; /* Adjust this value for spacing from the right edge */
-            top: 5px; /* Adjust this value for spacing from the top edge */
-            cursor: pointer;
+                display: block; /* Show hamburger menu on mobile */
             }
         }
-		</style>
+
+        /* Container for main content: margin, width, padding, etc. */
+        .container {
+            flex: 1;
+            width: 80%;              /* A comfortable reading width */
+            max-width: 1100px;       /* Constrain max width for large screens */
+            margin: 120px auto 60px; /* Space for the fixed navbar + bottom margin */
+            padding: 40px;
+            background-color: #ffffff; /* White background “page” look */
+            box-sizing: border-box;
+            border: 1px solid #ccc;    /* Subtle border to mimic page edge */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Footer styling */
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #f1f1f1;
+            font-size: 12px;
+            color: #000;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Links in footer */
+        .footer .social-links {
+            margin-top: 10px;
+        }
+
+        .footer .social-links a {
+            margin: 0 10px;
+            color: #000;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        .footer .social-links a:hover {
+            color: #007BFF;
+        }
+
+        /* Nav links general styling */
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Logo styling */
+        .navbar-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            height: 40px;
+            width: 40px;
+            margin-right: 10px;
+        }
+
+        .name a {
+            color: #fff;
+            font-weight: bold;
+            font-size: 18px;
+            text-decoration: none;
+        }
+
+        .name a:hover {
+            text-decoration: underline;
+        }
+
+        /* Simple heading style within container */
+        h1 {
+            margin-top: 0; /* Since container adds its own padding */
+            margin-bottom: 20px;
+            font-size: 28px;
+            text-align: center;
+        }
+
+        /* Video section styling */
+        .video-section {
+            margin-top: 20px;
+            text-align: center; /* Center the video */
+        }
+
+        .video-section iframe {
+            max-width: 100%;
+            height: auto;
+        }
+
+    </style>
 </head>
 <body>
-
     <!-- Navbar -->
     <div id="top-navbar">
         <!-- Left side of the navbar -->
         <div class="navbar-left">
-            <img src="images/profile-pic.png" alt="Logo" class="logo"  />
+            <img src="images/profile-pic.png" alt="Logo" class="logo" />
             <span class="name"><a href="index.html">Maxwell Konnaris</a></span>
         </div>
-    
         <!-- Right side of the navbar -->
         <div class="navbar-right">
             <ul class="nav-links">
-            <li><a href="about.html">About</a></li>
-            <li><a href="resume.html">CV</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="volunteeringteaching.html">Outreach</a></li>
-            <li><a href="journey.html">Journey</a></li>
-            <li><a href="hobbyblog.html">Blogs</a></li>
-            <li><a href="contact.html">Contact</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="resume.html">CV</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="volunteeringteaching.html">Outreach</a></li>
+                <li><a href="journey.html">Journey</a></li>
+                <li><a href="hobbyblog.html">Blogs</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
-    
-        <!-- Hamburger button -->
+        <!-- Hamburger button for mobile -->
         <button id="hamburger" onclick="toggleNavbar()">☰</button>
-        </div>
+    </div>
 
-    <!-- Main Content -->
+    <!-- Main Content Container -->
     <div class="container">
-        <p>This page is a work in progress.</p>
-    </div> 
+        <h1>Research Areas</h1>
+        
+        <p>
+            Below you’ll find an overview of some of my work. 
+            This page is still a work in progress, so stay tuned for more updates.
+        </p>
+
+        <!-- First Project with Video Embed -->
+        <section>
+            <h2>Rigor and Reproducibility of Network Biology Using Sequence Counts and Non-graph Data</h2>
+            <p>
+
+            </p>
+            <div class="video-section">
+                <!-- Replace 'path_to_your_video.mp4' with the actual relative path -->
+                <video controls autoplay loop muted width="100%">
+                    <source src="assets/documents/20250107_2053_Loop Video_loop_01jh1sva0rfy19dajnxnwk86sz.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </section>
+        
+
+        <section>
+            <h2>Taxonomic Sequence Barcoding for Biomarker Identification</h2>
+            <p>
+
+            </p>
+            <!-- <div class="video-section">
+                <video controls autoplay loop muted width="100%">
+                    <source src="assets/documents/20250107_2053_Loop Video_loop_01jh1sva0rfy19dajnxnwk86sz.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div> -->
+        </section>
+    </div>
 
     <!-- Footer -->
     <div class="footer">
@@ -196,10 +295,9 @@
         </div>
     </div>
 
-    <!-- Include the external script file -->
+    <!-- Script for mobile nav toggle -->
     <script src="script.js"></script>
     <script>
-        // Toggle the mobile menu
         function toggleNavbar() {
             const navbar = document.querySelector(".navbar-right");
             navbar.classList.toggle("active");
