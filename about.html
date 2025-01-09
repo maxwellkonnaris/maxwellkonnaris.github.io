@@ -1,15 +1,20 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
 <head>
     <title>Maxwell Konnaris's About Page</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Main CSS File -->
     <link rel="stylesheet" href="style.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Knight Lab Timeline -->
+    <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
 
     <style>
-
         /* NAVBAR */
         #top-navbar {
             display: flex;
@@ -45,31 +50,44 @@
             right: 10px; /* Adjust this value for spacing from the right edge */
             top: 5px; /* Adjust this value for spacing from the top edge */
         }
-
         #hamburger:hover {
             background-color: #ededed;
         }
 
+        /* NAVBAR RIGHT (desktop) */
+        .navbar-right ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+        .navbar-right ul li {
+            display: inline-block;
+        }
+        .navbar-right ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .navbar-right ul li a:hover {
+            color: #ddd;
+        }
+
+        /* CONTAINER */
         .container {
             flex: 1;
             width: 80%;
-            margin: 120px auto 60px; /* Space for the fixed navbar + bottom margin */
+            margin: 5px auto 1em; /* replaced 2cap with 2em */
             display: flex;
-            flex-direction: row;  /* By default, side-by-side */
+            flex-direction: row;  /* side-by-side on larger screens */
             align-items: flex-start;
             justify-content: space-between;
-            padding: 100px 60px 60px; /* Adjust padding to avoid navbar overlap */
+            padding: 40px 20px 20px; /* avoid navbar overlap */
             box-sizing: border-box;
-
-            /* Border only on left & right */
             border-left: 1px solid #ccc;
             border-right: 1px solid #ccc;
-
-            /* Box-shadow only on left & right sides */
-            /* Two shadows: one positive x-offset (right), one negative x-offset (left) */
-   
         }
-
 
         .profile-pic {
             flex: 1;
@@ -81,49 +99,37 @@
         .about-content {
             flex: 1;
             font-size: 1.2rem;
-            line-height: 1.6;
+            line-height: 1.4;
         }
-
         .about-content a {
             color: blue;
             text-decoration: none;
         }
-
         .about-content a:hover {
             text-decoration: underline;
-        }
-
-        /* TIMELINE */
-        #timeline-embed {
-            width: 100%;
-            height: 300px; /* Reduced height to make the timeline smaller */
-            margin: 20px 0; /* Added margin to create spacing around the timeline */
         }
 
         /* FOOTER */
         .footer {
             text-align: center;
-            padding: 10px; /* Adjust padding as needed */
+            padding: 10px;
             background-color: #f1f1f1;
             font-size: 12px;
             color: #000;
             position: fixed;
             bottom: 0;
             width: 100%;
-            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for visual separation */
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
         }
-
         .footer .social-links {
             margin-top: 10px;
         }
-
         .footer .social-links a {
             margin: 0 10px;
             color: #000;
             text-decoration: none;
             font-size: 20px;
         }
-
         .footer .social-links a:hover {
             color: #007BFF;
         }
@@ -132,140 +138,166 @@
          * MEDIA QUERIES FOR RESPONSIVENESS
          ************************************************************/
         @media (max-width: 768px) {
-            /* Stack the container contents vertically on smaller screens */
+            /* Stack container contents vertically */
             .container {
                 flex-direction: column;
-                padding: 140px 20px 60px;  /* More top padding so the nav doesn't overlap */
+                padding: 20px 20px 20px; /* more top padding so the nav doesn't overlap */
                 align-items: center;
             }
-
             .profile-pic {
                 max-width: 100%;
                 margin-right: 0;
                 margin-bottom: 20px;
             }
-
             .about-content {
                 font-size: 1rem;
             }
 
-        /* Make the navbar-right hidden by default and show hamburger */
-        .navbar-right {
-            display: none; 
-            flex-direction: column;
-            gap: 0;
-            position: absolute;
-            top: 60px; /* Just below the fixed navbar */
-            left: 0;
-            background-color: #fff; /* separate background for the dropdown */
-            width: 100%;
-            z-index: 9998;
-            padding: 10px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
+            /* Make the navbar-right hidden by default and show hamburger */
+            .navbar-right {
+                display: none;
+                flex-direction: column;
+                gap: 0;
+                position: absolute;
+                top: 60px; /* just below the fixed navbar */
+                left: 0;
+                background-color: #fff; /* separate background for the dropdown */
+                width: 100%;
+                z-index: 9998;
+                padding: 10px 0;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
 
-        /* Display navbar links in vertical stack (dropdown) */
-        .nav-links {
-            flex-direction: column;
-            gap: 10px;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
+            /* Display navbar links in vertical stack (dropdown) */
+            .navbar-right .nav-links {
+                flex-direction: column;
+                gap: 10px;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+            .navbar-right .nav-links li {
+                width: 100%;
+            }
+            .navbar-right .nav-links a {
+                color: #000;
+                font-size: 18px;
+                padding: 10px;
+                display: block;
+                text-align: center;
+            }
+            .navbar-right .nav-links a:hover {
+                background-color: #ddd;
+            }
 
-        .nav-links li {
-            width: 100%;
-        }
+            /* Show hamburger on mobile */
+            #hamburger {
+                display: block;
+            }
 
-        .nav-links a {
-            color: #000;
-            font-size: 18px;
-            padding: 10px;
-            display: block;
-            text-align: center;
-        }
-
-        .nav-links a:hover {
-            background-color: #ddd;
-        }
-
-        /* Show the hamburger menu on mobile */
-        #hamburger {
-            display: block;
-        }
-
-        /* Adjust iFrame height on smaller screens if necessary */
-        iframe {
-            height: 60vh;
-        }
         }
 
         /* Class toggled when the mobile menu button is clicked */
         .navbar-right.active {
-        display: flex; /* show */
+            display: flex; /* show in mobile */
+        }
+
+        /* iframe styling (timeline) */
+        iframe {
+            border: none;
+            width: 80%;
+            height: 500px; /* default height on larger screens */
+            display: block;
+            margin: 0 auto;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        /* Tablet breakpoint */
+        @media (max-width: 1024px) {
+            iframe {
+                height: 250px; 
+                width: 81%;
+            }
+        }
+        /* Further breakpoint */
+        @media (max-width: 768px) {
+            iframe {
+                height: 200px; 
+                width: 80%;
+            }
+        }
+        /* Smallest screens */
+        @media (max-width: 480px) {
+            iframe {
+                height: 150px;
+                width: 80%;
+            }
         }
     </style>
-
-    <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
 </head>
 <body>
-
     <!-- NAVBAR -->
     <div id="top-navbar">
-        <!-- Left side of the navbar -->
+        <!-- Left side of navbar -->
         <div class="navbar-left">
-          <img src="images/profile-pic.png" alt="Logo" class="logo"/>
-          <span class="name">
-            <a href="index.html">Maxwell Konnaris</a>
-          </span>
+            <img src="images/profile-pic.png" alt="Logo" class="logo" />
+            <span class="name">
+                <a href="index.html">Maxwell Konnaris</a>
+            </span>
         </div>
-    
-        <!-- Right side of the navbar -->
+        <!-- Right side of navbar -->
         <div class="navbar-right">
-          <ul class="nav-links">
-            <li><a href="about.html">About</a></li>
-            <li><a href="resume.html">CV</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="volunteeringteaching.html">Outreach</a></li>
-            <li><a href="journey.html">Journey</a></li>
-            <li><a href="hobbyblog.html">Blogs</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
+            <ul class="nav-links">
+                <li><a href="about.html">About</a></li>
+                <li><a href="resume.html">CV</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="volunteeringteaching.html">Outreach</a></li>
+                <li><a href="journey.html">Journey</a></li>
+                <li><a href="hobbyblog.html">Blogs</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
         </div>
-    
         <!-- Hamburger button (for mobile) -->
         <button id="hamburger" onclick="toggleNavbar()">☰</button>
-      </div>
+    </div>
 
+    <br><br>
+    <h1 style="text-align:center;">About Me</h1>
+    <br>
     <!-- MAIN CONTENT -->
     <div class="container">
         <div class="about-content">
             <p>
-                Hi, my name is Maxwell Konnaris. I've always had an interest in human health, development, and performance which probably stems from my early days as a competitive athlete constantly dealing with injury. 
-                My education naturally followed this interest with a formal education in exercise physiology and research training in musculoskeletal injury, rehab, and regeneration. Over time, this curiosity led me to different areas of biological research such as cell and molecular biology and high throughput methods of genetic analysis.
-                Eventually, I situated in my current role as a statistician and data scientist trained to develop statistical methods in the Silverman and Lazar Labs at Pennsylvania State University through the Bioinformatics PhD program. 
-                If you're interested in my journey or looking for advice on how to transition/merge your skills, follow my footsteps <a href="journey.html">here</a>.
+                Hi, my name is Maxwell Konnaris. I've always had an interest in human health and performance, and life sciences/medical development which probably stems from my early days as a competitive athlete constantly dealing with injury.
+                My education naturally followed this interest with a formal education in exercise physiology and research training in musculoskeletal injury, rehab, and regeneration. Over time, this curiosity led me to different areas of biological
+                research such as cell and molecular biology and high throughput methods of genetic analysis. Eventually, I situated in my current role as a statistician and data scientist trained to develop statistical methods in the Silverman and
+                Lazar Labs at Pennsylvania State University through the Bioinformatics PhD program. If you're interested in my journey or looking for advice on how to transition/merge your skills, follow my footsteps
+                <a href="journey.html">here</a>.
             </p>
         </div>
         <img src="images/profile-pic-large.png" alt="Maxwell Konnaris" class="profile-pic" />
     </div>
 
+    <!-- IFRAME (Timeline) -->
+    <iframe src="myTimeline.html"></iframe>
+
+    <!-- SECOND CONTAINER -->
     <div class="container">
         <div class="about-content">
-            <!-- Timeline -->
-            <div id="timeline-embed"></div>
-            <br>
-
             <p>
                 For a more specific understanding of my professional background and accomplishments, check out my <a href="resume.html">Resume/CV</a>. This provides a concise overview of the skills and experiences that have shaped my career.
                 If you're more curious about my current research projects, visit the <a href="projects.html">Projects</a> page for a brief look at some of the personal and collaborative research areas I've been working on.
-                I am also actively involved in volunteering and teaching, highlights of these experiences on my <a href="volunteeringteaching.html">Volunteering & Teaching</a> page.
-                In my free time, I tend to dive deep into different subject matter trying to achieve best results and share lessons learned. Find some of my blogs on Coffee/Espresso, Photography, Machine Learning/AI, etc. on my <a href="hobbyblog.html">Hobby Blogs page</a> for details.
-                Lastly, feel free to reach out through the <a href="contact.html">Contact</a> page. I love to help people and am available to chat on development or collaboration. 
+                I am also actively involved in volunteering and teaching—highlights of these experiences are on my <a href="volunteeringteaching.html">Volunteering & Teaching</a> page.
+                In my free time, I tend to dive deep into different subject matters, trying to achieve best results and share lessons learned. Find some of my blogs on Coffee/Espresso, Photography, Machine Learning/AI, etc. on my
+                <a href="hobbyblog.html">Hobby Blogs</a> page for details.
+                Lastly, feel free to reach out through the <a href="contact.html">Contact</a> page. I love to help people and am available to chat about development or collaboration.
             </p>
         </div>
     </div>
 
+    <br><br><br><br>
+    
     <!-- FOOTER -->
     <div class="footer">
         &copy; 2025 Maxwell Konnaris
@@ -285,11 +317,8 @@
         </div>
     </div>
 
-    <!-- TIMELINE SCRIPT & NAV TOGGLE -->
+    <!-- NAV TOGGLE SCRIPT -->
     <script>
-        var timeline = new TL.Timeline('timeline-embed', 'timeline.json');
-        
-        // Toggle the mobile menu
         function toggleNavbar() {
             const navbar = document.querySelector(".navbar-right");
             navbar.classList.toggle("active");

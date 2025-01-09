@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>D3 Timeline - Professional</title>
+  <!-- Load D3 from a CDN -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+    }
+
+    /* Container that centers the SVG and controls overall width */
+    .timeline-container {
+      max-width: 1600px; /* adjust as desired */
+      font-size: 30px;
+      margin: 0 auto; /* center horizontally */
+    }
+
+    /* Make the SVG responsive by using viewBox and preserveAspectRatio */
+    #myD3Timeline {
+      width: 100%;
+      height: auto;
+      display: block;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .bar {
+      stroke: #333;
+      stroke-width: 1px;
+    }
+
+    .axis line,
+    .axis path {
+      stroke: #000;
+    }
+
+    .axis text {
+      font-size: 12px;
+      fill: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="timeline-container">
+    <svg id="myD3Timeline" preserveAspectRatio="xMidYMid meet"></svg>
+  </div>
+
+  <script>
+    // Your timeline data
+    const data = [
+      {
+        category: "exercise physiology",
+        intervals: [{ start: 2012, end: 2014 }]
+      },
+      {
+        category: "orthopedics / sports medicine / rehabilitation",
+        intervals: [
+          { start: 2012, end: 2016 },
+          { start: 2018, end: 2022 }
+        ]
+      },
+      {
+        category: "emergency medicine",
+        intervals: [{ start: 2017, end: 2018 }]
+      },
+      {
+        category: "wet lab research",
+        intervals: [{ start: 2018, end: 2022 }]
+      },
+      {
+        category: "clinical trials and clinical research",
+        intervals: [{ start: 2019, end: 2021 }]
+      },
+      {
+        category: "computational and analytical research",
+        intervals: [{ start: 2020, end: 2025 }] // present
+      },
+      {
+        category: "machine learning and artificial intelligence",
+        intervals: [{ start: 2021, end: 2025 }] // present
+      },
+      {
+        category: "genomics",
+        intervals: [{ start: 2022, end: 2025 }] // present
+      },
+      {
+        category: "biomarker identification and algorithm development",
+        intervals: [{ start: 2020, end: 2025 }] // present
+      },
+      {
+        category: "statistical modeling method development",
+        intervals: [{ start: 2024, end: 2025 }] // present
+      },
+      {
+        category: "network biology",
+        intervals: [{ start: 2024, end: 2025 }] // present
+      }
+    ];
+
+    // Capitalize first letter of each category
+    data.forEach(d => {
+      const c = d.category;
+      d.category = c.charAt(0).toUpperCase() + c.slice(1);
+    });
+
+    /************************************************************
+     * 1) SETUP THE INTERNAL DIMENSIONS & SVG
+     ************************************************************/
+    const internalWidth = 1200;
+    const internalHeight = 350;
+
+    const svg = d3.select("#myD3Timeline")
+      .attr("viewBox", [0, 0, internalWidth, internalHeight]);
+
+    const margin = { top: 0, right: 20, bottom: 0, left: 300 };
+
+    /************************************************************
+     * 2) SCALES
+     ************************************************************/
+    // Min and max year
+    const minYear = d3.min(data, d => d3.min(d.intervals, i => i.start));
+    const maxYear = d3.max(data, d => d3.max(d.intervals, i => i.end));
+
+    // X scale
+    const xScale = d3.scaleLinear()
+      .domain([minYear, maxYear])
+      .range([margin.left, internalWidth - margin.right]);
+
+    // Row spacing
+    const rowHeight = 20;
+    const rowSpacing = 2;
+    const totalRows = data.length;
+    const chartHeight = totalRows * (rowHeight + rowSpacing);
+
+    // Color scale
+    const color = d3.scaleOrdinal()
+      .domain(data.map(d => d.category))
+      .range(d3.schemeTableau10);
+
+    /************************************************************
+     * 3) AXIS
+     ************************************************************/
+    const xAxis = d3.axisBottom(xScale).tickFormat(d3.format("d"));
+    svg.append("g")
+      .attr("class", "axis")
+      .attr("transform", `translate(0, ${chartHeight + 5})`)
+      .call(xAxis);
+
+    /************************************************************
+     * 4) DRAW BARS & LABELS
+     ************************************************************/
+    data.forEach((d, i) => {
+      // y-position for this row
+      const yPos = i * (rowHeight + rowSpacing);
+
+      d.intervals.forEach(interval => {
+        svg.append("rect")
+          .attr("class", "bar")
+          .attr("x", xScale(interval.start))
+          .attr("y", yPos)
+          .attr("width", xScale(interval.end) - xScale(interval.start))
+          .attr("height", rowHeight)
+          .attr("fill", color(d.category))
+          .append("title")
+          .text(`${d.category}: ${interval.start}–${interval.end}`);
+      });
+
+      // Leftmost label
+      const leftmost = d3.min(d.intervals, i => i.start);
+      svg.append("text")
+        .attr("x", xScale(leftmost) - 10)
+        .attr("y", yPos + rowHeight / 1.4)
+        .attr("fill", "#333")
+        .attr("font-size", 12)
+        .attr("text-anchor", "end")
+        .text(d.category);
+    });
+  </script>
+</body>
+</html>
