@@ -1,248 +1,410 @@
-/* Reset default styling */
-body, html {
-    margin: 20px; /* Adjust as needed */
-    box-sizing: border-box; /* Ensures padding and border are included in width/height */
-    padding: 0;
-    font-family: Arial, sans-serif;
-    height: 100%;
-}
-
-/* Sidebar */
-#sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 250px;
-    height: 100%;
-    background-color: #333;
-    color: white;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-.profile-pic {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    margin-bottom: 15px;
-}
-
-.profile h2, .profile p {
-    color: white;
-}
-
-.social-links ul {
-    padding: 0;
-    list-style: none;
-}
-
-.social-links ul li {
-    display: inline-block;
-    margin-right: 10px;
-}
-
-.social-links ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.5em;
-}
-
-.contact-info {
-    margin-top: 20px;
-    color: white;
-}
-
-/* Main content */
-#main-content {
-    margin-left: 250px; /* Same width as the sidebar */
-    padding: 20px;
-}
-
-.content-area {
-    margin-top: 60px;
-    padding: 20px;
-    background-color: #f4f4f4;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    overflow-y: auto;
-    height: calc(100vh - 60px);
-}
-
-/* Styles for the top navbar */
-#top-navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #141212;
-    padding: 10px 20px;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-#top-navbar .navbar-left {
-    display: flex;
-    align-items: center;
-}
-
-#top-navbar .logo {
-    height: 40px;
-    margin-right: 10px;
-}
-
-#top-navbar .name {
-    font-size: 24px;
-    font-weight: bold;
-    color: #ffffff;
-}
-
-#top-navbar .navbar-right .nav-links {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-}
-
-#top-navbar .navbar-right .nav-links li {
-    margin-left: 20px;
-}
-
-#top-navbar .navbar-right .nav-links a {
-    text-decoration: none;
-    color: #ffffff;
-    font-size: 16px;
-}
-
-#top-navbar .navbar-right .nav-links a:hover {
-    color: #FFD700;
-}
-
-/* Styles for hamburger menu */
-#hamburger {
-    display: none;
-    font-size: 30px;
-    color: #ffffff;
-    cursor: pointer;
-}
-
-/* Navbar */
-#top-navbar {
-display: flex;
-align-items: center;
-justify-content: space-between;
-background-color: #141212;
-padding: 10px 20px;
-position: fixed;
-top: 0;
-width: 100%;
-z-index: 9999;
-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Navbar left section */
-.navbar-left {
-display: flex;
-align-items: center;
-gap: 10px;
-}
-
-.navbar-left .logo {
-max-height: 40px;
-/* Adjust as needed */
-}
-
-.navbar-left .name a {
-color: #ffffff;
-text-decoration: none;
-font-size: 18px;
-font-weight: bold;
-}
-
-/* Navbar right - Default (Desktop) */
-.navbar-right {
-display: flex;
-flex-direction: row;
-align-items: center;
-gap: 20px;
-}
-
-/* Navbar links (desktop) */
-.nav-links {
-display: flex;
-gap: 20px;
-list-style: none;
-}
-
-.nav-links li {
-margin: 0;
-}
-
-.nav-links a {
-color: #ffffff;
-text-decoration: none;
-font-size: 16px;
-transition: color 0.3s ease;
-}
-
-.nav-links a:hover {
-color: #007BFF;
-}
-
-
-/* HAMBURGER MENU BUTTON (hidden by default, shown in mobile view) */
-#hamburger {
+/*******************************************************
+  1. GLOBAL RESET & BASE STYLING
+********************************************************/
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+  }
+  
+  html, body {
+	font-family: Arial, sans-serif;
+	color: #000;
+	/* Default: Let pages stretch full width unless container provides constraints */
+	width: 100%;
+	min-height: 100vh;
+  }
+  
+  /*******************************************************
+	2. NAVBAR STYLING
+  ********************************************************/
+  #top-navbar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: #141212;
+	padding: 10px 20px;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 9999;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Left side: logo + name */
+  .navbar-left {
+	display: flex;
+	align-items: center;
+  }
+  .logo {
+	height: 40px; /* or whatever you prefer */
+	margin-right: 10px;
+  }
+  .navbar-left .name a {
+	color: #ffffff;
+	text-decoration: none;
+	font-size: 18px;
+	font-weight: bold;
+  }
+  
+  /* Right side: nav links */
+  .navbar-right {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 20px;
+  }
+  .nav-links {
+	display: flex;
+	list-style: none;
+  }
+  .nav-links li {
+	margin-left: 20px; /* spacing between nav items */
+  }
+  .nav-links a {
+	color: #ffffff;
+	text-decoration: none;
+	font-size: 16px;
+	transition: color 0.3s ease;
+  }
+  .nav-links a:hover {
+	text-decoration: underline;
+  }
+  
+  /* Hamburger menu */
+  #hamburger {
 	background-color: #ffffff;
 	color: #141212;
-	border: none;
-	font-size: 24px;
+	border: 1px solid #ccc;
+	font-size: 20px;
 	cursor: pointer;
-	padding: 10px;
-	border-radius: 4px;
-	display: none; /* Hidden by default, shown in mobile view */
-	position: absolute; /* Allows precise positioning */
-	right: 10px; /* Adjust this value for spacing from the right edge */
-	top: 5px; /* Adjust this value for spacing from the top edge */
-}
-
-#hamburger:hover {
+	padding: 10px 10px;
+	border-radius: 3px;
+	margin-top: 2px;
+	display: none; /* hidden on desktop */
+	position: absolute; /* so we can position it top-right */
+	right: 10px;
+	top: 5px;
+	transition: background-color 0.3s, color 0.3s;
+  }
+  #hamburger:hover {
 	background-color: #ededed;
-}
-
-/* TIMELINE */
-#timeline-embed {
+  }
+  
+  /*******************************************************
+	3. DEFAULT CONTAINER & PAGE-SPECIFIC CONTAINERS
+  ********************************************************/
+  /* A generic container with some default spacing. 
+	 Use page-specific overrides if needed. */
+  .container {
+	width: 80%;
+	margin: 120px auto 60px; /* space for fixed navbar + bottom margin */
+	padding: 20px;
+	box-sizing: border-box;
+  }
+  
+  /* About Page: we often see a split layout, with .about-content + .profile-pic */
+  .about-page .container {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	justify-content: space-between;
+	padding: 100px 60px 60px; /* to match about.html inline styling */
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	box-shadow:
+	  3px 0 6px rgba(0, 0, 0, 0.1),
+	  -3px 0 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Resume Page: simpler container, top padding for the PDF iframe */
+  .resume-page .container {
+	flex: 1;
+	padding: 80px 20px 20px;
+	max-width: 80%;
+	margin: 0 auto;
 	width: 100%;
-	height: 300px; /* Reduced height to make the timeline smaller */
-	margin: 20px 0; /* Added margin to create spacing around the timeline */
-}
-
-/* FOOTER */
-.footer {
+  }
+  
+  /* Volunteering & Teaching Page: 
+	 previously had margin: 50px auto. Adjust as needed. */
+  .volunteering-page .container {
+	margin: 50px auto;
+	padding: 0 10px;
+  }
+  
+  /* Projects Page: margin 120px auto 60px, white “paper” style background */
+  .projects-page .container {
+	margin: 120px auto 60px;
+	padding: 40px;
+	background-color: #ffffff;
+	border: 1px solid #ccc;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Journey & Hobby Blog: 
+	 use the same “border-left/right + big padding” approach as about page 
+	 if that’s what you prefer. */
+  .journey-page .container,
+  .hobbyblog-page .container {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	justify-content: space-between;
+	padding: 100px 60px 60px;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	box-shadow:
+	  3px 0 6px rgba(0, 0, 0, 0.1),
+	  -3px 0 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Contact Page: no special layout except bigger container if desired */
+  .contact-page .container {
+	margin: 100px auto;
+	padding: 20px;
+	max-width: 2500px;
+  }
+  
+  /*******************************************************
+	4. PAGE-SPECIFIC CONTENT STYLES
+  ********************************************************/
+  /* about.html */
+  .about-content {
+	flex: 1;
+	font-size: 1.2rem;
+	line-height: 1.6;
+  }
+  .about-content a {
+	color: blue;
+	text-decoration: none;
+  }
+  .about-content a:hover {
+	text-decoration: underline;
+  }
+  .profile-pic {
+	flex: 1;
+	max-width: 45%;
+	margin-right: 20px;
+	border-radius: 10px;
+  }
+  
+  /* volunteeringteaching.html */
+  .experience {
+	margin-bottom: 20px;
+  }
+  .experience h2 {
+	margin-bottom: 10px;
+	font-size: 1.4em;
+	font-weight: 600;
+  }
+  .experience p {
+	line-height: 1.6;
+	margin-bottom: 15px;
+  }
+  .experience img {
+	display: block;
+	max-width: 100%;
+	margin: 10px 0;
+  }
+  
+  /* projects.html: 
+	 might add styling for .video-section or headings, etc. */
+  .video-section {
+	margin-top: 20px;
 	text-align: center;
-	padding: 10px; /* Adjust padding as needed */
+  }
+  .video-section video,
+  .video-section iframe {
+	max-width: 100%;
+	height: auto;
+  }
+  
+  /* resume.html: might need an iframe style */
+  iframe {
+	width: 100%;
+	height: 90vh;
+	border: none;
+	margin-top: 20px;
+  }
+
+  /* Resume page iframe styling */
+  .resume-page iframe {
+		width: 100%;
+		height: 90vh; /* 90% of the viewport height for desktop */
+		border: none;
+		margin-top: 20px;
+	}
+	
+  @media (max-width: 768px) {
+		.resume-page iframe {
+		height: 60vh;
+		}
+	}
+  
+  /* contact.html: form styling */
+  .contact-content {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin-top: 40px;
+	gap: 20px;
+  }
+  .contact-form {
+	flex: 1 1 calc(50% - 20px);
+	min-width: 400px;
+	display: flex;
+	flex-direction: column;
+  }
+  .form-row {
+	margin-bottom: 15px;
+  }
+  label {
+	font-weight: 600;
+	margin-bottom: 5px;
+	display: block;
+  }
+  input, textarea {
+	width: 100%;
+	padding: 10px;
+	font-size: 14px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	margin-top: 2px;
+  }
+  button[type="submit"] {
+	background-color: #000;
+	color: #fff;
+	padding: 12px 24px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+  }
+  button[type="submit"]:hover {
+	background-color: #333;
+  }
+  
+  /*******************************************************
+	5. FOOTER
+  ********************************************************/
+  .footer {
+	text-align: center;
+	padding: 10px;
 	background-color: #f1f1f1;
 	font-size: 12px;
 	color: #000;
 	position: fixed;
 	bottom: 0;
 	width: 100%;
-	box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for visual separation */
-}
-
-.footer .social-links {
+	box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  }
+  .footer .social-links {
 	margin-top: 10px;
-}
-
-.footer .social-links a {
+  }
+  .footer .social-links a {
 	margin: 0 10px;
 	color: #000;
 	text-decoration: none;
 	font-size: 20px;
-}
-
-.footer .social-links a:hover {
+  }
+  .footer .social-links a:hover {
 	color: #007BFF;
-}
+  }
+  
+  /*******************************************************
+	6. RESPONSIVE MEDIA QUERIES
+  ********************************************************/
+  @media (max-width: 768px) {
+	/* Hide the navbar-right by default; show on hamburger click */
+	.navbar-right {
+	  display: none; 
+	  flex-direction: column;
+	  gap: 0;
+	  position: absolute;
+	  top: 60px; /* just below fixed navbar */
+	  left: 0;
+	  background-color: #fff;
+	  width: 100%;
+	  z-index: 9998;
+	  padding: 10px 0;
+	  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+	}
+	.navbar-right.active {
+	  display: flex !important;
+	}
+  
+	.nav-links {
+	  flex-direction: column;
+	  gap: 10px;
+	  margin: 0;
+	  padding: 0;
+	}
+	.nav-links li {
+	  margin: 0;
+	  width: 100%;
+	}
+	.nav-links a {
+	  color: #000; /* Dark text on white dropdown */
+	  font-size: 18px;
+	  padding: 10px;
+	  display: block;
+	  text-align: center;
+	}
+	.nav-links a:hover {
+	  background-color: #ddd;
+	}
+  
+	/* Show the hamburger on mobile */
+	#hamburger {
+	  display: block;
+	}
+  
+	/* Adjust containers for mobile stacking */
+	.about-page .container,
+	.journey-page .container,
+	.hobbyblog-page .container {
+	  flex-direction: column;
+	  padding: 140px 20px 60px; /* more top padding so the nav doesn't overlap */
+	  align-items: center;
+	  box-shadow: none; /* can remove the left/right shadow on mobile if desired */
+	  border-left: none;
+	  border-right: none;
+	}
+  
+	.profile-pic {
+	  max-width: 100%;
+	  margin-right: 0;
+	  margin-bottom: 20px;
+	}
+	.about-content {
+	  font-size: 1rem;
+	}
+  
+	/* Volunteering & Teaching Page adjustments, etc. */
+	.experience img {
+	  margin: 10px 0;
+	}
+  
+	/* Resume Page’s iframe smaller? */
+	.resume-page iframe {
+	  height: 60vh;
+	}
+  
+	/* Projects page container - remove fixed width, stack nicely */
+	.projects-page .container {
+	  margin: 120px auto 60px;
+	  padding: 20px;
+	}
+  
+	/* Contact form stacking */
+	.contact-content {
+	  flex-direction: column;
+	}
+	.contact-form, .globe-container {
+	  min-width: auto;
+	}
+  }
+  
 
 /************************************************************
 	* MEDIA QUERIES FOR RESPONSIVENESS
@@ -324,9 +486,6 @@ color: #007BFF;
 			padding-top: 20px;
 		}
 	}
-
-
-
 
 /* Wide */
 
