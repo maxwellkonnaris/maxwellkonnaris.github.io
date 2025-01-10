@@ -13,6 +13,7 @@
             min-height: 100vh;
             margin: 0;
             padding-bottom: 100px;
+            overflow-x: hidden; 
         }
 
         /* General styling for the navbar */
@@ -57,9 +58,8 @@
 
         .container {
             flex: 1;
-            max-width: 1200px;
-            margin: 100px auto;
-            padding: 20px;
+            margin: 0 auto;
+            padding-top: 100px;
             overflow: hidden;
         }
 
@@ -73,6 +73,21 @@
             bottom: 0;
             width: 100%;
             box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for visual separation */
+        }
+
+        .footer .social-links {
+            margin-top: 10px;
+        }
+
+        .footer .social-links a {
+            margin: 0 10px;
+            color: #000;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        .footer .social-links a:hover {
+            color: #007BFF;
         }
 
         .container h2,
@@ -94,12 +109,6 @@
             gap: 20px;
         }
 
-        .contact-form,
-        .globe-container {
-            flex: 1 1 calc(50% - 20px); /* Adjusts width with spacing */
-            min-width: 400px; /* Minimum width for small screens */
-        }
-
         .contact-form {
             display: flex;
             flex-direction: column;
@@ -108,7 +117,7 @@
         }
 
         .form-row {
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         label {
@@ -120,7 +129,7 @@
         input,
         textarea {
             width: 100%;
-            padding: 10px;
+            padding: 20px;
             font-size: 14px;
             border: 1px solid #ccc;
             border-radius: 4px;
@@ -143,26 +152,75 @@
             display: flex;
             justify-content: center;
             align-items: center;
-        }
-
-
-        .footer .social-links {
-            margin-top: 10px;
-        }
-
-        .footer .social-links a {
-            margin: 0 10px;
-            color: #000;
-            text-decoration: none;
-            font-size: 20px;
-        }
-
-        .footer .social-links a:hover {
-            color: #007BFF;
+            flex: 1 1 calc(50% - 20px); /* Adjusts width with spacing */
+            min-width: 0px; /* Minimum width for small screens */
+            
         }
 
         /* Dropdown styling for mobile nav */
         @media (max-width: 768px) {
+            .navbar-right {
+            display: none;
+            flex-direction: column;
+            width: 90%;
+            position: absolute;
+            top: 0px;
+            left: 0;
+            z-index: 9998;
+            padding: 10px 0;
+            }
+
+            .navbar-right.active {
+            display: flex;
+            width:100%;
+            }
+
+            .nav-links {
+            flex-direction: column;
+            align-items: center;
+            }
+
+            .nav-links li {
+            margin: 10px 0;
+            width: 100%;
+            }
+
+            .nav-links a {
+            color: #000;
+            text-decoration: none;
+            font-size: 18px;
+            display: block;
+            width: 100%;
+            text-align: center;
+            }
+
+            .nav-links a:hover {
+            background-color: #333;
+            width: 100%;
+            }
+
+            #hamburger {
+            display: block; /* Show hamburger menu on mobile */
+            position: absolute; /* Allows precise positioning */
+            right: 10px; /* Adjust this value for spacing from the right edge */
+            top: 5px; /* Adjust this value for spacing from the top edge */
+            cursor: pointer;
+            }
+
+            .container {
+                max-width: 90%; /* Prevent cutoff on smaller screens */
+                margin: 0 auto; /* Center the container */
+            }
+
+            .contact-form,
+            .globe-container {
+                flex: 1 1 100%; /* Stack elements vertically */
+                padding: 20px;
+            }
+
+        }
+
+        @media (max-width: 400px) {
             .navbar-right {
             display: none;
             flex-direction: column;
@@ -210,11 +268,22 @@
             top: 5px; /* Adjust this value for spacing from the top edge */
             cursor: pointer;
             }
+
+            .container {
+                max-width: 90%; /* Prevent cutoff on smaller screens */
+                margin: 0 auto; /* Center the container */
+            }
+
+            .contact-form,
+            .globe-container {
+                flex: 1 1 100%; /* Stack elements vertically */
+                padding: 20px;
+            }
         }
     </style>
 </head>
 
-<body>
+<body class="contact-page">
 
     <!-- Navbar -->
     <div id="top-navbar">

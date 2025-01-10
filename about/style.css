@@ -165,6 +165,11 @@
 	padding: 20px;
 	max-width: 2500px;
   }
+
+  .contact-page .container h2,
+  .container p {
+	  text-align: center;
+  }
   
   /*******************************************************
 	4. PAGE-SPECIFIC CONTENT STYLES
