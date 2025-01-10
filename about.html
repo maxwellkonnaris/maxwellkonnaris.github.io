@@ -27,6 +27,13 @@
             width: 100%;
             z-index: 9999;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            height:61px;
+        }
+
+        /* Navbar left section */
+        .navbar-left {
+        display: flex;
+        align-items: center;
         }
 
         .navbar-left .name a {
@@ -34,51 +41,49 @@
             text-decoration: none;
             font-size: 18px;
             font-weight: bold;
+            display:flex;
         }
 
-        /* HAMBURGER MENU BUTTON (hidden by default, shown in mobile view) */
-        #hamburger {
-            background-color: #ffffff;
-            color: #141212;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            padding: 10px;
-            border-radius: 4px;
-            display: none; /* Hidden by default, shown in mobile view */
-            position: absolute; /* Allows precise positioning */
-            right: 10px; /* Adjust this value for spacing from the right edge */
-            top: 5px; /* Adjust this value for spacing from the top edge */
+        /* Class toggled when the mobile menu button is clicked */
+        .navbar-right.active {
+            display: flex; /* show in mobile */
         }
+
+        /* iframe styling (timeline) */
+        iframe {
+            border: none;
+            width: 80%;
+            height: 500px; /* default height on larger screens */
+            display: block;
+            margin: 0 auto;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        /* Hamburger button styling */
+        #hamburger {
+        background-color: #ffffff; 
+        color: #141212; 
+        border: 1px solid #ccc; 
+        font-size: 20px;
+        cursor: pointer;
+        padding: 10px 10px;
+        border-radius: 3px;
+        display: none; /* Hidden on desktop */
+        position: absolute;
+        right: 20px;
+        transition: background-color 0.3s, color 0.3s;
+        }
+
         #hamburger:hover {
             background-color: #ededed;
-        }
-
-        /* NAVBAR RIGHT (desktop) */
-        .navbar-right ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            gap: 20px;
-        }
-        .navbar-right ul li {
-            display: inline-block;
-        }
-        .navbar-right ul li a {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 16px;
-        }
-        .navbar-right ul li a:hover {
-            color: #ddd;
         }
 
         /* CONTAINER */
         .container {
             flex: 1;
             width: 80%;
-            margin: 5px auto 1em; /* replaced 2cap with 2em */
+            margin: 0 auto 1em; /* replaced 2cap with 2em */
             display: flex;
             flex-direction: row;  /* side-by-side on larger screens */
             align-items: flex-start;
@@ -153,18 +158,22 @@
                 font-size: 1rem;
             }
 
+            .navbar-left {
+                left: 0;
+                width: 100%;
+            }
+
             /* Make the navbar-right hidden by default and show hamburger */
             .navbar-right {
                 display: none;
                 flex-direction: column;
                 gap: 0;
                 position: absolute;
-                top: 60px; /* just below the fixed navbar */
+                top: 0px; /* just below the fixed navbar */
                 left: 0;
-                background-color: #fff; /* separate background for the dropdown */
                 width: 100%;
+                margin: 0;
                 z-index: 9998;
-                padding: 10px 0;
                 box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             }
 
@@ -187,7 +196,7 @@
                 text-align: center;
             }
             .navbar-right .nav-links a:hover {
-                background-color: #ddd;
+                background-color: #141212;
             }
 
             /* Show hamburger on mobile */
@@ -195,22 +204,6 @@
                 display: block;
             }
 
-        }
-
-        /* Class toggled when the mobile menu button is clicked */
-        .navbar-right.active {
-            display: flex; /* show in mobile */
-        }
-
-        /* iframe styling (timeline) */
-        iframe {
-            border: none;
-            width: 80%;
-            height: 500px; /* default height on larger screens */
-            display: block;
-            margin: 0 auto;
-            overflow: hidden;
-            box-sizing: border-box;
         }
 
         /* Tablet breakpoint */

@@ -40,6 +40,10 @@
             font-weight: bold;
         }
 
+        .navbar-left .name {
+            padding-right: 100px;
+        }
+
         /* Hamburger button styling */
         #hamburger {
         background-color: #ffffff; 
@@ -169,17 +173,10 @@
             height: auto;
         }
 
-                /* Hide or show navbar items based on screen size */
-                @media (max-width: 768px) {
+        /* Hide or show navbar items based on screen size */
+        @media (max-width: 768px) {
             .navbar-right {
                 display: none;
-                flex-direction: column;
-                width: 100%;
-                position: absolute;
-                top: 0px;
-                left: 0;
-                z-index: 9998;
-                padding: 10px 0;
             }
 
             .navbar-right.active {
@@ -230,7 +227,9 @@
         <div class="navbar-left">
             <img src="images/profile-pic.png" alt="Logo" class="logo" />
             <span class="name"><a href="index.html">Maxwell Konnaris</a></span>
+            <button id="hamburger" onclick="toggleNavbar()">☰</button>
         </div>
+        
         <!-- Right side of the navbar -->
         <div class="navbar-right">
             <ul class="nav-links">
@@ -242,8 +241,6 @@
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
-        <!-- Hamburger button for mobile -->
-        <button id="hamburger" onclick="toggleNavbar()">☰</button>
     </div>
 
     <!-- Main Content Container -->
