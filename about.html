@@ -47,8 +47,8 @@
         /* iframe styling (timeline) */
         iframe {
             border: none;
-            width: 80%;
-            height: 500px; /* default height on larger screens */
+            width: 100%;
+            height: 320px; /* default height on larger screens */
             display: block;
             margin: 0 auto;
             overflow: hidden;
@@ -57,55 +57,104 @@
 
         /* Hamburger button styling */
         #hamburger {
-        background-color: #ffffff; 
-        color: #141212; 
-        border: 1px solid #ccc; 
-        font-size: 20px;
-        cursor: pointer;
-        padding: 10px 10px;
-        border-radius: 3px;
-        display: none; /* Hidden on desktop */
-        position: absolute;
-        right: 20px;
-        transition: background-color 0.3s, color 0.3s;
+            background-color: #ffffff; 
+            color: #141212; 
+            border: 1px solid #ccc; 
+            font-size: 20px;
+            cursor: pointer;
+            padding: 10px 10px;
+            border-radius: 3px;
+            display: none; /* Hidden on desktop */
+            position: absolute;
+            right: 20px;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         #hamburger:hover {
             background-color: #ededed;
         }
 
-        /* CONTAINER */
-        .container {
-            flex: 1;
-            width: 80%;
-            margin: 0 auto 1em; /* replaced 2cap with 2em */
+        .container2 {
             display: flex;
-            flex-direction: row;  /* side-by-side on larger screens */
-            align-items: flex-start;
-            justify-content: space-between;
-            padding: 20px 20px 20px; /* avoid navbar overlap */
+            flex-wrap: wrap; /* Allow wrapping for smaller screens */
+            align-items: flex-start; /* Align items at the top */
+            gap: 10px; /* Space between items */
+            margin: 0 auto;
+            padding: 20px;
+            max-width: 80%;
+            padding-top:0px;
             box-sizing: border-box;
-            border-left: 1px solid #ccc;
-            border-right: 1px solid #ccc;
         }
-
-        .profile-pic {
-            flex: 1;
-            max-width: 45%;
-            margin-right: 20px;
-            border-radius: 10px;
+        .container {
+            display: grid;
+            grid-template-columns: 60% 40%; /* Left column: about-content + experience; Right column: profile-pic */
+            grid-template-rows: 50% 50%; /* Top row: about-content; Bottom row: experience-container */
+            grid-template-areas:
+                "about-content profile-pic"
+                "experience profile-pic"; /* Profile-pic spans full height */
+            gap:10px; /* Space between sections */
+            margin: 0 auto;
+            padding: 20px;
+            padding-bottom: 0px;
+            max-width: 80%;
+            box-sizing: border-box;
+            height: 100%; /* Allow height to dynamically grow */
         }
 
         .about-content {
-            flex: 1;
+            grid-area: about-content; /* Place in top-left row */
             font-size: 1.2rem;
-            line-height: 1.4;
+            line-height: 1.6; /* Better readability */
+            padding-right:20px;
         }
+
+        .profile-pic {
+            grid-area: profile-pic; /* Place in right column spanning both rows */
+            border: 3px solid #000; /* Add a border */
+            border-radius: 15px; /* Add rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow for effect */
+            object-fit: cover; /* Keep proportions */
+            width: 100%; /* Ensure it spans full width of its grid column */
+            height: 92%; /* Ensure it spans full height of its grid column */
+        }
+
+        .experience-container {
+            grid-area: experience; /* Place in bottom-left row */
+            font-size: 1.2rem;
+            padding-top:20px;
+            padding-right:20px;
+        }
+
+        .about-content2 {
+            flex: 1 1 100%; 
+            font-size: 1.2rem;
+            line-height: 1.6; /* Better readability */
+            order: 1; /* Ensure this is always first */
+        }
+
+        .profile-pic {
+            flex: 1 1 40%; /* Take 40% of the container width */
+            aspect-ratio: 1; /* Keep the image square */
+            border: 2px solid #000; /* Add a border */
+            border-radius: 15px; /* Add rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow for effect */
+            object-fit: cover; /* Ensures the image content fits inside without distortion */
+            order: 2; /* Ensure this is last in larger screens */
+        }
+
         .about-content a {
             color: blue;
             text-decoration: none;
         }
         .about-content a:hover {
+            text-decoration: underline;
+        }
+
+        .about-content2 a {
+            color: blue;
+            text-decoration: none;
+        }
+        .about-content2 a:hover {
             text-decoration: underline;
         }
 
@@ -143,14 +192,47 @@
                 flex-direction: column;
                 padding: 20px 20px 20px; /* more top padding so the nav doesn't overlap */
                 align-items: center;
+                display: flex;
+                flex-wrap: wrap; /* Allow wrapping for smaller screens */
+                gap: 10px; /* Space between items */
+                margin: 0 auto;
+                max-width: 80%;
+                box-sizing: border-box;
             }
+
+            .container2 {
+                flex-direction: column;
+                padding: 20px 20px 20px; /* more top padding so the nav doesn't overlap */
+                align-items: center;
+                display: flex;
+                flex-wrap: wrap; /* Allow wrapping for smaller screens */
+                gap: 10px; /* Space between items */
+                margin: 0 auto;
+                max-width: 80%;
+                box-sizing: border-box;
+            }
+
+            .experience-container {
+                order: 2; /* Position after about-content for larger screens */
+                width:100%;
+            }
+
             .profile-pic {
-                max-width: 100%;
+                width: 100%;
                 margin-right: 0;
-                margin-bottom: 20px;
+                margin-bottom: 10px;
+                flex: 0 0 100%; /* Smaller size for mobile */
+                aspect-ratio: 1; /* Keep the image square */
+                margin: 0 auto 10px; /* Center image */
+                order: 3; /* Position last for larger screens */
             }
             .about-content {
                 font-size: 1rem;
+                text-align: center; /* Center-align text for mobile */
+            }
+            .about-content2 {
+                font-size: 1rem;
+                text-align: center; /* Center-align text for mobile */
             }
 
             .navbar-left {
@@ -205,21 +287,68 @@
         @media (max-width: 1024px) {
             iframe {
                 height: 300px; 
-                width: 80%;
+                width: 100%;
+            }
+          /* Stack container contents vertically */
+          .container {
+                flex-direction: column;
+                padding: 20px 20px 20px; /* more top padding so the nav doesn't overlap */
+                align-items: center;
+                display: flex;
+                flex-wrap: wrap; /* Allow wrapping for smaller screens */
+                gap: 10px; /* Space between items */
+                margin: 0 auto;
+                max-width: 80%;
+                box-sizing: border-box;
+            }
+            .container2 {
+                flex-direction: column;
+                padding: 20px 20px 20px; /* more top padding so the nav doesn't overlap */
+                align-items: center;
+                display: flex;
+                flex-wrap: wrap; /* Allow wrapping for smaller screens */
+                gap: 10px; /* Space between items */
+                margin: 0 auto;
+                max-width: 80%;
+                box-sizing: border-box;
+            }
+
+            .experience-container {
+                order: 2; /* Position after about-content for larger screens */
+                width:100%;
+            }
+
+            .profile-pic {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 10px;
+                flex: 0 0 100%; /* Smaller size for mobile */
+                aspect-ratio: 1; /* Keep the image square */
+                margin: 0 auto 10px; /* Center image */
+                order: 3; /* Position last for larger screens */
+            }
+            .about-content {
+                font-size: 1rem;
+                text-align: center; /* Center-align text for mobile */
+            }
+            .about-content2 {
+                font-size: 1rem;
+                text-align: center; /* Center-align text for mobile */
             }
         }
+
         /* Further breakpoint */
         @media (max-width: 768px) {
             iframe {
                 height: 250px; 
-                width: 80%;
+                width: 100%;
             }
         }
         /* Smallest screens */
         @media (max-width: 480px) {
             iframe {
-                height: 200px;
-                width: 80%;
+                height: 150px;
+                width: 100%;
             }
         }
     </style>
@@ -256,26 +385,29 @@
     <div class="container">
         <div class="about-content">
             <p>
-                Hi, my name is Maxwell Konnaris. I've always had an interest in human health and performance, and life sciences/medical development which probably stems from my early days as a competitive athlete constantly dealing with injury.
-                My education naturally followed this interest with a formal education in exercise physiology and research training in musculoskeletal injury, rehab, and regeneration. Over time, this curiosity led me to different areas of biological
-                research such as cell and molecular biology and high throughput methods of genetic analysis. Eventually, I situated in my current role as a statistician and data scientist trained to develop statistical methods in the Silverman and
-                Lazar Labs at Pennsylvania State University through the Bioinformatics PhD program. If you're interested in my journey or looking for advice on how to transition/merge your skills, follow my footsteps
-                <a href="journey.html">here</a>.
-            </p>
+                I’m a scientist and problem solver with hands-on experience spanning the full spectrum of biomedical research—from the clinic to the lab bench to computational modeling. 
+                My training began in applied physiology, where I learned to translate clinical insights into research questions. 
+                In wet-lab settings, I focused on regenerative medicine, biomarker identification, and drug design, while also contributing to clinical trial work for therapeutics and medical devices. 
+                As a PhD candidate in the Silverman and Lazar Labs at Penn State, I honed my skills in genomic analysis, algorithmic development for genomic barcoding and biomarker discovery, and high-dimensional -omic statistical modeling. 
+                Through it all, I’ve strived to bridge theory and practice—leveraging rigorous method development in statistics and bioinformatics to turn raw data into actionable insights that drive meaningful biomedical innovation using rigorous and reproducible approaches.
+                </p>
         </div>
-        <img src="images/profile-pic-large.png" alt="Maxwell Konnaris" class="profile-pic" />
+
+        <img src="path-to-your-gif.gif" alt="Maxwell Konnaris" class="profile-pic">
+   
+        <div class="experience-container">
+            <h3 style="text-align:center; font-size: 1.2rem;">Experience</h3>
+            <iframe src="myTimeline.html"></iframe>
+        </div>
     </div>
 
-    <h3 style="text-align:center;">Experience</h1>
-    <!-- IFRAME (Timeline) -->
-    <iframe src="myTimeline.html"></iframe>
 
-    <h3 style="text-align:center;">More</h1>
+    <h3 style="text-align:center; font-size: 1.2rem;">More</h1>
 
     <!-- SECOND CONTAINER -->
-    <div class="container">
-        <div class="about-content">
-            <p>
+    <div class="container2">
+        <div class="about-content2">
+            <p> 
                 For a more specific understanding of my professional background and accomplishments, check out my <a href="resume.html">CV</a>. 
                 If you're more curious about my current research projects, visit the <a href="projects.html">Projects</a> page for a brief look at some of the personal and collaborative research areas I've been working on.
                 I am also actively involved in volunteering and teaching, highlights of these experiences are on my <a href="volunteeringteaching.html">Outreach</a> page.
