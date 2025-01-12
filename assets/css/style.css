@@ -302,7 +302,6 @@
 	grid-area: about-content;
 	font-size: 1.2rem;
 	line-height: 1.6;
-	padding-right: 20px;
   }
   
   /* Profile pic (right column) */
@@ -392,7 +391,7 @@
 .contact-form textarea {
     width: 100%; /* Ensure inputs stretch the full width */
     padding: 10px 15px;
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     border: 1px solid #ccc;
     border-radius: 4px;
     transition: border-color 0.3s;
@@ -637,31 +636,34 @@
 	/* Adjust logo for smaller screens */
 	.logo {
 	  height: 150px; 
-	  margin-top: 0 uto;; 
 	  margin: 0 auto;
-	  display:flex;
+	  margin-top: 30px;
+	  padding: 0px;
+	  display:block;
 	  flex-direction:column;
 	  align-items: center;
 	}
 
 	#top-navbar {
 		flex-direction:column;
-	  }
+		align-items: center;
+		display: flex;
+	}
   
 	.navbar-left .navbar-name  {
 	  font-size: 18px;
 	  margin-top: 10px;
-	  display:flex;
+	  display:block;
 	  flex-direction:column;
 	  align-items: center;
 	}
   
 	.navbar-right {
-	  display:block;
+	  display:flex;
 	  flex-direction: column; /* stack logo + name */
 	  align-items: center;
-	  margin-top: 0px; /* Adjust or remove if it pushes the links too far down */
-	  
+	  margin: 0 auto;
+	  padding-right: 0px;
 	}
   
 	.navbar-right .nav-links li {
@@ -714,17 +716,26 @@
 		width: 100%; /* Ensure links take full width */
 	}
 
+	.social-links-container {
+		gap: 15px; /* Space between each link */
+		padding-top: 10px;
+		align-items: center;
+		padding-left:0px;
+	}
+
+	.social-link {
+		font-size: 1.5rem; /* Icon size */
+	}
 	
 	/* Stacking containers */
 	.container,
 	.container2 {
 	  display: flex;
 	  flex-direction: column;
-	  padding: 20px;
+	  margin: 0 auto;
+	  padding: 0px;
 	  align-items: center;
 	  flex-wrap: wrap;
-	  gap: 10px;
-	  margin: 0 auto;
 	  max-width: 90%;
 	  box-sizing: border-box;
 	}
@@ -798,26 +809,30 @@
 	  height: auto; /* Let height expand as needed */
 	  text-align: center; 
 	  padding: 0px; 
+	  display: flex;
 	}
 
 	.h1 center{
 		fontsize: 16px;
+		align-items: center;
 	}
+
   
-	.navbar-left {
+	.logo {
+	  height: 150px;  /* smaller logo for very small screens */
+	  margin: 0 auto; 
+	  margin-top:30px;
+	  padding: 0px;
 	  display: flex;
 	  flex-direction: column; /* stack logo + name */
 	  align-items: center; 
 	}
   
-	.logo {
-	  height: 150px;  /* smaller logo for very small screens */
-	  margin: 0; 
-	  margin-top:10px;
-	}
-  
 	.navbar-left .name {
 	  margin-top: 10px;
+	  display: flex;
+	  flex-direction: column; /* stack logo + name */
+	  align-items: center; 
 	}
   
 	.navbar-left .navbar-name  {
@@ -825,14 +840,18 @@
 	  font-weight: bold;
 	  color: black;
 	  text-decoration: none;
+	  display: flex;
+	  flex-direction: column; /* stack logo + name */
+	  align-items: center; 
 	}
   
 	.navbar-right {
 		display: flex;
 		flex-direction: column; /* stack logo + name */
 		align-items: center; 
-		margin-top: 20px; /* Adjust or remove if it pushes the links too far down */
-	  }
+		margin: 0 auto;
+		padding-right: 0px;
+	}
 
 	.navbar-right .nav-links li {
 		margin: 5px;
@@ -854,20 +873,11 @@
 	/* Containers fully stacked */
 	.container,
 	.container2 {
-	  display: flex;
-	  flex-direction: column;
-	  align-items: center;
-	  flex-wrap: wrap;
-	  gap: 10px;
-	  margin: 0 auto;
-	  padding: 20px;
 	  max-width: 80%;
-	  box-sizing: border-box;
 	}
   
 	.profile-pic {
 	  width: 100%;
-	  margin: 10px auto;
 	  aspect-ratio: 1;
 	  order: 3;
 	}
@@ -884,7 +894,7 @@
 	}
   
 	iframe {
-	  height: 120px;
+	  height: 150px;
 	  width: 100%;
 	}
 
@@ -902,6 +912,7 @@
 
 	.item {
 		flex: 0 0 100%;
+		aspect-ratio: 1;
 	}
 }
 
