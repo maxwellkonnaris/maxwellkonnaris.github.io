@@ -657,6 +657,14 @@
 	  flex-direction:column;
 	  align-items: center;
 	}
+
+	.navbar-left {
+		display:flex;
+		flex-direction:column;
+		align-items: center;
+		margin: 0 auto;
+		padding: 0px;
+	  }
   
 	.navbar-right {
 	  display:flex;
@@ -698,13 +706,6 @@
 	.navbar-left,
 	.navbar-right {
 		width: 100%; /* Full width for stacked items */
-	}
-
-	.navbar-left {
-		flex-direction: column; /* Stack logo and name */
-		margin:0 auto;
-		align-items: center;
-		padding-left:20px;
 	}
 
 	.navbar-left .navbar-name {
