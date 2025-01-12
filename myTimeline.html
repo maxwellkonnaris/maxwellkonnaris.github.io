@@ -27,8 +27,8 @@
       height: auto;
       display: block;
       background-color: #fff;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      font-size: 45px;
+      font-size: 50px;
+      padding:5px;
     }
 
     .bar {
@@ -56,25 +56,13 @@
     // Your timeline data
     const data = [
       {
-        category: "exercise physiology",
+        category: "applied physiology",
         intervals: [{ start: 2012, end: 2016 }]
       },
       {
-        category: "orthopedics / sports medicine / rehabilitation",
+        category: "clinical medicine",
         intervals: [
-          { start: 2015, end: 2017 },
-          { start: 2018, end: 2022 }
-        ]
-      },
-      {
-        category: "urgent care medicine",
-        intervals: [{ start: 2017, end: 2018 }]
-      },
-      {
-        category: "teaching",
-        intervals: [
-          { start: 2016, end: 2018 },
-          { start: 2023, end: 2024 }
+          { start: 2015, end: 2022 }
         ]
       },
       {
@@ -86,29 +74,17 @@
         intervals: [{ start: 2019, end: 2021 }]
       },
       {
-        category: "computational and analytical research",
-        intervals: [{ start: 2020, end: 2025 }] // present
-      },
-      {
-        category: "machine learning and artificial intelligence",
-        intervals: [{ start: 2021, end: 2025 }] // present
+        category: "image analysis",
+        intervals: [{ start: 2020, end: 2022 }] // present
       },
       {
         category: "sequencing / -omics",
         intervals: [{ start: 2022, end: 2025 }] // present
       },
       {
-        category: "biomarker identification and algorithm development",
-        intervals: [{ start: 2020, end: 2025 }] // present
+        category: "algorithm and statistical modeling method development",
+        intervals: [{ start: 2022, end: 2025 }] // present
       },
-      {
-        category: "statistical modeling method development",
-        intervals: [{ start: 2024, end: 2025 }] // present
-      },
-      {
-        category: "network inference",
-        intervals: [{ start: 2024, end: 2025 }] // present
-      }
     ];
 
     // Capitalize first letter of each category
@@ -120,8 +96,8 @@
     /************************************************************
      * 1) SETUP THE INTERNAL DIMENSIONS & SVG
      ************************************************************/
-    const internalWidth = 1200;
-    const internalHeight = 300;
+    const internalWidth = 950;
+    const internalHeight = 200;
 
     const svg = d3.select("#myD3Timeline")
       .attr("viewBox", [0, 0, internalWidth, internalHeight]);
@@ -142,7 +118,7 @@
 
     // Row spacing
     const rowHeight = 20;
-    const rowSpacing = 2;
+    const rowSpacing = 2.5;
     const totalRows = data.length;
     const chartHeight = totalRows * (rowHeight + rowSpacing);
 

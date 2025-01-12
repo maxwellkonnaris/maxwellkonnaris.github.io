@@ -4,419 +4,279 @@
     <title>Maxwell Konnaris - About</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
     <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
     <link rel="icon" href="assets/documents/icon.png" type="image/png">
 
-    <style>
-        /* NAVBAR */
-        #top-navbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background-color: #141212;
-            padding: 10px 20px;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 9999;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            height:61px;
-        }
-
-        /* Navbar left section */
-        .navbar-left {
-        display: flex;
-        align-items: center;
-        }
-
-        .navbar-left .name a {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: bold;
-            display:flex;
-        }
-
-        /* Class toggled when the mobile menu button is clicked */
-        .navbar-right.active {
-            display: flex; /* show in mobile */
-        }
-
-        /* iframe styling (timeline) */
-        iframe {
-            border: none;
-            width: 100%;
-            height: 320px; /* default height on larger screens */
-            display: block;
-            margin: 0 auto;
-            overflow: hidden;
-            box-sizing: border-box;
-        }
-
-        /* Hamburger button styling */
-        #hamburger {
-            background-color: #ffffff; 
-            color: #141212; 
-            border: 1px solid #ccc; 
-            font-size: 20px;
-            cursor: pointer;
-            padding: 10px 10px;
-            border-radius: 3px;
-            display: none; /* Hidden on desktop */
-            position: absolute;
-            right: 20px;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        #hamburger:hover {
-            background-color: #ededed;
-        }
-
-        .container2 {
-            display: flex;
-            flex-wrap: wrap; /* Allow wrapping for smaller screens */
-            align-items: flex-start; /* Align items at the top */
-            gap: 10px; /* Space between items */
-            margin: 0 auto;
-            padding: 20px;
-            max-width: 80%;
-            padding-top:0px;
-            box-sizing: border-box;
-        }
-        .container {
-            display: grid;
-            grid-template-columns: 60% 40%; /* Left column: about-content + experience; Right column: profile-pic */
-            grid-template-rows: 50% 50%; /* Top row: about-content; Bottom row: experience-container */
-            grid-template-areas:
-                "about-content profile-pic"
-                "experience profile-pic"; /* Profile-pic spans full height */
-            gap:10px; /* Space between sections */
-            margin: 0 auto;
-            padding: 20px;
-            padding-bottom: 0px;
-            max-width: 80%;
-            box-sizing: border-box;
-            height: 100%; /* Allow height to dynamically grow */
-        }
-
-        .about-content {
-            grid-area: about-content; /* Place in top-left row */
-            font-size: 1.2rem;
-            line-height: 1.6; /* Better readability */
-            padding-right:20px;
-        }
-
-        .profile-pic {
-            grid-area: profile-pic; /* Place in right column spanning both rows */
-            border: 3px solid #000; /* Add a border */
-            border-radius: 15px; /* Add rounded corners */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow for effect */
-            object-fit: cover; /* Keep proportions */
-            width: 100%; /* Ensure it spans full width of its grid column */
-            height: 92%; /* Ensure it spans full height of its grid column */
-        }
-
-        .experience-container {
-            grid-area: experience; /* Place in bottom-left row */
-            font-size: 1.2rem;
-            padding-top:20px;
-            padding-right:20px;
-        }
-
-        .about-content2 {
-            flex: 1 1 100%; 
-            font-size: 1.2rem;
-            line-height: 1.6; /* Better readability */
-            order: 1; /* Ensure this is always first */
-        }
-
-        .profile-pic {
-            flex: 1 1 40%; /* Take 40% of the container width */
-            aspect-ratio: 1; /* Keep the image square */
-            border: 2px solid #000; /* Add a border */
-            border-radius: 15px; /* Add rounded corners */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow for effect */
-            object-fit: cover; /* Ensures the image content fits inside without distortion */
-            order: 2; /* Ensure this is last in larger screens */
-        }
-
-        .about-content a {
-            color: blue;
-            text-decoration: none;
-        }
-        .about-content a:hover {
-            text-decoration: underline;
-        }
-
-        .about-content2 a {
-            color: blue;
-            text-decoration: none;
-        }
-        .about-content2 a:hover {
-            text-decoration: underline;
-        }
-
-        /* FOOTER */
-        .footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #f1f1f1;
-            font-size: 12px;
-            color: #000;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-        }
-        .footer .social-links {
-            margin-top: 10px;
-        }
-        .footer .social-links a {
-            margin: 0 10px;
-            color: #000;
-            text-decoration: none;
-            font-size: 20px;
-        }
-        .footer .social-links a:hover {
-            color: #007BFF;
-        }
-
-        /************************************************************
-         * MEDIA QUERIES FOR RESPONSIVENESS
-         ************************************************************/
-        @media (max-width: 768px) {
-            /* Stack container contents vertically */
-            .container {
-                flex-direction: column;
-                padding: 20px 20px 20px; /* more top padding so the nav doesn't overlap */
-                align-items: center;
-                display: flex;
-                flex-wrap: wrap; /* Allow wrapping for smaller screens */
-                gap: 10px; /* Space between items */
-                margin: 0 auto;
-                max-width: 80%;
-                box-sizing: border-box;
-            }
-
-            .container2 {
-                flex-direction: column;
-                padding: 20px 20px 20px; /* more top padding so the nav doesn't overlap */
-                align-items: center;
-                display: flex;
-                flex-wrap: wrap; /* Allow wrapping for smaller screens */
-                gap: 10px; /* Space between items */
-                margin: 0 auto;
-                max-width: 80%;
-                box-sizing: border-box;
-            }
-
-            .experience-container {
-                order: 2; /* Position after about-content for larger screens */
-                width:100%;
-            }
-
-            .profile-pic {
-                width: 100%;
-                margin-right: 0;
-                margin-bottom: 10px;
-                flex: 0 0 100%; /* Smaller size for mobile */
-                aspect-ratio: 1; /* Keep the image square */
-                margin: 0 auto 10px; /* Center image */
-                order: 3; /* Position last for larger screens */
-            }
-            .about-content {
-                font-size: 1rem;
-                text-align: center; /* Center-align text for mobile */
-            }
-            .about-content2 {
-                font-size: 1rem;
-                text-align: center; /* Center-align text for mobile */
-            }
-
-            .navbar-left {
-                left: 0;
-                width: 100%;
-            }
-
-            /* Make the navbar-right hidden by default and show hamburger */
-            .navbar-right {
-                display: none;
-                flex-direction: column;
-                gap: 0;
-                position: absolute;
-                top: 0px; /* just below the fixed navbar */
-                left: 0;
-                width: 100%;
-                margin: 0;
-                z-index: 9998;
-                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            }
-
-            /* Display navbar links in vertical stack (dropdown) */
-            .navbar-right .nav-links {
-                flex-direction: column;
-                gap: 10px;
-                list-style: none;
-                margin: 0;
-                padding: 0;
-            }
-            .navbar-right .nav-links li {
-                width: 100%;
-            }
-            .navbar-right .nav-links a {
-                color: #000;
-                font-size: 18px;
-                padding: 10px;
-                display: block;
-                text-align: center;
-            }
-            .navbar-right .nav-links a:hover {
-                background-color: #141212;
-            }
-
-            /* Show hamburger on mobile */
-            #hamburger {
-                display: block;
-            }
-
-        }
-
-        /* Tablet breakpoint */
-        @media (max-width: 1024px) {
-            iframe {
-                height: 300px; 
-                width: 100%;
-            }
-          /* Stack container contents vertically */
-          .container {
-                flex-direction: column;
-                padding: 20px 20px 20px; /* more top padding so the nav doesn't overlap */
-                align-items: center;
-                display: flex;
-                flex-wrap: wrap; /* Allow wrapping for smaller screens */
-                gap: 10px; /* Space between items */
-                margin: 0 auto;
-                max-width: 80%;
-                box-sizing: border-box;
-            }
-            .container2 {
-                flex-direction: column;
-                padding: 20px 20px 20px; /* more top padding so the nav doesn't overlap */
-                align-items: center;
-                display: flex;
-                flex-wrap: wrap; /* Allow wrapping for smaller screens */
-                gap: 10px; /* Space between items */
-                margin: 0 auto;
-                max-width: 80%;
-                box-sizing: border-box;
-            }
-
-            .experience-container {
-                order: 2; /* Position after about-content for larger screens */
-                width:100%;
-            }
-
-            .profile-pic {
-                width: 100%;
-                margin-right: 0;
-                margin-bottom: 10px;
-                flex: 0 0 100%; /* Smaller size for mobile */
-                aspect-ratio: 1; /* Keep the image square */
-                margin: 0 auto 10px; /* Center image */
-                order: 3; /* Position last for larger screens */
-            }
-            .about-content {
-                font-size: 1rem;
-                text-align: center; /* Center-align text for mobile */
-            }
-            .about-content2 {
-                font-size: 1rem;
-                text-align: center; /* Center-align text for mobile */
-            }
-        }
-
-        /* Further breakpoint */
-        @media (max-width: 768px) {
-            iframe {
-                height: 250px; 
-                width: 100%;
-            }
-        }
-        /* Smallest screens */
-        @media (max-width: 480px) {
-            iframe {
-                height: 150px;
-                width: 100%;
-            }
-        }
-    </style>
 </head>
 <body>
-    <!-- NAVBAR -->
-    <div id="top-navbar">
-        <!-- Left side of navbar -->
-        <div class="navbar-left">
-            <img src="images/profile-pic.png" alt="Logo" class="logo" />
-            <span class="name">
-                <a href="index.html">Maxwell Konnaris</a>
-            </span>
-        </div>
-        <!-- Right side of navbar -->
-        <div class="navbar-right">
-            <ul class="nav-links">
-                <li><a href="about.html">About</a></li>
-                <li><a href="resume.html">CV</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="volunteeringteaching.html">Outreach</a></li>
-                <li><a href="hobbyblog.html">Blogs</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
-        <!-- Hamburger button (for mobile) -->
-        <button id="hamburger" onclick="toggleNavbar()">☰</button>
-    </div>
 
-    <br><br>
-    <h1 style="text-align:center;">About Me</h1>
-    <br>
-    <!-- MAIN CONTENT -->
-    <div class="container">
-        <div class="about-content">
-            <p>
-                I’m a scientist and problem solver with hands-on experience spanning the full spectrum of biomedical research—from the clinic to the lab bench to computational modeling. 
-                My training began in applied physiology, where I learned to translate clinical insights into research questions. 
-                In wet-lab settings, I focused on regenerative medicine, biomarker identification, and drug design, while also contributing to clinical trial work for therapeutics and medical devices. 
-                As a PhD candidate in the Silverman and Lazar Labs at Penn State, I honed my skills in genomic analysis, algorithmic development for genomic barcoding and biomarker discovery, and high-dimensional -omic statistical modeling. 
-                Through it all, I’ve strived to bridge theory and practice—leveraging rigorous method development in statistics and bioinformatics to turn raw data into actionable insights that drive meaningful biomedical innovation using rigorous and reproducible approaches.
+    <section id="about">
+
+        <!-- NAVBAR -->
+        <div id="top-navbar" style="
+        background:
+          linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 1)),
+          url('../assets/documents/t32 (1).jpg') no-repeat center center;
+        background-size: cover; 
+        background-position: center 30%; /* Moves the image down by 30% */
+
+    ">
+    
+            <!-- Left side of navbar -->
+            <div class="navbar-left">
+                <img src="images/profile-pic.png" alt="Maxwell Konnaris" class="logo" />
+                <div class="name-container">
+                    <!-- Name -->
+                    <a href="index.html" class="navbar-name">Maxwell Konnaris</a>
+                    
+                    <!-- Social Links -->
+                    <div class="social-links-container">
+                        <a href="https://scholar.google.com/citations?user=X1QvekEAAAAJ&hl=en" target="_blank" class="social-link" title="Google Scholar">
+                            <i class="fas fa-graduation-cap"></i>
+                        </a>
+                        <a href="https://x.com/MaxwellKonnaris" target="_blank" class="social-link" title="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/maxwell-konnaris/" target="_blank" class="social-link" title="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/maxwellkonnaris" target="_blank" class="social-link" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Right side of navbar -->
+            <div class="navbar-right">
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="resume.html">CV</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#volunteeringteaching">Outreach</a></li>
+                    <li><a href="#hobbyblogs">Blogs</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <!-- Hamburger button (for mobile) -->
+            <button id="hamburger" onclick="toggleNavbar()">☰</button>
+        
+        
+        </div>
+
+        <br><br><br>
+    
+        <!-- MAIN CONTENT -->
+        <div class="container">
+            <div class="about-content">
+                <h3 style="text-align:center; font-size: 1.2rem; padding-bottom: 20px;">About Me</h1>
+                <p>
+                    I’m a scientist and problem solver with hands-on experience spanning the full spectrum of biomedical research—from the clinic to the lab bench to computational modeling. 
+                    My training began in applied physiology, where I learned to translate clinical insights into research questions. 
+                    In wet-lab settings, I focused on regenerative medicine, biomarker identification, and drug design, while also contributing to clinical trial work for therapeutics and medical devices. 
+                    As a PhD candidate in the Silverman and Lazar Labs at Penn State, I honed my skills in genomic analysis, algorithmic development for genomic barcoding and biomarker discovery, and high-dimensional -omic statistical modeling. 
+                    Through it all, I’ve strived to bridge theory and practice—leveraging rigorous method development in statistics and bioinformatics to turn raw data into actionable insights that drive meaningful biomedical innovation using rigorous and reproducible approaches.
+                    For a more specific understanding of my professional background and accomplishments, check out my <a href="resume.html">CV</a>. 
                 </p>
+            </div>
+    
+            <img src="path-to-your-gif.gif" alt="Maxwell Konnaris" class="profile-pic">
+    
+            <div class="experience-container">
+                <h3 style="text-align:center; font-size: 1.2rem;">Biomedical Experience</h3>
+                <!-- If this iFrame is also local content, consider making it a section or partial -->
+                <iframe src="myTimeline.html"></iframe>
+            </div>
         </div>
+    </section>
 
-        <img src="path-to-your-gif.gif" alt="Maxwell Konnaris" class="profile-pic">
-   
-        <div class="experience-container">
-            <h3 style="text-align:center; font-size: 1.2rem;">Experience</h3>
-            <iframe src="myTimeline.html"></iframe>
-        </div>
-    </div>
-
-
-    <h3 style="text-align:center; font-size: 1.2rem;">More</h1>
-
-    <!-- SECOND CONTAINER -->
-    <div class="container2">
-        <div class="about-content2">
-            <p> 
-                For a more specific understanding of my professional background and accomplishments, check out my <a href="resume.html">CV</a>. 
-                If you're more curious about my current research projects, visit the <a href="projects.html">Projects</a> page for a brief look at some of the personal and collaborative research areas I've been working on.
-                I am also actively involved in volunteering and teaching, highlights of these experiences are on my <a href="volunteeringteaching.html">Outreach</a> page.
-                In my free time, I tend to dive deep into broad subjects, trying to achieve best results and share lessons learned. Find some of my blogs on Coffee/Espresso, Photography, Machine Learning/AI, etc. on my
-                <a href="hobbyblog.html">Blogs</a> page for details.
-                Lastly, feel free to reach out through the <a href="contact.html">Contact</a> page. I love to help people and am available to chat about development or collaboration.
+    <section id="projects">
+        <!-- Section Header -->
+        <h1 class="center" style="padding-top: 100px;">Research Focus</h1>
+      
+        <!-- Main Content Container -->
+        <div class="container" style="padding-top:0px;">
+          <!-- Project Area 1 -->
+          <div class="project-section">
+            <h2>Rigor and Reproducibility of Network Inference Methods</h2>
+            <br>
+            <p>
+              Networks are foundational across biomedical innovation. Constructed networks and network graphs are used to connect functional pathways, disease states, 
+              integrate multimodal data, identify biomarkers, and design drug targets. My work explores the reproducibility and statistical rigor of methods that infer 
+              these networks from sequencing and non-graph data sources.
             </p>
+          </div>
+
+          <div class="video-section" style="border:none; padding: 25px;">
+            <video controls autoplay loop muted width="100%">
+              <source src="assets/documents/20250107_2053_Loop Video_loop_01jh1sva0rfy19dajnxnwk86sz.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+      
+          <!-- Project Area 2 -->
+          <div class="project-section">
+            <h2>Machine Learning and AI Statistical Rigor</h2>
+            <br>
+            <p>
+              Advances in machine learning and artificial intelligence offer unprecedented opportunities for data-driven discovery. My research focuses on the 
+              theoretical underpinnings and statistical rigor of these methods, ensuring robust and interpretable results for biomedical applications.
+            </p>
+            <!-- Placeholder for future video or content -->
+            <!-- Uncomment if a video is added in the future -->
+            <!-- <div class="video-section">
+              <video controls autoplay loop muted width="100%">
+                <source src="path_to_video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div> -->
+          </div>
+
+      
+          <!-- Project Area 3 -->
+          <div class="project-section">
+            <h2>Drug Design, Biomarker Identification, and Diagnostics</h2>
+            <br>
+            <p>
+              Genomic sequences can be mined to determine unique barcodes that identify particular taxonomies. These sequences not only serve as diagnostic 
+              indicators for strain detection but also reveal critical insights into functional and disease pathways. My research aims to bridge computational 
+              genomics with actionable diagnostics and therapeutic strategies.
+            </p>
+            <!-- Placeholder for future video or content -->
+            <!-- Uncomment if a video is added in the future -->
+            <!-- <div class="video-section">
+              <video controls autoplay loop muted width="100%">
+                <source src="path_to_video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div> -->
+          </div>
         </div>
-    </div>
+      </section>
+      
+
+      <section id="volunteeringteaching">
+         <!-- Teaching Section -->
+        <h1 class="padded" style="padding-top: 100px;">Outreach</h1>
+        <div class="container" style="padding-top:0px;">
+      
+
+      
+          <!-- Teaching Experience 1 -->
+          <div class="experience">
+            <h2>Engineering Education for Underrepresented Communities</h2>
+            <img src="images/ghana.jpg" alt="Global Code 2018" style="max-width: 100%; height: auto; margin: 20px 0;">
+            <p>
+              I collaborated with <b><a href="http://www.elite-education.org/">E.L.i.T.E.</a></b> in Harlem, NYC, and <b><a href="https://globalcode.org.uk/">Global Code</a></b> in Accra, Ghana to develop curriculum, structure learning, 
+              assist in hands-on material, and teach classroom lectures. Engineering material was tailored to different education levels:
+            </p>
+            <ul>
+              <li><b>Beginner:</b> Integrated engineering principles with math, physics, and applied technology, teaching students to translate coursework into real-world applications.</li>
+              <li><b>Advanced:</b> Created applications solving real-world problems using Raspberry Pis/Arduinos with circuitry, robotics, and larger engineered prototypes.</li>
+            </ul>
+          </div>
+      
+          <!-- Teaching Experience 2 -->
+          <div class="experience">
+            <h2>University Teaching Assistant and </h2>
+            <p>
+              During my graduate studies, I served as a teaching assistant for a graduate genomics course. My responsibilities included:
+            </p>
+            <ul>
+              <li>Organizing conferences and leading panel based discussions connecting biologists (users) with method developers to bridge the gap in functionality, scientific discovery, and </li>
+              <li>Curating and leading workshops such as the <b><a href="https://bootcamp.biostars.io/">annual data reproducibility bootcamp</a></b>, which provided hands-on guidance for improving productivity, rigor, and reproducibility in research settings.</li>
+            </ul>
+          </div>
+      
+      
+          <!-- Mentorship Experience -->
+          <div class="experience">
+            <h2>Mentorship for Aspiring STEM Professionals</h2>
+            <img src="images/science-outreach.jpg" alt="High School Science Outreach" style="max-width: 100%; height: auto; margin: 20px 0;">
+            <p>
+              As a volunteer mentor, I guided middle school, high school, and undergraduate students through their professional development. 
+              I believe in sharing lessons learned to help others seeking advice or pursuing their interests in STEM.
+              I participated in programs such as:
+            </p>
+            <ul>
+              <li><b><a href="https://prescientist.org/">Letters to a Pre-Scientist</a></b>, a program connecting scientists with students to inspire future STEM professionals.</li>
+              <li>CUNY mentorship programs, helping students navigate their academic and professional journeys.</li>
+            </ul>
+
+          </div>
+      
+          <!-- Leadership Experience -->
+          <div class="experience">
+            <h2>Genomix Graduate Student Leadership</h2>
+            <img src="images/ccbb.jpg" alt="Work in Progress CCBB Conference at PSU" style="max-width: 100%; height: auto; margin: 20px 0;">
+            <p>
+              As the president and board member of <b>Genomix</b>, a student-run organization at Penn State University, I represented the bioinformatics and genomics community. Key contributions include:
+            </p>
+            <ul>
+              <li>Growing the club from 50 to 180 members through content generation, public presentations, and social gatherings.</li>
+              <li>Developing <b><a href="https://drive.google.com/drive/folders/1vWa8I7ItYKft7LCG62TSaILkHR98dQtX?usp=sharing">graduate school guides/resources</a></b> to reduce stress across students' timelines.</li>
+            </ul>
+            
+          </div>
+      
+        </div>
+      </section>
+      
+
+    <section id="hobbyblogs">
+            <div class="masonry">
+                <div class="item item1">Coming Soon</div>
+                <div class="item item2">Coming Soon</div>
+                <div class="item item3">Coming Soon</div>
+                <div class="item item4">Coming Soon</div>
+                <div class="item item5">Coming Soon</div>
+                <div class="item item6">Coming Soon</div>
+                <div class="item item7">Coming Soon</div>
+                <div class="item item8">Coming Soon</div>
+                <div class="item item9">Coming Soon</div>
+                <div class="item item10">Coming Soon</div>
+            </div>
+            <!-- Timeline Embed -->
+            <div id="timeline-embed"></div>
+    </section>
+
+    <section id="contact">
+
+        <h2 class="center" style="padding-top:50px; padding-bottom:15px;">Contact</h2>
+        <p>Please reach out for connections and collaborations.</p>
+
+        <div class="container">
+                <!-- Contact Form -->
+                <div class="contact-form">
+                    <form action="process-contact.php" method="POST" id="contact-form">
+                        <div class="form-row">
+                            <label for="name">Name</label>
+                            <input type="text" name="name" id="name"  placeholder="Your Name" required />
+                        </div>
+    
+                        <div class="form-row">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email"  placeholder="Your Email" required />
+                        </div>
+    
+                        <div class="form-row">
+                            <label for="message">Message</label>
+                            <textarea name="message" id="message" rows="10" placeholder="Your Message" required></textarea>
+                        </div>
+    
+                        <button type="submit">Send</button>
+                    </form>
+                </div>
+    
+                <!-- ClustrMaps Globe Widget -->
+                <div class="globe-container">
+                    <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=__FhW1WenGkJ3CevK4d9PLPlKAbwyt02TQYXpJVImhw"></script>
+                </div>
+        </div>
+    </section>    
+    
+    
 
     <br><br><br><br>
     
@@ -440,11 +300,64 @@
     </div>
 
     <!-- NAV TOGGLE SCRIPT -->
-    <script>
-        function toggleNavbar() {
-            const navbar = document.querySelector(".navbar-right");
-            navbar.classList.toggle("active");
+<script>
+    function toggleNavbar() {
+        const navbar = document.querySelector(".navbar-right");
+        navbar.classList.toggle("active");
+    }
+
+    // Add smooth scrolling to all anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault(); // Prevent default anchor behavior
+
+            const targetId = this.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+
+            if (targetSection) {
+                targetSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    let lastScrollTop = 0;
+    const navbar = document.getElementById('top-navbar');
+
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+        // Fade navbar as you scroll down
+        if (currentScroll > lastScrollTop) {
+            navbar.classList.add('hidden');
+        } else {
+            navbar.classList.remove('hidden');
         }
-    </script>
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+
+        // Adjust gradient dynamically
+        const scrollPercentage = Math.min(window.pageYOffset / 10, 1); // Cap at 1 for full transparency
+    
+    });
+
+    const footer = document.querySelector('.footer');
+
+    window.addEventListener('scroll', () => {
+        // Check if the user is at the bottom of the page
+        const scrollHeight = document.documentElement.scrollHeight;
+        const scrollPosition = window.innerHeight + window.pageYOffset;
+
+        if (scrollHeight - scrollPosition <= 50) {
+            // Near the bottom of the page
+            footer.classList.add('visible');
+        } else {
+            // Not at the bottom
+            footer.classList.remove('visible');
+        }
+    });
+</script>
+
 </body>
 </html>
