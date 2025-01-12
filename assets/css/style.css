@@ -47,7 +47,7 @@
 	height: 315px;
 	margin-right: 10px;
 	margin-top: 90px; 
-	margin-left: 20px;
+	margin-left: 50px;
   }
   
   .navbar-left .name a {
@@ -56,15 +56,16 @@
 	font-size: 24px;
 	font-weight: bold;
 	display: flex;
-	margin-top: 220px; /* This sets the name far down. Adjust to your desired spacing */
+	margin-top: 230px; /* This sets the name far down. Adjust to your desired spacing */
   }
   
   /* Right side of navbar (desktop) */
   .navbar-right {
 	display: flex;
 	align-items: center;
-	margin-top: 200px; /* Adjust or remove if it pushes the links too far down */
-  }
+	margin-top: 220px; /* Adjust or remove if it pushes the links too far down */
+	padding-right: 20px;
+}
   
   /* Nav links */
   .navbar-right .nav-links {
@@ -124,12 +125,12 @@
 .social-links-container {
     display: flex; /* Arrange links horizontally */
     gap: 15px; /* Space between each link */
-	padding-top: 10px;;
+	padding-top: 22px;
 }
 
 /* Individual Social Links */
 .social-link {
-    font-size: 1.5rem; /* Icon size */
+    font-size: 1rem; /* Icon size */
     color: black; /* Default black color for icons */
     text-decoration: none; /* Remove underline */
     transition: color 0.3s ease; /* Smooth hover effect */
@@ -169,8 +170,8 @@
   /* Optional: Add decoration or underline for emphasis */
   #projects h1::after,
   #volunteeringteaching h1::after,
-  #hobbyblogs h1,
-  #contact h1 {
+  #hobbyblogs h1::after,
+  #contact h1::after {
 	content: "";
 	display: block;
 	width: 80px; /* Length of the underline */
@@ -391,10 +392,11 @@
 .contact-form textarea {
     width: 100%; /* Ensure inputs stretch the full width */
     padding: 10px 15px;
-    font-size: 1rem;
+    font-size: 1.25rem;
     border: 1px solid #ccc;
     border-radius: 4px;
     transition: border-color 0.3s;
+	font-family: Arial;;
 }
 
 .contact-form input:focus,
@@ -421,13 +423,12 @@
     background-color: grey;
 }
 
-
 .masonry {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); /* Wider columns for a balanced layout */
     grid-auto-rows: auto; /* Automatic height adjustment for content */
     gap: 20px; /* Consistent spacing between items */
-    max-width: 80%; /* Slightly larger max-width for better use of space */
+    max-width: 75%; /* Slightly larger max-width for better use of space */
     margin: 40px auto; /* Center the grid and add top margin */
     padding: 20px; /* Padding around the masonry container */
     border-radius: 10px; /* Subtle rounding for container edges */
@@ -480,6 +481,34 @@
 .item8 { grid-row: span 10; background-color: #6c5b7b; }
 .item9 { grid-row: span 25; background-color: #00a86b; }
 .item10 { grid-row: span 30; background-color: #b565a7; }
+
+.carousel-arrow {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	background: rgba(0, 0, 0, 0.5);
+	color: white;
+	border: none;
+	border-radius: 50%;
+	padding: 10px;
+	cursor: pointer;
+	z-index: 10;
+	display: none;
+}
+
+.carousel-arrow.left {
+	left: 10px;
+}
+
+.carousel-arrow.right {
+	right: 10px;
+}
+
+.carousel-arrow:hover {
+	background: rgba(0, 0, 0, 0.8);
+}
+
+  
   
   /*******************************************************
 	4. FOOTER
@@ -735,22 +764,19 @@
 	  }
 
 	.masonry {
-        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Narrower columns on smaller screens */
-        gap: 15px;
-        padding: 15px;
-    }
+	display: flex;
+	overflow-x: scroll;
+	gap: 10px;
+	padding: 20px;
+	scroll-snap-type: x mandatory;
+	}
 
-    .item {
-        font-size: 0.9rem;
-    }
-
-    .item h3 {
-        font-size: 1rem;
-    }
-
-    .item p {
-        font-size: 0.8rem;
-    }
+	.item {
+	flex: 0 0 80%;
+	scroll-snap-align: center;
+	margin-right: 10px;
+	}
+	
 
 	.name-container {
         align-items: center; /* Center-align name and social links */
@@ -874,7 +900,9 @@
 		align-items: center;
 	}
 
-
-  }
+	.item {
+		flex: 0 0 100%;
+	}
+}
 
   

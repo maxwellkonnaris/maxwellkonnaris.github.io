@@ -81,7 +81,7 @@
             <img src="path-to-your-gif.gif" alt="Maxwell Konnaris" class="profile-pic">
             
             <div class="experience-container">
-              <br>
+              <br><br>
                 <h3 style="text-align:center; font-size: 1.2rem; padding-top:20px;">Biomedical Experience</h3>
                 <!-- If this iFrame is also local content, consider making it a section or partial -->
                 <iframe src="myTimeline.html"></iframe>
@@ -107,11 +107,13 @@
           </div>
 
           <div class="video-section" style="border:none; padding: 25px;">
-            <video controls autoplay loop muted width="100%">
-              <source src="assets/documents/20250107_2053_Loop Video_loop_01jh1sva0rfy19dajnxnwk86sz.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </div>
+            <video controls autoplay loop muted style="max-width: 100%; height: auto; margin: 10px 0; border-radius: 12px; border: 2px solid black; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+            <source 
+              src="assets/documents/20250107_2053_Loop Video_loop_01jh1sva0rfy19dajnxnwk86sz.mp4" 
+              type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+                    </div>
       
           <!-- Project Area 2 -->
           <div class="project-section">
@@ -159,12 +161,9 @@
         <h1 class="padded" style="padding-top: 100px;">Outreach</h1>
         <div class="container" style="padding-top:0px;">
       
-
-      
           <!-- Teaching Experience 1 -->
           <div class="experience">
-            <h2>Engineering Education for Underrepresented Communities</h2>
-            <img src="images/ghana.png" alt="Global Code 2018" style="max-width: 100%; height: auto; margin: 20px 0;">
+            <h2 style="padding-bottom:30px;">Engineering Education for Underrepresented Communities / Developing Countries</h2>
             <p>
               I collaborated with <b><a href="http://www.elite-education.org/">E.L.i.T.E.</a></b> in Harlem, NYC, and <b><a href="https://globalcode.org.uk/">Global Code</a></b> in Accra, Ghana to develop curriculum, structure learning, 
               assist in hands-on material, and teach classroom lectures. Engineering material was tailored to different education levels:
@@ -173,25 +172,32 @@
               <li><b>Beginner:</b> Integrated engineering principles with math, physics, and applied technology, teaching students to translate coursework into real-world applications.</li>
               <li><b>Advanced:</b> Created applications solving real-world problems using Raspberry Pis/Arduinos with circuitry, robotics, and larger engineered prototypes.</li>
             </ul>
+            <img 
+            src="../assets/documents/ghana1.svg" 
+            alt="Global Code 2018" 
+            style="max-width: 100%; height: auto; margin: 10px 0; border-radius: 12px; border: 2px solid #000; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+            
           </div>
-      
-          <!-- Teaching Experience 2 -->
+
+          <!-- Leadership Experience -->
           <div class="experience">
-            <h2>University Teaching Assistant and </h2>
+            <h2 style="padding-bottom:30px;">Leadership in Genomics and Computational Biology</h2>
             <p>
-              During my graduate studies, I served as a teaching assistant for a graduate genomics course. My responsibilities included:
+              As the president and board member of <b>Genomix</b>, a student-run organization at Penn State University, I represented the bioinformatics and genomics community. During my graduate studies, I also served as a teaching assistant for a graduate genomics course, delivering lectures and grading assignments. Key contributions include:
             </p>
             <ul>
-              <li>Organizing conferences and leading panel based discussions connecting biologists (users) with method developers to bridge the gap in functionality, scientific discovery, and </li>
+              <li>Growing the club from 50 to 180 members through content generation, public presentations, and social gatherings.</li>
+              <li>Developing <b><a href="https://drive.google.com/drive/folders/1vWa8I7ItYKft7LCG62TSaILkHR98dQtX?usp=sharing">graduate school guides/resources</a></b> to reduce stress across students' timelines.</li>
+              <li>Organizing conferences with the <b><a href="https://www.ccbb.psu.edu/wip2024/">Center for Computational Biology and Bioinformatics</a></b> and leading panel-based discussions connecting biologists (users) with method developers to bridge gaps in functionality, scientific discovery, and innovation.</li>
               <li>Curating and leading workshops such as the <b><a href="https://bootcamp.biostars.io/">annual data reproducibility bootcamp</a></b>, which provided hands-on guidance for improving productivity, rigor, and reproducibility in research settings.</li>
             </ul>
+            <img src="../assets/documents/ccbb.svg" alt="Work in Progress CCBB Conference at PSU" style="max-width: 100%; height: auto; margin: 20px 0;">
           </div>
       
       
           <!-- Mentorship Experience -->
           <div class="experience">
-            <h2>Mentorship for Aspiring STEM Professionals</h2>
-            <img src="images/science-outreach.ong" alt="High School Science Outreach" style="max-width: 100%; height: auto; margin: 20px 0;">
+            <h2 style="padding-bottom:30px;">Mentorship for Aspiring STEM Professionals</h2>
             <p>
               As a volunteer mentor, I guided middle school, high school, and undergraduate students through their professional development. 
               I believe in sharing lessons learned to help others seeking advice or pursuing their interests in STEM.
@@ -201,21 +207,8 @@
               <li><b><a href="https://prescientist.org/">Letters to a Pre-Scientist</a></b>, a program connecting scientists with students to inspire future STEM professionals.</li>
               <li>CUNY mentorship programs, helping students navigate their academic and professional journeys.</li>
             </ul>
+            <img src="../assets/documents/lettersprescientist.svg" alt="High School Science Outreach" style="max-width: 100%; height: auto; margin: 20px 0;">
 
-          </div>
-      
-          <!-- Leadership Experience -->
-          <div class="experience">
-            <h2>Genomix Graduate Student Leadership</h2>
-            <img src="images/ccbb.jpg" alt="Work in Progress CCBB Conference at PSU" style="max-width: 100%; height: auto; margin: 20px 0;">
-            <p>
-              As the president and board member of <b>Genomix</b>, a student-run organization at Penn State University, I represented the bioinformatics and genomics community. Key contributions include:
-            </p>
-            <ul>
-              <li>Growing the club from 50 to 180 members through content generation, public presentations, and social gatherings.</li>
-              <li>Developing <b><a href="https://drive.google.com/drive/folders/1vWa8I7ItYKft7LCG62TSaILkHR98dQtX?usp=sharing">graduate school guides/resources</a></b> to reduce stress across students' timelines.</li>
-            </ul>
-            
           </div>
       
         </div>
@@ -223,25 +216,39 @@
       
 
     <section id="hobbyblogs">
-            <div class="masonry">
-                <div class="item item1">Coming Soon</div>
-                <div class="item item2">Coming Soon</div>
-                <div class="item item3">Coming Soon</div>
-                <div class="item item4">Coming Soon</div>
-                <div class="item item5">Coming Soon</div>
-                <div class="item item6">Coming Soon</div>
-                <div class="item item7">Coming Soon</div>
-                <div class="item item8">Coming Soon</div>
-                <div class="item item9">Coming Soon</div>
-                <div class="item item10">Coming Soon</div>
+          <div class="masonry">
+            <div class="item item1">
+              <img src="image1.svg" alt="">
             </div>
+            <div class="item item2">
+              <img src="image2.svg" alt="">
+            </div>
+            <div class="item item3">
+              <img src="image3.svg" alt="">
+            </div>
+            <div class="item item4">
+              <img src="image3.svg" alt="">
+            </div>
+            <div class="item item5">
+              <img src="image3.svg" alt="">
+            </div>
+            <div class="item item6">
+              <img src="image3.svg" alt="">
+            </div>
+            <div class="item item7">
+              <img src="image3.svg" alt="">
+            </div>
+            <div class="item item8">
+              <img src="image3.svg" alt="">
+            </div>
+          </div>
             <!-- Timeline Embed -->
             <div id="timeline-embed"></div>
     </section>
 
     <section id="contact">
 
-        <h2 class="center" style="padding-top:50px; padding-bottom:15px;">Contact</h2>
+        <h1 class="center" style="padding-top:50px; ">Contact</h2>
         <p>Please reach out for connections and collaborations.</p>
 
         <div class="container">
@@ -355,6 +362,28 @@
             footer.classList.remove('visible');
         }
     });
+
+    const masonry = document.querySelector('.masonry');
+    const leftArrow = document.createElement('button');
+    const rightArrow = document.createElement('button');
+
+    leftArrow.textContent = '←';
+    rightArrow.textContent = '→';
+
+    leftArrow.className = 'carousel-arrow left';
+    rightArrow.className = 'carousel-arrow right';
+
+    masonry.parentElement.insertBefore(leftArrow, masonry);
+    masonry.parentElement.appendChild(rightArrow);
+
+    leftArrow.addEventListener('click', () => {
+      masonry.scrollBy({ left: -300, behavior: 'smooth' });
+    });
+
+    rightArrow.addEventListener('click', () => {
+      masonry.scrollBy({ left: 300, behavior: 'smooth' });
+    });
+
 </script>
 
 </body>
