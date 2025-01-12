@@ -257,23 +257,21 @@
 	font-size: 1.5rem;
   }
   
-  /* MAIN PAGE CONTAINERS */
   .container {
 	display: grid;
-	grid-template-columns: 60% 40%;
-	grid-template-rows: 50% 50%;
+	grid-template-columns: 60% 40%; /* Adjust column sizes as needed */
+	grid-template-rows: auto auto auto; /* Ensures rows grow with content */
 	grid-template-areas:
 	  "about-content profile-pic"
-	  "experience profile-pic";
-	gap: 10px;
+	  "experience profile-pic"
+	  "experience profile-pic"; /* Ensure consistent structure for multiple experiences */
+	gap: 20px; /* Add spacing between items */
 	margin: 0 auto;
 	padding: 20px;
-	padding-top: 60px;
-	padding-bottom: 0px;
 	max-width: 70%;
 	box-sizing: border-box;
-	height: 100%; 
-  }
+	height: auto; /* Allow content to determine height */
+  }  
   
   .container2 {
     display: flex; /* Flexbox layout */
@@ -315,13 +313,26 @@
 	height: 95%;
   }
   
-  /* Experience container (bottom-left row) */
+  .experience-container {
+	font-size: 1.2rem;
+	padding: 20px; /* Ensure uniform padding */
+	width: 100%;
+	order: 2;
+  }  
+  
   .experience {
-	padding-bottom:200px;
+	padding-bottom: 10px; /* Adjust as needed for spacing */
+	margin-bottom: 10px; /* Additional space below each container */
 	width: 100%;
   }
-  
 
+  .experience img {
+	max-width: 100%; /* Ensures image doesn't exceed its container width */
+	height: auto; /* Maintains aspect ratio */
+	display: block; /* Prevents inline issues */
+	margin: 20px auto; /* Center the image */
+  }  
+  
   /* Additional text container (for second container usage) */
   .about-content2 {
 	flex: 1 1 100%;
@@ -608,11 +619,11 @@
 	  order: 2;
 	}
 
-	  /* Experience container (bottom-left row) */
-	  .experience {
-		padding-bottom:0px;
+	/* Experience container (bottom-left row) */
+	.experience {
+		padding-bottom: 0px;
 		width: 100%;
-	  }
+		}
   
 	.about-content,
 	.about-content2 {
