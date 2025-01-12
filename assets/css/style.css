@@ -139,25 +139,6 @@
     color: goldenrod; /* Gold hover effect for icons */
 }
   
-  /* Hamburger (hidden by default on large screens) */
-  #hamburger {
-	background-color: #ffffff;
-	color: #141212;
-	border: 1px solid #ccc;
-	font-size: 20px;
-	cursor: pointer;
-	padding: 10px 10px;
-	border-radius: 3px;
-	display: none; /* Hidden on desktop */
-	position: absolute;
-	right: 20px;
-	transition: background-color 0.3s, color 0.3s;
-  }
-  
-  #hamburger:hover {
-	background-color: #000;
-  }
-  
   /*******************************************************
 	3. PAGE-SPECIFIC CONTAINERS & ELEMENTS
   ********************************************************/
@@ -177,7 +158,7 @@
   #hobbyblogs h1,
   #contact h1 {
 	text-align: center; /* Center the text horizontally */
-	font-size: 3rem; /* Adjust font size */
+	font-size: 2.5rem; /* Adjust font size */
 	font-weight: bold; /* Make it stand out */
 	color: #333; /* Dark gray for contrast */
 	margin: 0 auto; /* Center alignment */
@@ -551,18 +532,6 @@
 	color: #007BFF;
   }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .name-container {
-        align-items: center; /* Center-align name and social links */
-    }
-
-    .social-links-container {
-        justify-content: center; /* Center links on smaller screens */
-    }
-}
-
-  
   /*******************************************************
 	5. MEDIA QUERIES FOR RESPONSIVENESS
   ********************************************************/
@@ -638,25 +607,38 @@
   @media (max-width: 768px) {
 	/* Adjust logo for smaller screens */
 	.logo {
-	  height: 120px; 
-	  margin-top: 0px; 
-	  margin-right: 10px;
+	  height: 150px; 
+	  margin-top: 0 uto;; 
+	  margin: 0 auto;
+	  display:flex;
+	  flex-direction:column;
+	  align-items: center;
 	}
+
+	#top-navbar {
+		flex-direction:column;
+	  }
   
 	.navbar-left .navbar-name  {
 	  font-size: 18px;
 	  margin-top: 10px;
+	  display:flex;
+	  flex-direction:column;
+	  align-items: center;
 	}
   
-	/* Hide .navbar-right and show hamburger */
 	.navbar-right {
-	  display: none;
-	  margin-top: 20px; /* Adjust or remove if it pushes the links too far down */
-
+	  display:block;
+	  flex-direction: column; /* stack logo + name */
+	  align-items: center;
+	  margin-top: 0px; /* Adjust or remove if it pushes the links too far down */
+	  
 	}
   
 	.navbar-right .nav-links li {
 		margin: 5px;
+		margin-top: 0px; /* Adjust or remove if it pushes the links too far down */
+
 	  }
 	  
 	.navbar-right .nav-links a {
@@ -664,6 +646,11 @@
 		color: #000;
 		font-weight: bold;
 		font-size: 16px;
+		display:block;
+		flex-direction: column; /* stack logo + name */
+		align-items: center;
+		margin-top: 40px; /* Adjust or remove if it pushes the links too far down */
+
 	  }
 	  
 	  .navbar-right .nav-links a {
@@ -676,12 +663,29 @@
 	.navbar-left .name a:hover {
 		color: goldenrod !important; /* Ensure hover styles apply */
 	}
-	
 
-	#hamburger {
-	  display: block;
+	.navbar-left,
+	.navbar-right {
+		width: 100%; /* Full width for stacked items */
 	}
-  
+
+	.navbar-left {
+		flex-direction: column; /* Stack logo and name */
+		margin:0 auto;
+		align-items: center;
+		padding-left:20px;
+	}
+
+	.navbar-left .navbar-name {
+		margin: 20px 0 0 0; /* Adjust spacing */
+		text-align: center;
+	}
+
+	.navbar-right .nav-links li {
+		width: 100%; /* Ensure links take full width */
+	}
+
+	
 	/* Stacking containers */
 	.container,
 	.container2 {
@@ -692,7 +696,7 @@
 	  flex-wrap: wrap;
 	  gap: 10px;
 	  margin: 0 auto;
-	  max-width: 80%;
+	  max-width: 90%;
 	  box-sizing: border-box;
 	}
   
@@ -748,7 +752,16 @@
         font-size: 0.8rem;
     }
 
-  }
+	.name-container {
+        align-items: center; /* Center-align name and social links */
+    }
+
+    .social-links-container {
+        justify-content: center; /* Center links on smaller screens */
+    }
+
+}
+
   
   /* --- SMALL MOBILE BREAKPOINT (<=480px) --- */
   @media (max-width: 480px) {
@@ -759,6 +772,10 @@
 	  height: auto; /* Let height expand as needed */
 	  text-align: center; 
 	  padding: 0px; 
+	}
+
+	.h1 center{
+		fontsize: 16px;
 	}
   
 	.navbar-left {
@@ -785,9 +802,11 @@
 	}
   
 	.navbar-right {
-	  display: none;
-	  margin-top: 20px; 
-	}
+		display: flex;
+		flex-direction: column; /* stack logo + name */
+		align-items: center; 
+		margin-top: 20px; /* Adjust or remove if it pushes the links too far down */
+	  }
 
 	.navbar-right .nav-links li {
 		margin: 5px;
@@ -805,12 +824,6 @@
 		color: goldenrod !important; /* Ensure hover styles apply */
 	}
 	  
-	#hamburger {
-	  display: block;
-	  top: 10px; /* position as needed */
-	  right: 10px;
-	  border:#000;
-	}
   
 	/* Containers fully stacked */
 	.container,
@@ -849,13 +862,18 @@
 	  width: 100%;
 	}
 
-    .contact-form,
-    .globe-container {
+    .contact-form {
         flex: 1 1 100%; /* Full width for both */
 		flex-direction: column;
 		align-items: center;
-
     }
+
+    .globe-container {
+		flex: 1 1 10%; /* Full width for both */
+		flex-direction: column;
+		align-items: center;
+		width:5;
+	}
 
   }
 
