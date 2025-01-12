@@ -772,7 +772,8 @@
     }
 
 	.globe-container {
-		width: 60%;
+		width: 10%;
+		aspect-ratio: 1;
 	  }
 
 	.masonry {
@@ -784,9 +785,10 @@
 	}
 
 	.item {
-	flex: 0 0 80%;
+	flex: 0 0 100%;
 	scroll-snap-align: center;
 	margin-right: 10px;
+	aspect-ratio: 1;;
 	}
 	
 
@@ -897,18 +899,6 @@
 	iframe {
 	  height: 150px;
 	  width: 100%;
-	}
-
-    .contact-form {
-        flex: 1 1 100%; /* Full width for both */
-		flex-direction: column;
-		align-items: center;
-    }
-
-    .globe-container {
-		flex: 1 1 10%; /* Full width for both */
-		flex-direction: column;
-		align-items: center;
 	}
 
 	.item {
