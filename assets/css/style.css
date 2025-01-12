@@ -316,15 +316,12 @@
   }
   
   /* Experience container (bottom-left row) */
-  .experience-container {
-	grid-area: experience;
-	font-size: 1.2rem;
-	padding-top: 20px;
-	padding-right: 20px;
+  .experience {
+	padding-bottom:10px;
 	width: 100%;
-	order: 2;
   }
   
+
   /* Additional text container (for second container usage) */
   .about-content2 {
 	flex: 1 1 100%;
@@ -610,6 +607,12 @@
 	  width: 100%;
 	  order: 2;
 	}
+
+	  /* Experience container (bottom-left row) */
+	  .experience {
+		padding-bottom:0px;
+		width: 100%;
+	  }
   
 	.about-content,
 	.about-content2 {
