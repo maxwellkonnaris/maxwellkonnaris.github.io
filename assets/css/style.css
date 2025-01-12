@@ -316,6 +316,7 @@
   .experience-container {
 	font-size: 1.2rem;
 	padding: 20px; /* Ensure uniform padding */
+	padding-bottom: 30px; /* Ensure uniform padding */
 	width: 100%;
 	order: 2;
   }  
