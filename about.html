@@ -70,7 +70,7 @@
                     I’m a scientist and problem solver with hands-on experience spanning the full spectrum of biomedical research—from the clinic to the lab bench to computational modeling. 
                     My training began in applied physiology, where I learned to translate clinical insights into research questions. 
                     In wet-lab settings, I focused on regenerative medicine, biomarker identification, and drug design, while also contributing to clinical trial work for therapeutics and medical devices. 
-                    As a PhD candidate in the Silverman and Lazar Labs at Penn State, I honed my skills in genomic analysis, algorithmic development for genomic barcoding and biomarker discovery, and high-dimensional -omic statistical modeling. 
+                    As a <a href="">PhD candidate</a> in the <a href="https://ist.psu.edu/directory/jds6696">Silverman</a> and <a href="https://science.psu.edu/stat/people/nfl5182">Lazar</a> Labs at Penn State, I honed my skills in genomic analysis, algorithmic development for genomic barcoding and biomarker discovery, and high-dimensional -omic statistical modeling. 
                     Through it all, I’ve strived to bridge theory and practice—leveraging rigorous method development in statistics and bioinformatics to turn raw data into actionable insights that drive meaningful biomedical innovation using rigorous and reproducible approaches.
                     For a more specific understanding of my professional background and accomplishments, check out my <a href="resume.html">CV</a>. 
                 </p>
@@ -150,6 +150,13 @@
               </video>
             </div> -->
           </div>
+        </div>
+      </section>
+
+      <section id="news">
+        <h1 class="center" style="padding-top: 100px;">Latest News</h1>
+        <div class="container2" style="padding:0px; margin: 0 auto; align-items: center; ">
+          <div id="news-section"></div>
         </div>
       </section>
       
@@ -381,6 +388,42 @@
     rightArrow.addEventListener('click', () => {
       masonry.scrollBy({ left: 300, behavior: 'smooth' });
     });
+
+    document.addEventListener("DOMContentLoaded", async () => {
+            // Fetch the news.json file
+            const fetchNews = async () => {
+                const response = await fetch("news.json"); // Adjust the path if necessary
+                return response.json();
+            };
+
+            const renderNews = async () => {
+                const container = document.getElementById('news-section');
+                container.innerHTML = ""; // Clear initial content
+
+                const newsData = await fetchNews();
+
+                newsData.forEach((news) => {
+                    if (!news.error) {
+                        container.innerHTML += `
+                            <div class="news-preview">
+                                <img src="${news.image}" alt="${news.title}">
+                                <h2>${news.title}</h2>
+                                <a href="${news.url}" target="_blank">Read More</a>
+                            </div>
+                        `;
+                    } else {
+                        container.innerHTML += `
+                            <div class="news-preview">
+                                <p>Error fetching data for: ${news.url}</p>
+                                <p>Error: ${news.error}</p>
+                            </div>
+                        `;
+                    }
+                });
+            };
+
+            await renderNews();
+        });
 
 </script>
 

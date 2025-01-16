@@ -157,7 +157,8 @@
   #projects h1,
   #volunteeringteaching h1,
   #hobbyblogs h1,
-  #contact h1 {
+  #contact h1, 
+  #news h1{
 	text-align: center; /* Center the text horizontally */
 	font-size: 2.5rem; /* Adjust font size */
 	font-weight: bold; /* Make it stand out */
@@ -171,7 +172,8 @@
   #projects h1::after,
   #volunteeringteaching h1::after,
   #hobbyblogs h1::after,
-  #contact h1::after {
+  #contact h1::after,
+  #news h1::after {
 	content: "";
 	display: block;
 	width: 80px; /* Length of the underline */
@@ -185,7 +187,8 @@
   #projects p,
   #volunteeringteaching p,
   #hobbyblogs p,
-  #contact p {
+  #contact p,
+  #news p {
 	font-size: 1.2rem;
 	line-height: 1.6;
 	color: #555;
@@ -198,7 +201,8 @@
   #projects h2, 
   #volunteeringteaching h2,
   #hobbyblogs h2,
-  #contact h2 {
+  #contact h2,
+  #news h2{
 	font-size: 1.5rem;
 	font-weight: bold;
 	color: #444;
@@ -209,7 +213,8 @@
   #projects h2.center,
   #volunteeringteaching h2.center,
   #hobbyblogs h2.center,
-  #contact h2.center {
+  #contact h2.center,
+  #news h2.center {
 	text-align: center;
   }
   
@@ -231,7 +236,8 @@
 
   /* List styling */
 #projects ul, 
-#volunteeringteaching ul {
+#volunteeringteaching ul,
+#news ul {
 	margin: 20px auto;
 	padding: 0 20px;
 	max-width: 800px;
@@ -239,7 +245,8 @@
   }
   
   #projects ul li,
-  #volunteeringteaching ul li {
+  #volunteeringteaching ul li,
+  #news ul li {
 	font-size: 1rem;
 	line-height: 1.6;
 	color: #444;
@@ -518,6 +525,43 @@
 	background: rgba(0, 0, 0, 0.8);
 }
 
+#news-section {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin: 0 auto;
+}
+.news-preview {
+	margin: 20px;
+	padding: 15px;
+	border: 1px solid #ccc;
+	border-radius: 12px; /* Rounded borders */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	width: 80%; /* Fixed card width */
+	text-align: center;
+	background-color: #fff;
+}
+.news-preview img {
+	width: 100%;
+	height: auto;
+	border-radius: 12px; /* Match border radius */
+}
+.news-preview h2 {
+	font-size: 18px;
+	margin: 10px 0;
+}
+.news-preview p {
+	font-size: 14px;
+	color: #555;
+}
+.news-preview a {
+	text-decoration: none;
+	color: #007BFF;
+	font-weight: bold;
+}
+.news-preview a:hover {
+	text-decoration: underline;
+}
   
   
   /*******************************************************
