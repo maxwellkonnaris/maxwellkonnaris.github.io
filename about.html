@@ -53,7 +53,7 @@
                     <li><a href="resume.html">CV</a></li>
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#volunteeringteaching">Outreach</a></li>
-                    <li><a href="#hobbyblogs">Blogs</a></li>
+<!--                     <li><a href="#hobbyblogs">Blogs</a></li> -->
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
@@ -93,79 +93,69 @@
         </div>
 
     </section>
-
+    
     <section id="projects">
-        <!-- Section Header -->
-        <h1 class="center" style="padding-top: 100px;">Research Focus</h1>
-      
-        <!-- Main Content Container -->
-        <div class="container" style="padding-top:0px;">
+      <!-- Section Header -->
+      <h1 class="center" style="padding-top: 100px;">Research Focus &amp; Latest News</h1>
+    
+      <!-- Two-column wrapper -->
+      <div class="two-col-container" style="display: flex; flex-wrap: wrap; gap: 40px; padding: 40px 0;">
+    
+        <!-- Left column: all project areas -->
+        <div class="left-col" style="flex: 1; min-width: 280px;">
           <!-- Project Area 1 -->
-          <div class="project-section">
+          <div class="project-section" style="margin-bottom: 40px;">
             <h2>Rigor and Reproducibility of Network Inference Methods</h2>
-            <br>
             <p>
               Networks are foundational across biomedical innovation. Constructed networks and network graphs are used to connect functional pathways, disease states, 
               integrate multimodal data, identify biomarkers, and design drug targets. My work explores the reproducibility and statistical rigor of methods that infer 
               these networks from sequencing and non-graph data sources.
             </p>
           </div>
-
-          <div class="video-section" style="border:none; padding: 25px;">
-            <video controls autoplay loop muted style="max-width: 100%; height: auto; margin: 10px 0; border-radius: 12px; border: 2px solid black; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
-            <source 
-              src="assets/documents/20250107_2053_Loop Video_loop_01jh1sva0rfy19dajnxnwk86sz.mp4" 
-              type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-                    </div>
-      
+    
           <!-- Project Area 2 -->
-          <div class="project-section">
+          <div class="project-section" style="margin-bottom: 40px;">
             <h2>Machine Learning and AI Statistical Rigor</h2>
-            <br>
             <p>
               Advances in machine learning and artificial intelligence offer unprecedented opportunities for data-driven discovery. My research focuses on the 
               theoretical underpinnings and statistical rigor of these methods, ensuring robust and interpretable results for biomedical applications.
             </p>
-            <!-- Placeholder for future video or content -->
-            <!-- Uncomment if a video is added in the future -->
-            <!-- <div class="video-section">
-              <video controls autoplay loop muted width="100%">
-                <source src="path_to_video.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-            </div> -->
           </div>
-
-      
+    
           <!-- Project Area 3 -->
           <div class="project-section">
             <h2>Drug Design, Biomarker Identification, and Diagnostics</h2>
-            <br>
             <p>
               Genomic sequences can be mined to determine unique barcodes that identify particular taxonomies. These sequences not only serve as diagnostic 
               indicators for strain detection but also reveal critical insights into functional and disease pathways. My research aims to bridge computational 
               genomics with actionable diagnostics and therapeutic strategies.
             </p>
-            <!-- Placeholder for future video or content -->
-            <!-- Uncomment if a video is added in the future -->
-            <!-- <div class="video-section">
-              <video controls autoplay loop muted width="100%">
-                <source src="path_to_video.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-            </div> -->
           </div>
         </div>
-      </section>
-
-      <section id="news">
-        <h1 class="center" style="padding-top: 100px;">Latest News</h1>
-        <div class="container2" style="padding:0px; margin: 0 auto; align-items: center; ">
-          <div id="news-section"></div>
+    
+        <!-- Right column: video + latest news -->
+        <div class="right-col" style="flex: 1; min-width: 280px;">
+          <!-- Video -->
+          <div class="video-section" style="border: none; padding: 0 0 25px 0;">
+            <video controls autoplay loop muted style="width: 100%; height: auto; border-radius: 12px; border: 2px solid black; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+              <source 
+                src="assets/documents/20250107_2053_Loop Video_loop_01jh1sva0rfy19dajnxnwk86sz.mp4" 
+                type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+    
+          <!-- Latest News (beneath the video) -->
+          <div id="news" style="margin-top: 20px;">
+            <h2 style="margin-bottom: 10px;">Latest News</h2>
+            <div id="news-section">
+              <!-- your JS/templating will populate this -->
+            </div>
+          </div>
         </div>
-      </section>
+    
+      </div>
+    </section>
       
 
       <section id="volunteeringteaching">
