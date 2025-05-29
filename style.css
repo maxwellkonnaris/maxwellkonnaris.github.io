@@ -366,3 +366,70 @@ section {
         width: 100%;
     }
 }
+
+/*--------------------------------------------------------------
+# Dark Theme Overrides for About Page
+--------------------------------------------------------------*/
+#about-page {
+  background-color: #000;  /* page background */
+  color: #fff;             /* default text */
+}
+
+/* make sure links stay visible */
+#about-page a {
+  color: #fff;
+}
+#about-page a:hover {
+  color: #FFD700;
+}
+
+/* navbar tweaks */
+#about-page #top-navbar {
+  background-color: #000;
+  box-shadow: none;
+}
+#about-page #top-navbar .name,
+#about-page #top-navbar .nav-links a,
+#about-page #top-navbar .hamburger {
+  color: #fff;
+}
+
+/* section backgrounds (if you use .section-bg) */
+#about-page .section-bg {
+  background: #000;
+}
+
+/* section titles */
+#about-page .section-title h2,
+#about-page .section-title h2::after {
+  color: #fff;
+  background: #fff; /* if you want the little underline to be white */
+}
+
+/* contact/info cards */
+#about-page .contact .info {
+  background: #111;
+  color: #fff;
+}
+#about-page .contact .info i {
+  background: #333;
+  color: #fff;
+}
+#about-page .contact .php-email-form,
+#about-page .contact .php-email-form input,
+#about-page .contact .php-email-form textarea {
+  background: #111;
+  color: #fff;
+  border: 1px solid #444;
+}
+#about-page .contact .php-email-form button[type=submit] {
+  background: #444;
+  color: #fff;
+}
+
+/* footer */
+#about-page .footer {
+  background-color: #111;
+  color: #ccc;
+}
+
