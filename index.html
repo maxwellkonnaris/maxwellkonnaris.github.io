@@ -1,0 +1,3341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Maxwell Konnaris, PhD</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #F7F5F1;
+      --bg-card:   #EFECE6;
+      --ink:       #1A1916;
+      --ink-mid:   #5A5750;
+      --ink-light: #9A9690;
+      --accent:    #686b66;       /* sage green */
+      --accent-lt: #ced4c9;
+      --rule:      #D8D4CC;
+      --serif:     'Cormorant Garamond', Georgia, serif;
+      --sans:      'DM Sans', system-ui, sans-serif;
+      --max:       960px;
+      --ease:      cubic-bezier(.4,0,.2,1);
+      --teaching-book-height: calc(100vh - 220px);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── NAV ─────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 3rem;
+      background: rgba(247,245,241,.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
+      transition: padding .3s var(--ease);
+    }
+    nav .logo {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: .01em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    nav ul { list-style: none; display: flex; gap: 2.5rem; }
+    nav a {
+      font-size: .78rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--ink-mid);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    nav a:hover { color: var(--accent); }
+
+    /* ─── HERO ────────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 3rem;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-text { padding-top: 5rem; }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: .72rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+      opacity: 0;
+      animation: fadeUp .7s var(--ease) .1s forwards;
+    }
+
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 6vw, 4.8rem);
+      font-weight: 300;
+      line-height: 1.08;
+      letter-spacing: -.01em;
+      color: var(--ink);
+      opacity: 0;
+      animation: fadeUp .7s var(--ease) .25s forwards;
+    }
+    .hero-name em { font-style: italic; color: var(--accent); }
+
+    .hero-tagline {
+      margin-top: 1.5rem;
+      font-size: 1rem;
+      color: var(--ink-mid);
+      max-width: 38ch;
+      opacity: 0;
+      animation: fadeUp .7s var(--ease) .4s forwards;
+    }
+
+    .hero-cta {
+      margin-top: 2.5rem;
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp .7s var(--ease) .55s forwards;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .65rem 1.5rem;
+      font-family: var(--sans);
+      font-size: .78rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all .22s var(--ease);
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border: 1px solid var(--accent);
+    }
+    .btn-primary:hover { background: #363028; border-color: #363028; }
+    .btn-ghost {
+      background: transparent;
+      color: var(--ink-mid);
+      border: 1px solid var(--rule);
+    }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+    .hero-visual {
+      display: flex; align-items: center; justify-content: center;
+      padding-top: 5rem;
+      opacity: 0;
+      animation: fadeIn .9s var(--ease) .5s forwards;
+    }
+
+    .avatar-wrap {
+      position: relative;
+      width: 320px; height: 380px;
+    }
+    .avatar-bg {
+      position: absolute; inset: 0;
+      background: var(--bg-card);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      transform: rotate(2deg);
+      transition: transform .4s var(--ease);
+    }
+    .avatar-wrap:hover .avatar-bg { transform: rotate(0deg); }
+    .avatar-img {
+      position: absolute; inset: 0;
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--accent-lt);
+      display: flex; align-items: center; justify-content: center;
+    }
+    /* Placeholder silhouette */
+    .avatar-img svg { width: 160px; opacity: .35; }
+
+    .affiliation-badge {
+      position: absolute;
+      bottom: -1.2rem; right: -1.2rem;
+      background: var(--ink);
+      color: #fff;
+      padding: .6rem 1rem;
+      font-size: .7rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      border-radius: 2px;
+    }
+
+    /* ─── SECTIONS SHARED ─────────────────────────────────── */
+    section { padding: 6rem 3rem; max-width: var(--max); margin: 0 auto; }
+
+    .section-label {
+      font-size: .72rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: .75rem;
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 300;
+      line-height: 1.2;
+      letter-spacing: -.01em;
+      margin-bottom: 2.5rem;
+    }
+
+    hr.rule {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin-bottom: 2.5rem;
+    }
+
+    /* ─── ABOUT ───────────────────────────────────────────── */
+    #about { border-top: 1px solid var(--rule); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .about-body p { color: var(--ink-mid); margin-bottom: 1rem; }
+    .about-body p:last-child { margin-bottom: 0; }
+
+    .about-meta { display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .meta-item { padding: 1.25rem 1.5rem; background: var(--bg-card); border-radius: 6px; border: 1px solid var(--rule); }
+    .meta-label { font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-light); margin-bottom: .35rem; }
+    .meta-value { font-size: .9rem; color: var(--ink); font-weight: 400; }
+
+    .meta-photo {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      background: var(--bg-card);
+    }
+    .meta-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 72% center;
+      display: block;
+    }
+
+    /* Credential rows */
+    .cred-item {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: .6rem;
+    }
+    .cred-item:last-child { margin-bottom: 0; }
+    .cred-degree { font-size: .9rem; color: var(--ink); font-weight: 500; }
+    .cred-school  { font-size: .78rem; color: var(--ink-light); margin-top: .1rem; }
+
+    /* "Open To" sub-label reuse */
+    .meta-value .cred-school { display: block; margin-top: .3rem; }
+
+    /* Experience list */
+    .exp-list {
+      display: flex;
+      flex-direction: column;
+      gap: .45rem;
+      font-size: .88rem;
+    }
+
+    .meta-photo-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .75rem;
+    }
+
+    .meta-social {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .meta-social a {
+      display: flex;
+      align-items: center;
+      opacity: 0.5;
+      transition: opacity .2s;
+    }
+
+    .meta-social a:hover { opacity: 1; }
+
+    .meta-social img {
+      width: 18px;
+      height: 18px;
+    }
+    .meta-social a:hover { opacity: .65; }
+
+    .about-seeking {
+      margin-top: 1.75rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: .6rem;
+      flex-wrap: wrap;
+    }
+
+    .seeking-label {
+      font-size: .68rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+    }
+
+    .seeking-value {
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .seeking-date {
+      font-size: .82rem;
+      color: var(--ink-light);
+    }
+
+    /* ─── RESEARCH ────────────────────────────────────────── */
+    #research { border-top: 2px solid var(--rule); background: var(--bg-card); max-width: 100%; padding: 6rem 0; }
+    #research .inner { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+
+    .research-grid {
+      display: grid;
+      grid-template-rows: repeat(4, 1fr);
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .research-card {
+      padding: 1rem;
+      background: var(--bg);
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+      transition: transform .25s var(--ease), box-shadow .25s var(--ease);
+    }
+    .research-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(26,25,22,.07);
+    }
+
+    .card-num {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--accent-lt);
+      margin-bottom: .75rem;
+    }
+    .card-title {
+      font-size: .95rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: .6rem;
+    }
+    .card-desc { font-size: .85rem; color: var(--ink-mid); line-height: 1.7; }
+
+    /* ─── MEDIA & BLOG ───────────────────────────────────── */
+    #media { border-top: 1px solid var(--rule); }
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+
+    .news-card {
+      position: relative;
+      display: block;
+      min-height: 320px;
+      height: 320px;
+      border-radius: 10px;
+      overflow: hidden;
+      text-decoration: none;
+      color: white;
+      background: #111;
+      border: 1px solid var(--rule);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .news-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.24);
+    }
+
+    .news-card-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .news-card-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.82) 25%,
+          rgba(0, 0, 0, 0.55) 50%,
+          rgba(0, 0, 0, 0.18) 80%,
+          rgba(0, 0, 0, 0.38) 100%
+        );
+      z-index: 1;
+    }
+
+    .news-card-content {
+      position: absolute;
+      inset: auto 0 0 0;
+      z-index: 2;
+      padding: 1.25rem;
+    }
+
+    .news-card-label {
+      display: inline-block;
+      margin-bottom: 0.6rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.9;
+    }
+
+    .news-card-title {
+      margin: 0;
+      font-size: 1.05rem;
+      line-height: 1.4;
+      font-weight: 500;
+      color: white;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
+    }
+
+    .media-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 1rem;
+    }
+
+    .media-row {
+      display: grid;
+      grid-template-columns: 90px 1fr 20px;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1.4rem 0;
+      border-top: 1px solid var(--rule);
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .media-row:last-child { border-bottom: 1px solid var(--rule); }
+    .media-row:hover { background: var(--bg-card); padding-left: 0.75rem; padding-right: 0.75rem; margin: 0 -0.75rem; }
+
+    .media-row-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-family: var(--sans);
+      font-weight: 500;
+    }
+
+    .media-row-title {
+      font-family: var(--serif);
+      font-size: 1rem;
+      color: var(--ink);
+      line-height: 1.4;
+    }
+
+    .media-row-arrow {
+      width: 14px;
+      height: 14px;
+      color: var(--ink-light);
+      flex-shrink: 0;
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    .media-row:hover .media-row-arrow {
+      color: var(--accent);
+      transform: translate(2px, -2px);
+    }
+
+    @media (max-width: 900px) {
+      .media-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .news-card {
+        height: 280px;
+        min-height: 280px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .book-container { flex-direction: column; align-items: stretch; }
+      .book { width: 100%; height: 260px; }
+    }
+
+    .media-photo {
+      width: 100%;
+      margin: 2rem 0 0;
+      position: relative;
+    }
+
+    .media-photo::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 35%;
+      background: linear-gradient(to top, var(--bg) 0%, transparent 100%);
+      border-radius: 0 0 12px 12px;
+      pointer-events: none;
+    }
+
+    .media-photo img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+
+    .media-photo figcaption {
+      position: relative;
+      z-index: 1;
+      margin-top: 0.75rem;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: #555;
+      text-align: center;
+    }
+
+    /* ─── PUBLICATIONS ────────────────────────────────────── */
+    #publications { border-top: 1px solid var(--rule); }
+
+    .pub-list { display: flex; flex-direction: column; gap: 0; }
+    .pub-item {
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      gap: 1.5rem;
+      align-items: start;
+      padding: 1.75rem 0;
+      border-bottom: 1px solid var(--rule);
+      transition: background .2s;
+    }
+    .pub-item:first-child { border-top: 1px solid var(--rule); }
+    .pub-year {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: var(--ink-light);
+      padding-top: .1rem;
+    }
+    .pub-info {}
+    .pub-title {
+      font-size: .95rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: .3rem;
+    }
+    .pub-venue { font-size: .82rem; color: var(--ink-mid); font-style: italic; }
+    .pub-authors { font-size: .82rem; color: var(--ink-light); margin-top: .2rem; }
+    .pub-links { display: flex; gap: .6rem; padding-top: .15rem; }
+    .tag {
+      font-size: .68rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .3rem .7rem;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: all .2s;
+    }
+    .tag-pdf { background: var(--accent-lt); color: var(--accent); }
+    .tag-pdf:hover { background: var(--accent); color: #fff; }
+    .tag-code { background: var(--bg-card); color: var(--ink-mid); border: 1px solid var(--rule); }
+    .tag-code:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ─── OUTREACH & IMPACT ────────────────────────────────────── */
+    #outreach { border-top: 1px solid var(--rule); }
+
+    .outreach-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      margin-top: 2rem;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      overflow: visible;
+      background: var(--rule);
+    }
+
+    .outreach-card {
+      position: relative;
+      height: 280px;
+      background: var(--bg);
+      overflow: hidden;
+      cursor: default;
+      transition: z-index 0s 0.4s;
+    }
+
+    .outreach-card:hover {
+      overflow: visible;
+      z-index: 20;
+      transition: z-index 0s 0s;
+    }
+
+    .outreach-card-photo {
+      position: absolute;
+      inset: 0;
+      background: var(--bg-card);
+    }
+
+    .outreach-card-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.55s cubic-bezier(.2,.8,.2,1);
+      filter: grayscale(0.2);
+    }
+
+    .outreach-card:hover .outreach-card-photo img {
+      transform: scale(1.06);
+      filter: grayscale(0);
+    }
+
+    .outreach-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(26,25,22,0.78) 0%,
+        rgba(26,25,22,0.18) 55%,
+        transparent 100%
+      );
+      z-index: 1;
+      transition: opacity 0.35s ease;
+    }
+
+    .outreach-card:hover::before {
+      opacity: 0;
+    }
+
+    .outreach-card-face {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 1.25rem 1.4rem;
+      z-index: 2;
+      transition: transform 0.38s cubic-bezier(.2,.8,.2,1),
+                  opacity  0.28s ease;
+    }
+
+    .outreach-card:hover .outreach-card-face {
+      transform: translateY(8px);
+      opacity: 0;
+    }
+
+    .outreach-card-tag {
+      display: inline-block;
+      font-size: 0.62rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      font-family: var(--sans);
+      font-weight: 500;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 0.35rem;
+    }
+
+    .outreach-card-title {
+      font-family: var(--serif);
+      font-size: 1.08rem;
+      font-weight: 400;
+      color: #fff;
+      line-height: 1.3;
+      margin: 0;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.4);
+    }
+
+    .outreach-card-photo.no-photo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .outreach-card-photo.no-photo svg {
+      width: 36px; height: 36px;
+      opacity: 0.15;
+      color: var(--ink);
+    }
+
+    /* ── Modal ── */
+    .outreach-card-modal {
+      position: absolute;
+      left: -1.5rem;
+      right: -1.5rem;
+      bottom: 0;
+      z-index: 3;
+      background: var(--ink);
+      padding: 1.6rem 1.75rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      min-height: 380px;
+      border-radius: 6px;
+      box-shadow: 0 16px 48px rgba(26,25,22,0.35), 0 4px 12px rgba(26,25,22,0.2);
+      transform: translateY(100%);
+      transition: transform 0.38s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .outreach-card:hover .outreach-card-modal {
+      transform: translateY(0);
+    }
+
+    .outreach-modal-tag {
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-family: var(--sans);
+      font-weight: 500;
+      color: var(--accent-lt);
+      margin-bottom: 0.5rem;
+      flex-shrink: 0;
+    }
+
+    .outreach-modal-title {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 600;
+      color: #f5f1ea;
+      line-height: 1.3;
+      margin-bottom: 0.8rem;
+      flex-shrink: 0;
+    }
+
+    .outreach-modal-desc {
+      font-family: var(--sans);
+      font-size: 0.79rem;
+      line-height: 1.72;
+      color: rgba(245,241,234,0.72);
+      max-height: 180px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255,255,255,0.15) transparent;
+      display: block;
+      padding-right: 0.25rem;
+    }
+
+    .outreach-modal-desc::-webkit-scrollbar { width: 3px; }
+    .outreach-modal-desc::-webkit-scrollbar-track { background: transparent; }
+    .outreach-modal-desc::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.18);
+      border-radius: 99px;
+    }
+
+    .outreach-modal-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--accent-lt);
+      margin-top: 0.9rem;
+      transition: color 0.2s;
+      flex-shrink: 0;
+    }
+
+    .outreach-modal-link:hover { color: #fff; }
+
+    .outreach-modal-link svg {
+      width: 10px; height: 10px;
+      stroke: currentColor; fill: none;
+      stroke-width: 2.5;
+      stroke-linecap: round; stroke-linejoin: round;
+      flex-shrink: 0;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .outreach-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 560px) {
+      .outreach-grid { grid-template-columns: 1fr; }
+      .outreach-card { height: 240px; }
+      .outreach-card-modal { left: 0; right: 0; }
+      .outreach-card:active .outreach-card-modal { transform: translateY(0); }
+    }
+    
+    /* small-text helper referenced in your HTML */
+    .small-text {
+      font-size: 0.79rem;
+      color: var(--ink-mid);
+      line-height: 1.7;
+    }
+
+    /* ─── BEYOND SCIENCE  ──────────────────────────────────────────────── */
+    #beyondscience { border-top: 1px solid var(--rule); background: var(--bg-card); max-width: 100%; padding: 6rem 0; }
+    #beyondscience .inner { max-width: var(--max); margin: 0 auto; padding: 0 3rem; }
+
+    .beyondscience-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 2rem; }
+    .beyondscience-section-title {
+      font-size: .7rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+
+    .beyondscience-entry { padding: 1.25rem 0; border-bottom: 1px solid var(--rule); }
+    .beyondscience-entry:last-child { border-bottom: none; }
+    .beyondscience-entry-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: .3rem; }
+    .beyondscience-entry-role { font-size: .9rem; font-weight: 500; color: var(--ink); }
+    .beyondscience-entry-date { font-size: .78rem; color: var(--ink-light); font-family: var(--serif); font-style: italic; }
+    .beyondscience-entry-org { font-size: .82rem; color: var(--accent); margin-bottom: .25rem; }
+    .beyondscience-entry-desc { font-size: .82rem; color: var(--ink-mid); }
+
+    #beyondscience .beyondscience-intro {
+      max-width: 760px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .photo-shelf-wrap {
+      position: relative;
+      padding: 1.25rem 0 2.75rem;
+      overflow: visible;
+    }
+
+    .photo-shelf {
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+      overflow-x: auto;
+      overflow-y: visible;
+      padding: 2rem 0 1rem;
+      scrollbar-width: none;
+      isolation: isolate;
+    }
+
+    .photo-shelf::-webkit-scrollbar {
+      display: none;
+    }
+
+    .photo-card {
+      position: relative;
+      flex: 0 0 auto;
+      width: 170px;
+      height: 220px;
+      margin-left: -105px; /* heavier overlap */
+      border-radius: 14px;
+      overflow: hidden;
+      background: #111;
+      box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+      border: 1px solid rgba(255,255,255,0.08);
+      transition:
+        transform 0.42s cubic-bezier(.2,.8,.2,1),
+        box-shadow 0.42s cubic-bezier(.2,.8,.2,1),
+        filter 0.35s ease,
+        opacity 0.35s ease,
+        z-index 0s linear;
+      transform-origin: bottom center;
+      z-index: 1;
+    }
+
+    .photo-card:first-child {
+      margin-left: 0;
+    }
+
+    /* slight natural variation in the stack */
+    .photo-card:nth-child(1) { transform: rotate(-5deg) translateY(8px); }
+    .photo-card:nth-child(2) { transform: rotate(4deg) translateY(2px); }
+    .photo-card:nth-child(3) { transform: rotate(-3deg) translateY(10px); }
+    .photo-card:nth-child(4) { transform: rotate(5deg) translateY(0px); }
+    .photo-card:nth-child(5) { transform: rotate(-4deg) translateY(7px); }
+    .photo-card:nth-child(6) { transform: rotate(3deg) translateY(3px); }
+
+    /* when shelf is hovered, everything else falls back */
+    .photo-shelf:hover .photo-card {
+      transform: scale(0.92) translateY(10px);
+      filter: grayscale(0.15) brightness(0.72);
+      opacity: 0.55;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+    }
+
+    /* focused image comes forward */
+    .photo-shelf .photo-card:hover {
+      transform: translateY(-46px) scale(1.24) rotate(0deg);
+      filter: none;
+      opacity: 1;
+      box-shadow: 0 28px 60px rgba(0,0,0,0.30);
+      z-index: 50;
+    }
+
+    /* optional: give hovered image a little breathing room */
+    .photo-shelf .photo-card:hover + .photo-card {
+      transform: scale(0.88) translateX(48px) translateY(36px);
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* subtle shelf under the stack */
+    .photo-shelf-wrap::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 12px;
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.06), rgba(0,0,0,0.20));
+    }
+
+    /* ─── TEACHING ────────────────────────────────────────── */
+    .meta-value-list {
+      margin: 0.4rem 0 0 0;
+      padding-left: 1.2rem;
+    }
+
+    .meta-value-list .meta-value {
+      margin-bottom: 0.3rem;
+    }
+
+    /* ─── CONTACT ─────────────────────────────────────────── */
+    #contact { border-top: 1px solid var(--rule); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      align-items: start;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: .4rem;
+    }
+
+    .form-label {
+      font-size: .7rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+    }
+
+    .form-input,
+    .form-textarea {
+      background: var(--bg-card);
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      padding: .75rem 1rem;
+      font-family: var(--sans);
+      font-size: .875rem;
+      font-weight: 300;
+      color: var(--ink);
+      outline: none;
+      transition: border-color .2s;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus {
+      border-color: var(--accent);
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    @media (max-width: 700px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ─── FOOTER ──────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 2rem 3rem;
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer p { font-size: .78rem; color: var(--ink-light); }
+    footer a { color: var(--ink-light); text-decoration: none; }
+    footer a:hover { color: var(--accent); }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem 1.5rem;
+      margin: 0;
+    }
+
+    .footer-links a {
+      color: var(--ink-mid);
+      text-decoration: none;
+      transition: color .2s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    /* ─── ANIMATIONS ──────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .6s var(--ease), transform .6s var(--ease);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      nav ul { gap: 1.5rem; }
+      #hero { grid-template-columns: 1fr; min-height: auto; padding: 7rem 1.5rem 4rem; gap: 3rem; }
+      .hero-visual { padding-top: 0; }
+      section { padding: 4rem 1.5rem; }
+      .about-grid, .contact-grid, .beyondscience-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .research-grid { grid-template-columns: 1fr; }
+      .pub-item { grid-template-columns: 1fr; gap: .5rem; }
+      .pub-year { font-size: .85rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+      #research .inner, #beyondscience .inner { padding: 0 1.5rem; }
+    }
+
+    /* --- BOOK SCENE LAYOUT --- */
+
+    
+    .book-container { margin-top: 2rem; display: flex; gap: 1.5rem; align-items: flex-start; }
+    .book { width: 100%; height: 360px; perspective: 1600px; position: relative; max-width: none; }
+    .page { width: 420px; height: 100%; position: absolute; left: 50%; top: 0; transform-origin: left center; transition: transform .8s var(--ease), left .4s var(--ease); transform-style: preserve-3d; box-shadow: 0 6px 22px rgba(26,25,22,.08); border-radius: 4px; overflow: hidden; background: linear-gradient(180deg,#fff,#f8f6f3); margin-left: -210px; }
+    .page .page-inner { padding: 2rem; font-family: var(--serif); color: var(--ink); }
+    .page.back { transform: rotateY(-180deg); }
+    .page.flipped { transform: rotateY(-180deg); }
+
+    /* stacked offsets when closed */
+    .book:not(.open) .page { left: 50%; }
+    .book:not(.open) .page:nth-child(1) { z-index: 6; left: 50%; margin-left: -210px; }
+    .book:not(.open) .page:nth-child(2) { z-index: 5; left: 50%; margin-left: -206px; top: 4px; }
+    .book:not(.open) .page:nth-child(3) { z-index: 4; left: 50%; margin-left: -202px; top: 8px; }
+    .book:not(.open) .page:nth-child(4) { z-index: 3; left: 50%; margin-left: -198px; top: 12px; }
+
+    /* spread layout when open: show left and right pages */
+    .book.open { height: 420px; }
+    .book.open .page { left: 50%; }
+    .book.open .page:nth-child(odd) { transform-origin: left center; }
+    .book.open .page:nth-child(even) { transform-origin: left center; left: calc(50% + 1px); }
+    .book.open .page[data-index="0"] { left: calc(50% - 220px); margin-left: 0; }
+    .book.open .page[data-index="1"] { left: calc(50% + 20px); margin-left: 0; }
+    .book.open .page[data-index="2"] { left: calc(50% - 200px); margin-left: 0; }
+    .book.open .page[data-index="3"] { left: calc(50% + 40px); margin-left: 0; }
+    .book-controls { display: flex; flex-direction: column; gap: .5rem; }
+    .book-btn { padding: .5rem .75rem; border: 1px solid var(--rule); background: var(--bg-card); cursor: pointer; border-radius: 3px; }
+
+    .book-scene {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2.5rem;
+    }
+
+    .book-closed-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      cursor: pointer;
+    }
+
+    .book-3d-stage {
+      perspective: 1800px;
+      perspective-origin: center 40%;
+    }
+
+    .book-3d {
+      position: relative;
+      width: 260px;
+      height: 360px;
+      transform-style: preserve-3d;
+      transform: rotateY(-22deg) rotateX(4deg);
+      transition: transform 0.5s cubic-bezier(.25,.8,.25,1);
+      filter: drop-shadow(28px 28px 48px rgba(0,0,0,0.82));
+    }
+
+    .book-closed-wrap:hover .book-3d {
+      transform: rotateY(-28deg) rotateX(2deg) translateY(-6px);
+    }
+
+    .book-closed-wrap:hover .book-cover-face {
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.07),
+        inset 0 -20px 28px rgba(0,0,0,0.36),
+        inset 18px 0 28px rgba(255,255,255,0.035),
+        inset -22px 0 34px rgba(0,0,0,0.24),
+        inset 0 0 0 1px rgba(255,230,170,0.04),
+        0 0 18px rgba(180,70,110,0.08);
+    }
+
+    /* Front cover */
+    .book-cover-face {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(145deg, #6f1029 0%, #4d0b1d 18%, #2a0510 48%, #170208 74%, #0d0104 100%);
+      border-radius: 3px 8px 8px 3px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem 2rem;
+      backface-visibility: hidden;
+      overflow: hidden;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.07),
+        inset 0 -20px 28px rgba(0,0,0,0.36),
+        inset 18px 0 28px rgba(255,255,255,0.035),
+        inset -22px 0 34px rgba(0,0,0,0.24),
+        inset 0 0 0 1px rgba(255,230,170,0.04);
+    }
+
+    /* Outer border rule */
+    .book-cover-face::before {
+      content: '';
+      position: absolute;
+      inset: 12px;
+      border: 1px solid rgba(222, 186, 102, 0.56);
+      border-radius: 2px;
+      pointer-events: none;
+      box-shadow:
+        inset 0 0 0 1px rgba(255,235,180,0.04),
+        0 0 10px rgba(222,186,102,0.04);
+    }
+
+    .book-cover-face::after {
+      content: '';
+      position: absolute;
+      inset: 20px;
+      border: 1px solid rgba(222, 186, 102, 0.18);
+      border-radius: 2px;
+      pointer-events: none;
+    }
+
+    /* Subtle cloth texture overlay */
+    .cover-texture {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background-image:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 3px,
+          rgba(0,0,0,0.05) 3px,
+          rgba(0,0,0,0.05) 4px
+        ),
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 4px,
+          rgba(255,255,255,0.018) 4px,
+          rgba(255,255,255,0.018) 5px
+        );
+      border-radius: inherit;
+      pointer-events: none;
+    }
+
+    .cover-corners {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .cover-corner {
+      position: absolute;
+      width: 42px;
+      height: 42px;
+      opacity: 0.95;
+      filter: drop-shadow(0 0 4px rgba(222,186,102,0.08));
+    }
+
+    .cover-corner::before,
+    .cover-corner::after {
+      content: '';
+      position: absolute;
+      display: block;
+    }
+
+    .cover-corner.tl {
+      top: 18px;
+      left: 18px;
+    }
+
+    .cover-corner.tr {
+      top: 18px;
+      right: 18px;
+      transform: scaleX(-1);
+    }
+
+    .cover-corner.bl {
+      bottom: 18px;
+      left: 18px;
+      transform: scaleY(-1);
+    }
+
+    .cover-corner.br {
+      bottom: 18px;
+      right: 18px;
+      transform: scale(-1, -1);
+    }
+
+    /* main corner bracket */
+    .cover-corner::before {
+      inset: 0;
+      background:
+        linear-gradient(rgba(222,186,102,0.72), rgba(222,186,102,0.50)) left top / 18px 1px no-repeat,
+        linear-gradient(rgba(222,186,102,0.72), rgba(222,186,102,0.50)) left top / 1px 18px no-repeat,
+        radial-gradient(circle at 8px 8px, rgba(247,229,172,0.95) 0 1px, transparent 1.5px),
+        radial-gradient(circle at 13px 13px, rgba(222,186,102,0.35) 0 1px, transparent 1.5px);
+      border-top-left-radius: 8px;
+    }
+
+    /* inner flourish */
+    .cover-corner::after {
+      top: 6px;
+      left: 6px;
+      width: 20px;
+      height: 20px;
+      border-left: 1px solid rgba(222,186,102,0.30);
+      border-top: 1px solid rgba(222,186,102,0.30);
+      border-top-left-radius: 10px;
+      box-shadow:
+        -1px -1px 0 rgba(255,240,190,0.05) inset;
+    }
+
+    .cover-corner .corner-glyph {
+      display: none;
+    }
+
+
+    /* Spine */
+    .book-spine {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 30px;
+      height: 360px;
+      background:
+        linear-gradient(to right,
+          #120206 0%,
+          #2a0610 18%,
+          #110609 48%,
+          #130307 82%,
+          #0c0104 100%);
+      transform: rotateY(-90deg) translateX(-15px) translateZ(15px);
+      transform-origin: left center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-left: 2px solid #090103;
+      border-right: 1px solid #5a1930;
+      border-radius: 4px 0 0 4px;
+      overflow: visible;
+      box-shadow:
+        inset 2px 0 3px rgba(255,255,255,0.04),
+        inset -3px 0 6px rgba(0,0,0,0.32);
+    }
+
+    .book-spine::before,
+    .book-spine::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 30px;
+      height: 18px;
+      background:
+        linear-gradient(to bottom,
+          rgba(255,255,255,0.08) 0%,
+          rgba(255,255,255,0.02) 30%,
+          rgba(0,0,0,0.18) 100%);
+      border-left: 2px solid #090103;
+      border-right: 1px solid #5a1930;
+      box-shadow:
+        inset 0 1px 1px rgba(255,255,255,0.04),
+        inset 0 -2px 3px rgba(0,0,0,0.22);
+    }
+
+    .book-spine::before {
+      top: -2px;
+      border-radius: 8px 0 2px 2px;
+      box-shadow:
+        inset 0 1px 1px rgba(255,255,255,0.04),
+        inset 0 -2px 3px rgba(0,0,0,0.22),
+        1px 1px 0 rgba(212,175,96,0.35);
+    }
+
+    .book-spine::after {
+      bottom: -2px;
+      border-radius: 2px 2px 0 8px;
+      box-shadow:
+        inset 0 1px 1px rgba(255,255,255,0.04),
+        inset 0 -2px 3px rgba(0,0,0,0.22),
+        1px -1px 0 rgba(212,175,96,0.28);
+    }
+
+    .spine-text {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      font-family: 'EB Garamond', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(200,160,80,0.55);
+    }
+
+    .book-spine .spine-bands {
+      position: absolute;
+      inset: 26px 4px 26px 4px;
+      pointer-events: none;
+      background:
+        linear-gradient(to bottom,
+          transparent 0%,
+          transparent 14%,
+          rgba(0,0,0,0.28) 14.5%,
+          rgba(255,255,255,0.06) 16%,
+          transparent 17.5%,
+          transparent 33%,
+          rgba(0,0,0,0.28) 33.5%,
+          rgba(255,255,255,0.06) 35%,
+          transparent 36.5%,
+          transparent 52%,
+          rgba(0,0,0,0.28) 52.5%,
+          rgba(255,255,255,0.06) 54%,
+          transparent 55.5%,
+          transparent 71%,
+          rgba(0,0,0,0.28) 71.5%,
+          rgba(255,255,255,0.06) 73%,
+          transparent 74.5%,
+          transparent 100%);
+    }
+
+    /* Pages stack (right edge) */
+    .book-pages {
+      position: absolute;
+      right: 0;
+      top: 3px;
+      width: 24px;
+      height: 354px;
+      background:
+        linear-gradient(to bottom, #fbf4de 0%, #efe4c6 18%, #e3d5b2 52%, #d7c7a0 100%);
+      transform: rotateY(90deg) translateX(12px) translateZ(12px);
+      transform-origin: right center;
+      box-shadow:
+        inset 0 0 0 1px rgba(120,90,30,0.08),
+        inset 0 -8px 12px rgba(120,90,30,0.08),
+        2px 0 10px rgba(0,0,0,0.18);
+      overflow: hidden;
+    }
+
+    .book-pages::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          to bottom,
+          rgba(255,255,255,0.38) 0px,
+          rgba(255,255,255,0.38) 1px,
+          rgba(190,165,120,0.26) 1px,
+          rgba(190,165,120,0.26) 2.4px
+        );
+      opacity: 0.85;
+    }
+
+    .book-pages::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, #c9b58b 0%, #a78f64 100%);
+      box-shadow:
+        inset 1px 0 0 rgba(255,255,255,0.28),
+        inset -1px 0 0 rgba(90,60,20,0.14);
+    }
+
+    /* Cover typography */
+    .cover-ornament {
+      font-size: 0.9rem;
+      letter-spacing: 0.5em;
+      color: rgba(236, 200, 115, 0.72);
+      margin-bottom: 1.15rem;
+      text-shadow: 0 0 8px rgba(236,200,115,0.10);
+    }
+
+    .cover-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.52rem;
+      font-weight: 700;
+      color: #f7e5ac;
+      text-align: center;
+      line-height: 1.22;
+      margin-bottom: 0.45rem;
+      letter-spacing: 0.045em;
+      text-shadow:
+        0 1px 0 rgba(90,40,0,0.28),
+        0 0 10px rgba(247,229,172,0.06);
+    }
+
+    .cover-subtitle {
+      font-family: 'EB Garamond', serif;
+      font-style: italic;
+      font-size: 0.88rem;
+      color: rgba(236, 200, 115, 0.78);
+      text-align: center;
+      line-height: 1.5;
+      margin-bottom: 1.35rem;
+    }
+
+    .cover-rule {
+      width: 58px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(222,186,102,0.75), transparent);
+      margin: 0 auto 1.35rem;
+    }
+
+    .cover-author {
+      font-family: 'EB Garamond', serif;
+      font-size: 0.74rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(222,186,102,0.64);
+      text-align: center;
+    }
+
+    .cover-bottom-ornament {
+      position: absolute;
+      bottom: 26px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.76rem;
+      letter-spacing: 0.45em;
+      color: rgba(222,186,102,0.38);
+    }
+    /* Open hint */
+    .open-hint {
+      font-family: 'EB Garamond', serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      color: rgba(0, 0, 0, 0.4);
+      text-align: center;
+      animation: breathe 1.5s ease-in-out infinite;
+    }
+
+    @keyframes breathe {
+      0%, 100% { opacity: 0.35; }
+      50%       { opacity: 0.75; }
+    }
+
+    /* ============================================================
+      OPEN BOOK
+      ============================================================ */
+    .book-open {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.8rem;
+      width: 100%;
+      animation: fadeUp 0.45s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .book-open.active { display: flex; }
+
+    /* Top bar */
+    .book-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .close-book-btn {
+      font-family: 'EB Garamond', serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      color: #8a7a5a;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.2s;
+    }
+    .close-book-btn:hover { color: #f0e8d8; }
+
+    .view-toggle {
+      display: flex;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid #3a3020;
+      border-radius: 4px;
+      padding: 3px;
+      gap: 3px;
+    }
+
+    .view-btn {
+      font-family: 'EB Garamond', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      padding: 0.28rem 0.85rem;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      background: transparent;
+      color: #8a7a5a;
+      transition: all 0.2s;
+    }
+    .view-btn.active {
+      background: #5a1930;
+      color: #f0dfa0;
+    }
+    .view-btn:hover:not(.active) { color: #f0e8d8; }
+
+    /* ============================================================
+      SPREADS
+      ============================================================ */
+    .spreads-wrapper {
+      width: 100%;
+    }
+
+    .spread { display: none; }
+
+    .spread.active {
+      display: flex;
+      border-radius: 2px;
+      box-shadow:
+        0 4px 6px rgba(0,0,0,0.12),
+        0 12px 30px rgba(0,0,0,0.35),
+        0 30px 60px rgba(0,0,0,0.45);
+    }
+
+    /* Individual pages */
+    .page-l, .page-r {
+      width: 50%;
+      height: var(--teaching-book-height);
+      max-height: var(--teaching-book-height);
+      background: #faf5ea;
+      padding: 3rem 2.5rem 3.5rem;
+      position: relative;
+      overflow-y: auto;
+      overflow-x: hidden;
+      flex-shrink: 0;
+    }
+
+    /* Subtle paper grain */
+    .page-l::after, .page-r::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .page-l {
+      border-right: 2px solid #d8c9a8;
+      box-shadow: inset -10px 0 20px rgba(0,0,0,0.06), inset 3px 0 6px rgba(0,0,0,0.03);
+      border-radius: 2px 0 0 2px;
+    }
+
+    .page-r {
+      border-left: 1px solid #e4d8b8;
+      box-shadow: inset 10px 0 20px rgba(0,0,0,0.035);
+      border-radius: 0 2px 2px 0;
+    }
+
+    /* Single-page view */
+    .single-mode .spread.active {
+      display: block;
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    .single-mode .page-l,
+    .single-mode .page-r {
+      width: 100%;
+      border-right: none;
+      border-left: none;
+      border-radius: 2px;
+      box-shadow: none;
+    }
+
+    .single-mode .page-l.hidden,
+    .single-mode .page-r.hidden {
+      display: none;
+    }
+
+    /* ============================================================
+      PAGE TYPOGRAPHY
+      ============================================================ */
+    .running-header {
+      font-family: 'EB Garamond', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #9a8a6a;
+      border-bottom: 1px solid #d8c9a8;
+      padding-bottom: 0.55rem;
+      margin-bottom: 1.8rem;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .pg-num {
+      position: absolute;
+      bottom: 1.6rem;
+      font-family: 'EB Garamond', serif;
+      font-size: 0.8rem;
+      color: #9a8a6a;
+    }
+    .page-l .pg-num { left: 2.5rem; }
+    .page-r .pg-num { right: 2.5rem; }
+
+    .ch-label {
+      font-family: 'EB Garamond', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #9a8a6a;
+      margin-bottom: 0.4rem;
+    }
+
+    .ch-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.85rem;
+      font-weight: 700;
+      color: #1e160a;
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+    }
+
+    .ch-rule {
+      width: 36px;
+      height: 2px;
+      background: linear-gradient(to right, #5a1930, transparent);
+      margin-bottom: 1.6rem;
+    }
+
+    .body-text {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.06rem;
+      line-height: 1.8;
+      color: #1e160a;
+      margin-bottom: 1.1rem;
+      text-align: justify;
+      hyphens: auto;
+    }
+
+    .body-text:first-of-type::first-letter {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.4rem;
+      font-weight: 700;
+      float: left;
+      line-height: 0.76;
+      margin-right: 0.08em;
+      margin-top: 0.08em;
+      color: #f5df9b;
+    }
+
+    .section-head {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.08rem;
+      font-style: italic;
+      color: #1e160a;
+      margin: 1.6rem 0 0.5rem;
+    }
+
+    .callout {
+      background: rgba(45,90,66,0.07);
+      border-left: 2px solid #f5df9b;
+      padding: 0.9rem 1.1rem;
+      margin: 1.1rem 0;
+      border-radius: 0 2px 2px 0;
+    }
+    .callout p {
+      font-family: 'EB Garamond', serif;
+      font-size: 0.96rem;
+      color: #1e160a;
+      line-height: 1.65;
+    }
+
+    .ornament {
+      text-align: center;
+      color: #9a8a6a;
+      letter-spacing: 0.5em;
+      margin: 1.5rem 0;
+      font-size: 0.9rem;
+    }
+
+    .epigraph {
+      font-family: 'EB Garamond', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: #3a2e1a;
+      padding: 1.2rem 1.5rem;
+      border-left: 2px solid #9a8a6a;
+      margin: 1.5rem 0;
+      line-height: 1.75;
+    }
+    .epigraph cite {
+      display: block;
+      font-style: normal;
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      color: #9a8a6a;
+      margin-top: 0.5rem;
+    }
+
+    code {
+      font-family: 'Courier New', monospace;
+      font-size: 0.88em;
+      background: rgba(0,0,0,0.055);
+      padding: 0 4px;
+      border-radius: 2px;
+      color: #f5df9b;
+    }
+
+    /* ============================================================
+      TITLE PAGE (spread 0, left side)
+      ============================================================ */
+    .title-page-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: calc(100% - 3rem);
+      padding-top: 1rem;
+    }
+
+    .tp-label {
+      font-family: 'EB Garamond', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #9a8a6a;
+      margin-bottom: 1.5rem;
+    }
+
+    .tp-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #1e160a;
+      line-height: 1.15;
+      margin-bottom: 0.8rem;
+    }
+
+    .tp-rule {
+      width: 50px;
+      height: 1px;
+      background: #9a8a6a;
+      margin: 1.1rem auto;
+    }
+
+    .tp-author {
+      font-family: 'EB Garamond', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #9a8a6a;
+    }
+
+    /* ============================================================
+      TABLE OF CONTENTS
+      ============================================================ */
+    .toc-entry {
+      display: flex;
+      align-items: baseline;
+      gap: 0.4rem;
+      margin-bottom: 1.3rem;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .toc-entry:hover .toc-name,
+    .toc-entry:hover .toc-pg { color: #2d5a42; }
+
+    .toc-num {
+      font-family: 'EB Garamond', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #9a8a6a;
+      min-width: 72px;
+      padding-top: 2px;
+    }
+
+    .toc-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.02rem;
+      color: #1e160a;
+      flex: 1;
+      transition: color 0.2s;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .toc-dots {
+      flex: 1;
+      border-bottom: 1px dotted #c8b890;
+      margin-bottom: 3px;
+      min-width: 12px;
+    }
+
+    .toc-pg {
+      font-family: 'EB Garamond', serif;
+      font-size: 0.9rem;
+      color: #9a8a6a;
+      transition: color 0.2s;
+    }
+
+    .toc-blurb {
+      font-family: 'EB Garamond', serif;
+      font-size: 0.84rem;
+      font-style: italic;
+      color: #6a5a3a;
+      margin-left: 72px;
+      margin-top: -0.8rem;
+      margin-bottom: 1.3rem;
+      line-height: 1.4;
+    }
+
+    /* ============================================================
+      NAVIGATION
+      ============================================================ */
+    .book-nav {
+      display: flex;
+      align-items: center;
+      gap: 1.8rem;
+    }
+
+    .nav-btn {
+      font-family: 'EB Garamond', serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      padding: 0.45rem 1.2rem;
+      border: 1px solid #3a3020;
+      background: transparent;
+      color: #8a7a5a;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+    .nav-btn:hover:not(:disabled) {
+      border-color: #8a7a5a;
+      color: #f0e8d8;
+      background: rgba(255,255,255,0.04);
+    }
+    .nav-btn:disabled { opacity: 0.25; cursor: not-allowed; }
+
+    .pg-indicator {
+      font-family: 'EB Garamond', serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      color: #6a5a3a;
+      min-width: 130px;
+      text-align: center;
+    }
+
+    /* Teaching layout shell */
+    .teaching-shell {
+      display: grid;
+      grid-template-columns: minmax(260px, 360px) minmax(0, 1fr);
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .teaching-side {
+      display: block;
+    }
+
+    .teaching-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    /* closed state: book lives on right */
+    .teaching-book-slot {
+      min-width: 0;
+    }
+
+    .teaching-book-slot .book-scene {
+      width: 100%;
+      align-items: flex-end;
+      gap: 1.5rem;
+    }
+
+    /* expanded state: book takes whole section */
+    .teaching-shell.book-expanded {
+      display: block;
+    }
+
+    .teaching-shell.book-expanded .teaching-side {
+      display: none;
+    }
+
+    .teaching-shell.book-expanded .teaching-book-slot {
+      width: 100%;
+    }
+
+    .teaching-shell.book-expanded .book-scene {
+      width: 100%;
+      align-items: stretch;
+      gap: 0;
+    }
+
+    .teaching-shell.book-expanded .book-open.active {
+      display: flex;
+      width: 100%;
+    }
+
+    /* keep the open book full-width */
+    .book-open {
+      width: 100%;
+    }
+
+    .spreads-wrapper {
+      width: 100%;
+    }
+
+    .spread.active {
+      width: 100%;
+    }
+
+    /* closed book hugs the right side */
+    #closedTeachingBook {
+      margin-left: auto;
+    }
+
+    /* mobile */
+    @media (max-width: 900px) {
+      .teaching-shell {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .teaching-side {
+        display: block;
+      }
+
+      .teaching-shell.book-expanded {
+        display: block;
+      }
+
+      .teaching-shell.book-expanded .teaching-side {
+        display: none;
+      }
+
+      .teaching-book-slot .book-scene {
+        align-items: center;
+      }
+
+      .teaching-shell.book-expanded .book-scene {
+        align-items: stretch;
+        gap: 0;
+      }
+
+      #closedTeachingBook {
+        margin-left: 0;
+      }
+    }
+
+    .bolder {
+      font-weight: 900;
+    }
+
+
+   /* Need to delete this when done with construction warning */
+    .construction-banner {
+      width: 100%;
+      text-align: center;
+      padding: .75rem 1.5rem;
+      background: color-mix(in srgb, var(--accent) 12%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: .02em;
+    }
+
+    /* ─── CONSTRUCTION BANNER (desktop fix) ──────────── */
+    .construction-banner {
+      grid-column: 1 / -1;   /* span both hero columns */
+      align-self: start;
+      margin-top: 12rem;
+    }
+
+    /* ─── AVATAR RESPONSIVE ──────────────────────────── */
+    .avatar-wrap {
+      position: relative;
+      width: min(320px, 80vw);
+      height: auto;
+      aspect-ratio: 320 / 380;
+    }
+
+    /* ─── NAV HAMBURGER ──────────────────────────────── */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px;
+      height: 36px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      z-index: 200;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 100%;
+      height: 1.5px;
+      background: var(--ink);
+      border-radius: 2px;
+      transition: all 0.25s var(--ease);
+      transform-origin: center;
+    }
+
+    .nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* ─── RESEARCH GRID MOBILE FIX ───────────────────── */
+    @media (max-width: 768px) {
+      .research-grid {
+        grid-template-rows: unset;
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ─── MAIN RESPONSIVE ────────────────────────────── */
+    @media (max-width: 900px) {
+      .outreach-grid { grid-template-columns: repeat(2, 1fr); }
+      .media-grid    { grid-template-columns: 1fr; }
+      .news-card     { height: 280px; min-height: 280px; }
+    }
+
+    @media (max-width: 768px) {
+
+      /* Nav */
+      .nav-toggle { display: flex; }
+
+      nav ul {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2.25rem;
+        background: rgba(247,245,241,.97);
+        backdrop-filter: blur(16px);
+        z-index: 150;
+      }
+
+      nav ul.open { display: flex; }
+
+      nav ul a {
+        font-size: 1rem;
+        letter-spacing: .14em;
+      }
+
+      /* Hero */
+
+      .hero-visual { padding-top: 0; justify-content: flex-start; }
+      .hero-tagline { max-width: 100%; }
+
+      /* Construction banner */
+      .construction-banner {
+        margin-top: 0;
+        font-size: .8rem;
+      }
+
+      /* Sections */
+      section { padding: 4rem 1.5rem; }
+
+      /* About */
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+
+      .meta-photo {
+        aspect-ratio: 16 / 9;   /* wider crop looks better stacked */
+      }
+
+      .meta-photo img { object-position: 68% 30%; }
+
+      /* Research */
+      .research-grid { grid-template-columns: 1fr; }
+
+      /* Publications */
+      .pub-item { grid-template-columns: 1fr; gap: .5rem; }
+      .pub-year { font-size: .85rem; }
+      .pub-links { flex-wrap: wrap; }
+
+      /* Outreach */
+      .outreach-grid { grid-template-columns: 1fr; }
+      .outreach-card { height: 240px; }
+      .outreach-card-modal { left: 0; right: 0; }
+
+      /* Beyond Science */
+      .beyondscience-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+
+      /* Teaching shell */
+      .teaching-shell { grid-template-columns: 1fr; gap: 1.5rem; }
+      .teaching-shell.book-expanded { display: block; }
+      .teaching-shell.book-expanded .teaching-side { display: none; }
+      .teaching-book-slot .book-scene { align-items: center; }
+
+      /* Book */
+      .book-3d { width: 200px; height: 280px; }
+      .book-spine { height: 280px; }
+      .book-pages { height: 274px; }
+
+      .page-l, .page-r {
+        padding: 2rem 1.5rem 3rem;
+        height: auto;
+        max-height: 65vh;
+      }
+
+      /* Photo shelf */
+      .photo-card { width: 140px; height: 180px; margin-left: -82px; }
+
+      /* Contact */
+      .form-row { grid-template-columns: 1fr; }
+
+      /* Footer */
+      footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+
+      /* Inner wrappers */
+      #research .inner, #beyondscience .inner { padding: 0 1.5rem; }
+    }
+
+    @media (max-width: 480px) {
+      nav .logo { font-size: 1rem; }
+      .hero-name { font-size: clamp(2rem, 11vw, 2.8rem); }
+      .outreach-card { height: 200px; }
+      .photo-card { width: 120px; height: 155px; margin-left: -68px; }
+      .meta-photo { aspect-ratio: 3 / 2; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="logo">Maxwell Konnaris</a>
+    <button class="nav-toggle" aria-label="Toggle menu" onclick="toggleNav()">
+      <span></span><span></span><span></span>
+    </button>
+    <ul id="navMenu">
+      <li><a href="#about"        onclick="closeNav()">About</a></li>
+      <li><a href="#media"        onclick="closeNav()">Media</a></li>
+      <li><a href="#research"     onclick="closeNav()">Research</a></li>
+      <li><a href="#teaching"     onclick="closeNav()">Teaching</a></li>
+      <li><a href="#outreach"     onclick="closeNav()">Outreach</a></li>
+      <li><a href="#beyondscience" onclick="closeNav()">Beyond Science</a></li>
+      <li><a href="#contact"      onclick="closeNav()">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div id="hero">
+
+    <div class="construction-banner">
+      🚧 This website is under ongoing reconstruction — some sections may be temporarily unfinished.
+    </div>
+
+    <div class="hero-text">
+      <span class="hero-eyebrow">Computational Biologist &amp; Statistician</span>
+      <h1 class="hero-name">Maxwell<br><em>Konnaris, PhD Candidate</em></h1>
+      <p class="hero-tagline">
+
+        I develop and translate analytic methods to improve the reliability and interpretability of insights from limited, high-dimensional, noisy and imperfect data.
+
+      </p>
+      <div class="hero-cta">
+        <a href="#publications" class="btn btn-primary">View Publications</a>
+        <a href="" class="btn btn-ghost">Download CV</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="avatar-wrap">
+        <div class="avatar-bg"></div>
+        <div class="avatar-img">
+          <img src="images/profile-pic.webp" alt="Maxwell Konnaris" style="width:100%;height:100%;object-fit:cover"> 
+        </div>
+        <div class="affiliation-badge">Pennsylvania State University</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="reveal">
+      <div class="section-label">About Me</div>
+      <h2 class="section-title">Background &amp; Interests</h2>
+      <hr class="rule">
+    </div>
+    <div class="about-grid reveal">
+      <div class="about-body">
+        <p>
+          I am a PhD candidate in Bioinformatics and Genomics at Pennsylvania State University, where I am advised by two statisticans: <a href="https://justin-silverman.com/" style="color:var(--accent)">Prof. Justin Silverman, MD, PhD</a> and <a href="https://en.wikipedia.org/wiki/Nicole_Lazar" style="color:var(--accent)">Prof. Nicole Lazar, PhD</a>.
+
+          <br><br>
+
+          <strong class="bolder">I am interested in identifying and solving broad problems at scale.</strong> I am motivated by the potential of technology to accelerate scientific discovery and improve human health.  My work focuses on a major gap in the rigor of scientific methods for analyzing high-throughput sequencing data. I aim to help close that gap by studying the information content of data, evaluating limitations, and developing robust/practical analytical frameworks to solve these challenges.
+
+          <br><br>
+
+          Without rigor, flawed methodology can produce findings that do not replicate, waste resources, erode trust in science, and slow the pace of discovery.
+
+          <br><br>
+
+          I believe scientific modeling requires a deep understanding of both the underlying translational context and the statistical/computational principles involved. <strong class="bolder">I possess a unique combination of the statistical depth, translational understanding, and computational skills </strong> essential for building methods that are not only theoretically sound, but also practical for real-world problems guided by a science/medical background.
+
+        </p>
+
+        <div class="about-seeking">
+          <span class="seeking-label">Open to</span>
+          <span class="seeking-value">Postdoctoral &amp; Industry R&amp;D Positions</span>
+          <span class="seeking-date">· Expected graduation Spring 2027</span>
+        </div>
+      </div>
+
+      <div class="about-meta">
+
+        <!-- Photo -->
+        <div class="meta-photo-block">
+          <div class="meta-photo">
+            <img src="images/t32.webp" alt="Maxwell Konnaris" />
+          </div>
+          <div class="meta-social">
+            <a href="https://www.linkedin.com/in/maxwellkonnaris" target="_blank" title="LinkedIn">
+              <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" />
+            </a>
+            <a href="mailto:maxwellkonnaris@psu.edu" title="Email">
+              <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg" />
+            </a>
+            <a href="https://github.com/maxwellkonnaris" target="_blank" title="GitHub">
+              <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" />
+            </a>
+            <a href="https://scholar.google.com/citations?hl=en&user=X1QvekEAAAAJ" target="_blank" title="Google Scholar">
+              <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/googlescholar.svg" />
+            </a>
+          </div>
+        </div>
+
+        <!-- Academic Credentials -->
+        <div class="meta-item">
+          <div class="meta-label">Education</div>
+          <div class="meta-value">
+            <div class="cred-item">
+              <span class="cred-degree">PhD · Bioinformatics &amp; Genomics, Statistical Genomics Option</span>
+              <span class="cred-school">Pennsylvania State University</span>
+            </div>
+            <div class="cred-item">
+              <span class="cred-degree">BS · Physiology &amp; Premedicine</span>
+              <span class="cred-school">Ithaca College</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Additional Experience -->
+        <div class="meta-item">
+          <div class="meta-label">Additional Experience</div>
+          <div class="meta-value exp-list">
+            <span>🏥 2+ years hands-on clinical experience</span>
+            <span>🧪 3 years wet lab &amp; clinical research</span>
+            <span>🏆 Applied Coaching and Training</span>
+            <span>📋 Phase II clinical trial work</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- MEDIA & NEWS -->
+  <section id="media">
+    <div class="reveal">
+      <div class="section-label">Media</div>
+      <h2 class="section-title">News &amp; Press</h2>
+      <hr class="rule">
+    </div>
+
+    <figure class="media-photo reveal">
+      <a href="https://science.psu.edu/science-journal/winter-2026/analytical-tools-genomics" target="_blank" rel="noopener noreferrer">
+        <img src="images/advisors-photo.jpg" alt="Me with PhD Advisors Justin Silverman and Nicole Lazar">
+      </a>
+      <figcaption>
+        PhD Advisors Justin Silverman (left) and Nicole Lazar (center), with me (right) featured in <a href="https://science.psu.edu/science-journal/winter-2026/analytical-tools-genomics" target="_blank" rel="noopener noreferrer">Eberly magazine</a>.
+      </figcaption>
+    </figure>
+
+    <br>
+
+    <div class="media-list reveal">
+
+      <a class="media-row"
+        href="https://www.huck.psu.edu/news/penn-state-researchers-announce-new-comprehensive-omics-database"
+        target="_blank" rel="noopener noreferrer">
+        <span class="media-row-label">News</span>
+        <span class="media-row-title">Penn State Researchers Announce New Comprehensive Omics Database</span>
+        <svg class="media-row-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+
+    </div>
+    
+  </section>
+
+    <!-- RESEARCH -->
+  <div id="research">
+    <div class="inner">
+      <div class="reveal">
+        <div class="section-label">Research</div>
+        <h2 class="section-title">Research Areas</h2>
+        <hr class="rule">
+        <div style="margin-top:1rem;margin-bottom:1rem;">
+          <a href="https://scholar.google.com/citations?hl=en&user=X1QvekEAAAAJ" target="_blank" class="btn btn-ghost">Google Scholar</a>
+        </div>
+      </div>
+      <div class="research-grid reveal">
+        <div class="research-card">
+          <div class="card-title">Rigor &amp; Reproducibility: AI for Science</div>
+          <div class="card-desc">Developing statistically principled approaches to improve reliability and transparency in Biological data analysis. Especially where data is limited, high dimensional, and prone to measurement error.</div>
+        </div>
+        <div class="research-card">
+          <div class="card-title">Methods for Sequence Analysis</div>
+          <div class="card-desc">Modeling and analyzing biological systems measured with high-throughput sequencing technologies.</div>
+        </div>
+        <div class="research-card">
+          <div class="card-title">Drug Discovery and Development, Biomarker Discovery</div>
+          <div class="card-desc">Developing computational methods for identifying and validating potential drug targets and biomarkers in biological systems.</div>
+        </div>
+        <div class="research-card">
+          <div class="card-title">Sports Medicine, Rehabilitation, and Human Performance</div>
+          <div class="card-desc">Investigating the biological and mechanical factors that influence athletic performance and recovery. Identifying candidate biomarkers and therapeutic targets.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Teaching -->
+  <section id="teaching">
+    <div class="reveal">
+      <div class="section-label">Learning &amp; Tips for Students</div>
+      <h2 class="section-title">Teaching and Mentoring</h2>
+      <hr class="rule">
+    </div>
+    <div class="reveal">
+
+    <div class="teaching-shell" id="teachingShell">
+
+    <div class="teaching-side" id="teachingSide">
+      <div class="teaching-meta">
+        <div class="meta-item">
+          <div class="meta-label">Graduate Instruction</div>
+          <ul class="meta-value-list">
+            <li class="meta-value">Teaching Assistant for Genomics 551 and frequent guest lecturer.</li>
+            <li class="meta-value">
+              <a href="https://bootcamp.biostars.io" style="color:var(--accent)">Data Reproducibility Bootcamp</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="meta-item">
+          <div class="meta-label">Undergraduate Instruction and Mentoring</div>
+          <ul class="meta-value-list">
+            <li class="meta-value">
+              <a href="https://www.linkedin.com/company/global-code-org/?originalSubdomain=gh" style="color:var(--accent)">Global Code</a> in Ghana: Software Engineering Bootcamp for Undergraduates
+            </li>
+            <li class="meta-value">Mentored 3 undergraduate students through various programs: Hunter college, DREAM, etc.</li>
+          </ul>
+        </div>
+
+        <div class="meta-item">
+          <div class="meta-label">K-12 Teaching</div>
+          <ul class="meta-value-list">
+            <li class="meta-value">
+              <a href="http://www.elite-education.org/" style="color:var(--accent)">E.L.i.T.E. Education Fellow:</a> Engineering principles for grades 6-8
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="teaching-book-slot">
+      <br><br>
+      <div class="book-scene">
+
+    <!-- ══════════════════════════════════════════
+         CLOSED BOOK
+    ══════════════════════════════════════════ -->
+      <div class="book-closed-wrap" id="closedTeachingBook" onclick="openTeachingBook()" role="button" aria-label="Open book">
+        <div class="book-3d-stage">
+          <div class="book-3d">
+            <div class="book-back-board"></div>
+            <div class="book-bottom-pages-edge"></div>
+            <div class="book-spine">
+              <div class="spine-bands"></div>
+              <span class="spine-text">Reflective Notes</span>
+            </div>
+            <div class="book-pages"></div>
+            <div class="book-cover-face">
+              <div class="cover-texture"></div>
+              <div class="cover-corners" aria-hidden="true">
+                <span class="cover-corner tl"></span>
+                <span class="cover-corner tr"></span>
+                <span class="cover-corner bl"></span>
+                <span class="cover-corner br"></span>
+              </div>
+              <!-- <div class="cover-ornament"></div> -->
+              <div class="cover-title">Reflective Notes</div>
+              <div class="cover-subtitle">Accelerating Learning and Professional Development</div>
+              <div class="cover-rule"></div>
+              <div class="cover-author">Maxwell A. Konnaris</div>
+              <!-- <div class="cover-bottom-ornament">· · · · ·</div> -->
+            </div>
+          </div>
+        </div>
+        <div class="open-hint">Click to open the book →</div>
+      </div>
+
+      <!-- ══════════════════════════════════════════
+          OPEN BOOK
+      ══════════════════════════════════════════ -->
+      <div class="book-open" id="openTeachingBook">
+
+        <div class="book-topbar">
+          <button class="close-book-btn" onclick="closeTeachingBook()">← Close book</button>
+          <div class="view-toggle">
+            <button class="view-btn active" id="teachingBtnTwo" onclick="setTeachingView('two')">Two-Page View</button>
+            <button class="view-btn" id="teachingBtnOne" onclick="setTeachingView('one')">Single Page</button>
+          </div>
+        </div>
+
+        <div class="spreads-wrapper" id="teachingSpreadsWrapper">
+
+          <!-- ─────────────────────────────────────
+              SPREAD 0 · Title Page + Introduction
+          ───────────────────────────────────── -->
+          <div class="spread active" data-spread="0">
+
+            <div class="page-l">
+              <div class="title-page-inner">
+                <div class="tp-label">Accelerating Learning and Professional Development</div>
+                <div class="tp-title">Reflective Notes</div>
+                <div class="tp-rule"></div>
+                <div class="tp-author">Maxwell A. Konnaris</div>
+                <div style="margin-top:2.5rem;">
+                  <div class="epigraph" style="text-align:left;">
+                    "The art of teaching is the art of assisting discovery."
+                    <cite>— Mark Van Doren</cite>
+                  </div>
+                </div>
+              </div>
+              <span class="pg-num">i</span>
+            </div>
+
+            <div class="page-r">
+              <div class="running-header">
+                <span>Teaching &amp; Mentoring</span>
+                <span>Preface</span>
+              </div>
+              <div class="ch-label">Preface</div>
+              <div class="ch-title">About This Book</div>
+              <div class="ch-rule"></div>
+              <p class="body-text">
+                This book grew out of years of teaching graduate-level methods courses, supervising undergraduate theses, and mentoring early-career researchers. The chapters that follow are not a comprehensive treatise — they are dispatches from the field, written close to the problems that students actually encounter.
+              </p>
+              <p class="body-text">
+                Each chapter addresses one recurring challenge: how to make research reproducible, how to reason probabilistically about uncertain data, how to build workflows that survive collaboration and revision, and finally, how to collect the small lessons that don't fit anywhere else.
+              </p>
+              <p class="body-text">
+                The material is unapologetically practical. Where theory appears, it is there to illuminate practice, not to demonstrate mastery of it. Where examples appear, they are drawn from real situations with the identifying details removed.
+              </p>
+              <div class="ornament">· · ·</div>
+              <p class="body-text">
+                My hope is that a student midway through a stuck project might open this, read one chapter, and feel less alone. The problems described here are common. The solutions are learnable. The failures are survivable.
+              </p>
+              <span class="pg-num">ii</span>
+            </div>
+          </div>
+
+          <!-- ─────────────────────────────────────
+              SPREAD 1 · Table of Contents
+          ───────────────────────────────────── -->
+          <div class="spread" data-spread="1">
+
+            <div class="page-l">
+              <div class="running-header">
+                <span>Teaching &amp; Mentoring</span>
+                <span>Contents</span>
+              </div>
+              <div class="ch-label">Navigation</div>
+              <div class="ch-title">Table of Contents</div>
+              <div class="ch-rule"></div>
+
+              <div class="toc-entry" onclick="goToTeachingSpread(2)">
+                <span class="toc-num">Chapter I</span>
+                <span class="toc-name">Reproducibility</span>
+                <span class="toc-dots"></span>
+                <span class="toc-pg">1</span>
+              </div>
+              <div class="toc-blurb">Why it matters, and how to achieve it</div>
+
+              <div class="toc-entry" onclick="goToTeachingSpread(3)">
+                <span class="toc-num">Chapter II</span>
+                <span class="toc-name">Probabilistic Modeling</span>
+                <span class="toc-dots"></span>
+                <span class="toc-pg">3</span>
+              </div>
+              <div class="toc-blurb">Learning to reason under uncertainty</div>
+
+              <div class="toc-entry" onclick="goToTeachingSpread(4)">
+                <span class="toc-num">Chapter III</span>
+                <span class="toc-name">Practical Workflows</span>
+                <span class="toc-dots"></span>
+                <span class="toc-pg">5</span>
+              </div>
+              <div class="toc-blurb">From raw data to reproducible results</div>
+
+              <div class="toc-entry" onclick="goToTeachingSpread(5)">
+                <span class="toc-num">Chapter IV</span>
+                <span class="toc-name">Notes &amp; Reflections</span>
+                <span class="toc-dots"></span>
+                <span class="toc-pg">7</span>
+              </div>
+              <div class="toc-blurb">Lessons that didn't fit elsewhere</div>
+
+              <span class="pg-num">iii</span>
+            </div>
+
+            <div class="page-r">
+              <div class="running-header">
+                <span>Teaching &amp; Mentoring</span>
+                <span>Contents</span>
+              </div>
+              <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;height:calc(100% - 4rem);text-align:center;">
+                <div style="font-size:1.6rem;color:#9a8a6a;margin-bottom:2rem;">❧</div>
+                <div class="epigraph" style="max-width:300px;">
+                  "Research is what I'm doing when I don't know what I'm doing."
+                  <cite>— Wernher von Braun</cite>
+                </div>
+                <p style="font-family:'EB Garamond',serif;font-style:italic;font-size:0.88rem;color:#9a8a6a;margin-top:2.5rem;line-height:1.75;">
+                  Click any entry in the table of contents<br>to jump directly to that chapter.
+                </p>
+              </div>
+              <span class="pg-num">iv</span>
+            </div>
+          </div>
+
+          <!-- ─────────────────────────────────────
+              SPREAD 2 · Chapter I — Reproducibility
+          ───────────────────────────────────── -->
+          <div class="spread" data-spread="2">
+
+            <div class="page-l">
+              <div class="running-header">
+                <span>Chapter I</span>
+                <span>Reproducibility</span>
+              </div>
+              <div class="ch-label">Chapter One</div>
+              <div class="ch-title">Reproducibility</div>
+              <div class="ch-rule"></div>
+              <p class="body-text">
+                Reproducibility is not a bureaucratic virtue. It is the mechanism by which science corrects itself, and the single most powerful gift a researcher can give to their community and to their future self. A result that cannot be reproduced is, at best, anecdote.
+              </p>
+              <p class="body-text">
+                The reproducibility crisis that swept through psychology, medicine, and the social sciences was not a scandal about dishonesty. It was a scandal about <em>defaults</em> — defaults in workflow, in statistical practice, in how researchers managed and reported their work. Changing those defaults is not difficult. It requires habit, not heroism.
+              </p>
+              <div class="section-head">What Reproducibility Actually Means</div>
+              <p class="body-text">
+                There is a spectrum. At one end: <em>replicability</em> — running the same experiment again and obtaining similar results. At the other: <em>robustness</em> — arriving at the same conclusion via a different approach entirely. In between sits reproducibility proper: given your data and your code, another researcher can re-run your analysis and obtain identical numerical results.
+              </p>
+              <p class="body-text">
+                Computational reproducibility is the easiest form to achieve and the most commonly neglected. It requires only three things: version-controlled code, documented data provenance, and an explicit software environment.
+              </p>
+              <span class="pg-num">1</span>
+            </div>
+
+            <div class="page-r">
+              <div class="running-header">
+                <span>Chapter I</span>
+                <span>Reproducibility</span>
+              </div>
+              <div class="section-head">Version Control Is Non-Negotiable</div>
+              <p class="body-text">
+                Every research project should live in a version-controlled repository from day one. Not from the day you think it's worth sharing — from day one. Git is the standard tool. The learning curve is real but not steep; most researchers need only five commands to work effectively.
+              </p>
+              <p class="body-text">
+                Version control serves two purposes simultaneously: it creates an audit trail of your analytical decisions, and it enables collaboration without catastrophe. Both are undervalued until the moment they are desperately needed.
+              </p>
+              <div class="callout">
+                <p><strong>Practical rule:</strong> Commit after every meaningful change. Write commit messages as if explaining your reasoning to a future collaborator who has no context — because that future collaborator is you, six months from now.</p>
+              </div>
+              <div class="section-head">Documenting Data Provenance</div>
+              <p class="body-text">
+                Raw data should be treated as read-only. Never overwrite it. Every transformation — cleaning, merging, filtering — should be performed by a script that reads raw data and produces a derived dataset. This pipeline should be runnable from scratch, without any manual steps.
+              </p>
+              <p class="body-text">
+                If your data came from an external source, record the exact URL, the access date, and the version or edition. Data changes. URLs break. The record you keep today may be the only record that will ever exist.
+              </p>
+              <span class="pg-num">2</span>
+            </div>
+          </div>
+
+          <!-- ─────────────────────────────────────
+              SPREAD 3 · Chapter II — Probabilistic Modeling
+          ───────────────────────────────────── -->
+          <div class="spread" data-spread="3">
+
+            <div class="page-l">
+              <div class="running-header">
+                <span>Chapter II</span>
+                <span>Probabilistic Modeling</span>
+              </div>
+              <div class="ch-label">Chapter Two</div>
+              <div class="ch-title">Probabilistic Modeling</div>
+              <div class="ch-rule"></div>
+              <p class="body-text">
+                The world does not present itself to researchers in certainties. Data arrives with noise, models are simplifications of reality, and conclusions must always be hedged. Learning to think probabilistically — to reason fluently about uncertainty — is perhaps the most transferable intellectual skill a quantitative education can cultivate.
+              </p>
+              <p class="body-text">
+                And yet it is routinely neglected. Students learn to run regressions before they understand what a probability distribution is. They learn to report p-values before they can say what a p-value means. This ordering does lasting harm.
+              </p>
+              <div class="section-head">Starting with Priors</div>
+              <p class="body-text">
+                The Bayesian framework offers a coherent language for scientific reasoning. Its central contribution is not the formula — Bayes' theorem is elementary probability — but the <em>vocabulary</em>. Prior beliefs, updated by evidence, yield posterior beliefs. This is not a statistical technique. It is a description of how learning works.
+              </p>
+              <p class="body-text">
+                Prior distributions are controversial among researchers trained in the frequentist tradition. The objection is that priors are "subjective." This is true, and it is not a problem. Subjectivity made explicit and documented is epistemically superior to subjectivity hidden in model choices and stopping rules.
+              </p>
+              <span class="pg-num">3</span>
+            </div>
+
+            <div class="page-r">
+              <div class="running-header">
+                <span>Chapter II</span>
+                <span>Probabilistic Modeling</span>
+              </div>
+              <div class="section-head">Communicating Uncertainty</div>
+              <p class="body-text">
+                Researchers who think probabilistically still often communicate as if certainty were attainable. This is partly habit, partly pressure from editors and reviewers who prefer clean conclusions, and partly genuine confusion about the relationship between statistical and epistemic uncertainty.
+              </p>
+              <div class="callout">
+                <p>Uncertainty should be communicated in the natural units of the phenomenon. A 95% credible interval for effect size, expressed in the units of the outcome variable, conveys more than a standardized coefficient and a p-value ever can.</p>
+              </div>
+              <div class="section-head">Common Modeling Pitfalls</div>
+              <p class="body-text">
+                <strong>Overfitting</strong> remains the most common modeling failure. A model that describes its training data perfectly has not learned about the world — it has memorized noise. Cross-validation is the appropriate corrective.
+              </p>
+              <p class="body-text">
+                <strong>Ignoring the measurement model</strong> is nearly as common. Every variable in your dataset was measured by some process carrying its own uncertainty. Composite indices, self-report measures, and administrative records each carry characteristic error structures that should be modeled explicitly, not assumed away.
+              </p>
+              <p class="body-text">
+                <strong>Confusing absence of evidence with evidence of absence</strong> is a logical error that probabilistic training helps prevent. A non-significant result is a statement about power, not about the null hypothesis.
+              </p>
+              <span class="pg-num">4</span>
+            </div>
+          </div>
+
+          <!-- ─────────────────────────────────────
+              SPREAD 4 · Chapter III — Practical Workflows
+          ───────────────────────────────────── -->
+          <div class="spread" data-spread="4">
+
+            <div class="page-l">
+              <div class="running-header">
+                <span>Chapter III</span>
+                <span>Practical Workflows</span>
+              </div>
+              <div class="ch-label">Chapter Three</div>
+              <div class="ch-title">Practical Workflows</div>
+              <div class="ch-rule"></div>
+              <p class="body-text">
+                Workflow is where good intentions meet the friction of actual research. The researcher who understands reproducibility and probabilistic reasoning still needs a practical system for moving from raw data to finished analysis — one that survives collaboration, revision, interruption, and the passage of time.
+              </p>
+              <p class="body-text">
+                The goal is not elegance for its own sake. The goal is a project that another person — or your future self — can pick up and understand without a guided tour. That standard is higher than most researchers set for themselves. It is also lower than many fear.
+              </p>
+              <div class="section-head">Project Structure</div>
+              <p class="body-text">
+                A consistent project directory structure pays dividends immediately. Raw data goes in <code>data/raw/</code>, never to be touched. Derived data goes in <code>data/processed/</code>, always reproducible from the scripts that created it. Analysis scripts are numbered in execution order: <code>01_clean.R</code>, <code>02_merge.R</code>, <code>03_model.R</code>.
+              </p>
+              <p class="body-text">
+                A <code>Makefile</code> or equivalent build file can run them all in sequence. A README at the project root explains what the project is, where the data came from, and how to reproduce the analysis end-to-end.
+              </p>
+              <span class="pg-num">5</span>
+            </div>
+
+            <div class="page-r">
+              <div class="running-header">
+                <span>Chapter III</span>
+                <span>Practical Workflows</span>
+              </div>
+              <div class="section-head">Collaboration Without Catastrophe</div>
+              <p class="body-text">
+                Collaborative research introduces synchronization problems that solo research avoids. Two researchers editing the same file simultaneously, in different versions of the same software, is a situation that has ended more than one collaboration. Version control solves the synchronization problem. Containerization — using Docker or a package manager like <code>renv</code> or <code>conda</code> — solves the software environment problem.
+              </p>
+              <div class="callout">
+                <p><strong>On code review:</strong> Every analysis benefits from a second pair of eyes before results are reported externally. This is not a judgment on competence. It is a structural safeguard against the errors that authors are constitutionally unable to see in their own work.</p>
+              </div>
+              <div class="section-head">The Iteration Cycle</div>
+              <p class="body-text">
+                Research rarely proceeds linearly. Exploratory analysis generates hypotheses; hypotheses drive confirmatory analysis; confirmatory results reveal new questions that demand further exploration. A good workflow accommodates this cycling without conflating the two phases.
+              </p>
+              <p class="body-text">
+                The critical discipline is separating exploratory notebooks — where ideas are developed freely and messily — from confirmatory scripts, which implement pre-specified analyses and should not be modified after the first look at the outcome data. Mixing them is the most common source of unintentional researcher degrees of freedom.
+              </p>
+              <span class="pg-num">6</span>
+            </div>
+          </div>
+
+          <!-- ─────────────────────────────────────
+              SPREAD 5 · Chapter IV — Notes & Reflections
+          ───────────────────────────────────── -->
+          <div class="spread" data-spread="5">
+
+            <div class="page-l">
+              <div class="running-header">
+                <span>Chapter IV</span>
+                <span>Notes &amp; Reflections</span>
+              </div>
+              <div class="ch-label">Chapter Four</div>
+              <div class="ch-title">Notes &amp; Reflections</div>
+              <div class="ch-rule"></div>
+              <p class="body-text">
+                This chapter collects the things that didn't fit anywhere else. Some are observations about the practice of research. Some are advice I give so often in office hours that writing it down seemed more efficient. Some are things I wish someone had told me earlier.
+              </p>
+              <div class="section-head">On Failure</div>
+              <p class="body-text">
+                Most experiments fail. Most models don't fit. Most hypotheses are wrong. This is not a problem with the researcher; it is a feature of inquiry. The researcher's job is not to generate correct results on the first attempt — it is to update beliefs appropriately and iterate efficiently.
+              </p>
+              <p class="body-text">
+                The most dangerous mindset in research is the belief that failure is informative only when it produces a publishable null result. Failures that redirect attention, refine hypotheses, or reveal measurement problems are doing exactly what failures are supposed to do.
+              </p>
+              <div class="section-head">On Writing</div>
+              <p class="body-text">
+                Writing is analysis. The act of explaining a result in plain language forces a clarity of thought that no amount of modeling can substitute for. If you cannot say what your finding means without jargon, you do not yet understand it well enough to publish it.
+              </p>
+              <p class="body-text">
+                Write early and continuously. Do not wait until the analysis is finished. A methods section written while the methods are being implemented is more accurate, and less painful to produce, than one reconstructed afterward.
+              </p>
+              <span class="pg-num">7</span>
+            </div>
+
+            <div class="page-r">
+              <div class="running-header">
+                <span>Chapter IV</span>
+                <span>Notes &amp; Reflections</span>
+              </div>
+              <div class="section-head">On Mentoring</div>
+              <p class="body-text">
+                The best mentoring I have received shared one characteristic: it treated my problems as interesting. Not as evidence of deficiency, not as obstacles to be removed, but as genuinely interesting puzzles worth thinking through together. That quality — curiosity about someone else's problem — is both rare and learnable.
+              </p>
+              <div class="callout">
+                <p>A mentee who brings a problem they've already partially solved is doing you the favor of thinking before they speak. Reward that. Ask them to explain their partial solution before offering your own.</p>
+              </div>
+              <div class="section-head">Recommended Reading</div>
+              <p class="body-text">
+                Three works stand out for their practical utility: Gandrud's <em>Reproducible Research with R and RStudio</em>, Gelman and Hill's <em>Data Analysis Using Regression and Multilevel Models</em>, and Wilson et al.'s "Good Enough Practices in Scientific Computing" (<em>PLOS Computational Biology</em>, 2017). All three reward re-reading at different career stages.
+              </p>
+              <div class="ornament" style="margin-top:2rem;">✦ ✦ ✦</div>
+              <p style="font-family:'EB Garamond',serif;font-style:italic;font-size:0.88rem;color:#9a8a6a;text-align:center;margin-top:1rem;line-height:1.8;">
+                This is a living document.<br>Comments and corrections are welcome.
+              </p>
+              <span class="pg-num">8</span>
+            </div>
+          </div>
+
+        </div><!-- /spreads-wrapper -->
+
+        <div class="book-nav">
+          <button class="nav-btn" id="teachingPrevBtn" onclick="prevTeachingSpread()" disabled>← Previous</button>
+          <span class="pg-indicator" id="teachingPgIndicator">Pages i – ii</span>
+          <button class="nav-btn" id="teachingNextBtn" onclick="nextTeachingSpread()">Next →</button>
+        </div>
+
+      </div><!-- /book-open -->
+
+    </div><!-- /book-scene -->
+    </div>
+  </div>
+  </section>
+    
+  <section id="outreach">
+    <div class="reveal">
+      <div class="section-label">Selected Outreach</div>
+      <h2 class="section-title">Community Engagement &amp; Public Service</h2>
+      <hr class="rule">
+    </div>
+  
+    <div class="outreach-grid reveal">
+  
+      <!-- ── 1. Letters to a Pre-Scientist ── -->
+      <div class="outreach-card">
+        <div class="outreach-card-photo no-photo">
+          <img src="images/letter.jpg" alt="Letters to a Pre-Scientist"> 
+          
+        </div>
+        <div class="outreach-card-face">
+          <span class="outreach-card-tag">Science Outreach</span>
+          <p class="outreach-card-title">Letters to a Pre-Scientist</p>
+        </div>
+        <div class="outreach-card-modal">
+          <div class="outreach-modal-tag">Showcasing STEM for K–12 Students</div>
+          <div class="outreach-modal-title">Letters to a Pre-Scientist</div>
+          <p class="outreach-modal-desc">
+            A national pen-pal program pairing professional scientists with middle school students, many from under-resourced communities. Through personal correspondence I help demystify what scientists actually do, and show students that science is a real career path for people who look like them.
+          </p>
+          <a class="outreach-modal-link" href="https://prescientist.org/" target="_blank" rel="noopener noreferrer">
+            prescientist.org
+            <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+        </div>
+      </div>
+  
+      <!-- ── 2. CCBB Conference ── -->
+      <div class="outreach-card">
+        <div class="outreach-card-photo no-photo">
+          <!-- swap for: <img src="images/ccbb.jpg" alt="CCBB Workshop"> -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <polyline points="21 15 16 10 5 21"/>
+          </svg>
+        </div>
+        <div class="outreach-card-face">
+          <span class="outreach-card-tag">Conference Organization</span>
+          <p class="outreach-card-title">CCBB Workshop, 2024 &amp; 2026</p>
+        </div>
+        <div class="outreach-card-modal">
+          <div class="outreach-modal-tag">Conference Organization</div>
+          <div class="outreach-modal-title">Center for Computational Biology &amp; Bioinformatics</div>
+          <p class="outreach-modal-desc">
+            Co-organizer of the CCBB Workshop, bringing together researchers developing methods for sequence analysis. I ideated and co-led a panel discussion with professors and students on the gap between method developers and users — focusing on community needs, tool adoption, and barriers to use.
+          </p>
+          <a class="outreach-modal-link" href="http://www.ccbb.psu.edu/wip2024/" target="_blank" rel="noopener noreferrer">
+            ccbb.psu.edu/wip2024
+            <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+        </div>
+      </div>
+  
+      <!-- ── 3. NYRR ── -->
+      <div class="outreach-card">
+        <div class="outreach-card-photo no-photo">
+          <img src="images/nyrr.jpg" alt="NYC Marathon volunteering">
+\
+        </div>
+        <div class="outreach-card-face">
+          <span class="outreach-card-tag">Leadership Training</span>
+          <p class="outreach-card-title">NYRR Volunteer Leadership</p>
+        </div>
+        <div class="outreach-card-modal">
+          <div class="outreach-modal-tag">Leadership Training</div>
+          <div class="outreach-modal-title">New York Road Runners Volunteer Leadership Program</div>
+          <p class="outreach-modal-desc">
+            Selected for a competitive leadership development program with NYRR, the organization behind the NYC Marathon. Training in nonprofit leadership, community engagement, and event management — including organizing and supervising volunteers across races, including the NYC Marathon itself.
+          </p>
+          <a class="outreach-modal-link" href="http://www.nyrr.org/volunteer-leadership-program/" target="_blank" rel="noopener noreferrer">
+            nyrr.org/volunteer-leadership-program
+            <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+        </div>
+      </div>
+  
+      <!-- ── 4. Catholic Diocese of Ghana ── -->
+      <div class="outreach-card">
+        <div class="outreach-card-photo no-photo">
+          <!-- swap for: <img src="images/ghana.jpg" alt="Medical aide in Ghana"> -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <polyline points="21 15 16 10 5 21"/>
+          </svg>
+        </div>
+        <div class="outreach-card-face">
+          <span class="outreach-card-tag">Medical Aide Across Borders</span>
+          <p class="outreach-card-title">Catholic Diocese of Ghana</p>
+        </div>
+        <div class="outreach-card-modal">
+          <div class="outreach-modal-tag">Medical Aide Across Borders</div>
+          <div class="outreach-modal-title">Catholic Diocese of Ghana</div>
+          <p class="outreach-modal-desc">
+            Volunteered as a medical aide, learning firsthand about the barriers to care in a developing country. Assisted in basic healthcare services and health education. This experience deepened my understanding of global health challenges and the importance of accessible healthcare.
+          </p>
+        </div>
+      </div>
+  
+      <!-- ── 5. GenoMIX President ── -->
+      <div class="outreach-card">
+        <div class="outreach-card-photo no-photo">
+          <img src="images/psu.jpg" alt="GenoMIX at Penn State"> 
+        </div>
+        <div class="outreach-card-face">
+          <span class="outreach-card-tag">Student Leadership</span>
+          <p class="outreach-card-title">President of GenoMIX, Penn State</p>
+        </div>
+        <div class="outreach-card-modal">
+          <div class="outreach-modal-tag">Community Development &amp; Student Leadership</div>
+          <div class="outreach-modal-title">President, GenoMIX Graduate Student Organization</div>
+          <p class="outreach-modal-desc">
+            Led Penn State's graduate organization for genomics — organizing events, managing communications, mentoring peers. Developed 10 student resources including a graduate school guide, area assimilation handbook, career development guide, and mentorship program framework.
+          </p>
+          <a class="outreach-modal-link" href="https://www.huck.psu.edu/graduate-programs/bioinformatics-and-genomics/activities/genomix-graduate-student-organization-for-genomics" target="_blank" rel="noopener noreferrer">
+            GenoMIX at Penn State
+            <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- ── 6. T32 Outreach ── -->
+       <div class="outreach-card">
+        <div class="outreach-card-photo no-photo">
+          <!-- swap for: <img src="images/prescientist.jpg" alt="Letters to a Pre-Scientist"> -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <polyline points="21 15 16 10 5 21"/>
+          </svg>
+        </div>
+        <div class="outreach-card-face">
+          <span class="outreach-card-tag">Science Outreach</span>
+          <p class="outreach-card-title">Microbes for </p>
+        </div>
+        <div class="outreach-card-modal">
+          <div class="outreach-modal-tag">Teaching the teachers! Developing engaging STEM and microbiology curriculum for students.</div>
+          <div class="outreach-modal-title">Microbes for </div>
+          <p class="outreach-modal-desc">
+            As part of a T32 training grant, I helped develop and deliver a curriculum on microbiome science for high school biology teachers. The curriculum included interactive lessons, hands-on activities, and real-world applications to help teachers introduce big ideas about the small world.
+          </p>
+        </div>
+      </div>
+  
+    </div><!-- /outreach-grid -->
+  </section>
+
+  <section id="beyondscience">
+    <div class="inner">
+      <div class="reveal">
+        <div class="section-label">Beyond Science</div>
+        <h2 class="section-title">Adventures &amp; Stories</h2>
+        <hr class="rule">
+        <div class="beyondscience-intro" style="margin-top:-1rem;margin-bottom:2rem;">
+          Outside of research, I spend much of my time in endurance sport, exercise, photography, and traveling. Always looking for the next immersive adventure where I can learn something new and connect with people.
+        </div>
+      </div>
+
+      <div class="beyondscience-grid reveal">
+        <div>
+          <div class="beyondscience-section-title">Athletics &amp; Competition</div>
+
+          <div class="beyondscience-entry">
+            <div class="beyondscience-entry-header">
+              <div class="beyondscience-entry-role">Triathlons, Soccer, and What Not</div>
+            </div>
+            <div class="beyondscience-entry-desc">
+              I compete in triathlons and am actively training for a half Ironman. I also build bicycles!
+              <br><br>
+              I was a collegiate soccer player and still compete in local leagues and tournaments. Im also a die hard Arsenal fan.  
+            </div>
+          </div>
+
+          <div class="beyondscience-section-title" style="margin-top:2rem">Exploring Cultures</div>
+
+          <div class="beyondscience-entry">
+            <div class="beyondscience-entry-header">
+              <div class="beyondscience-entry-role">Urban Backpacking</div>
+            </div>
+            <div class="beyondscience-entry-desc">
+              Constantly immersing myself in different cultures, traveling, and learning as much as I can.
+
+              <br><br>
+
+              Ask me about coffee: I have toured the worlds premier coffee shops and hope to continue learning.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="beyondscience-section-title">Creative Outlets</div>
+
+          <div class="beyondscience-entry">
+            <div class="beyondscience-entry-header">
+              <div class="beyondscience-entry-role">Photography and Visual Editing</div>
+              <div class="beyondscience-entry-date">Selected Images</div>
+            </div>
+            <div class="beyondscience-entry-desc">
+              I like to capture moments and turn them into images that emphasize main characters spotlighting their "cool".
+            </div>
+          </div>
+
+          <div class="photo-shelf-wrap">
+            <div class="photo-shelf">
+              <div class="photo-card"><img src="images/photo1.jpg" alt="Photography 1"></div>
+              <div class="photo-card"><img src="images/photo2.jpg" alt="Photography 2"></div>
+              <div class="photo-card"><img src="images/photo3.jpg" alt="Photography 3"></div>
+              <div class="photo-card"><img src="images/photo4.jpg" alt="Photography 4"></div>
+              <div class="photo-card"><img src="images/photo5.jpg" alt="Photography 5"></div>
+              <div class="photo-card"><img src="images/photo6.jpg" alt="Photography 6"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="reveal">
+      <div class="section-label">Contact</div>
+      <h2 class="section-title">Get in Touch</h2>
+      <hr class="rule">
+    </div>
+
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Name</label>
+            <input class="form-input" type="text" placeholder="Your name" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input class="form-input" type="email" placeholder="your@email.com" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Subject</label>
+          <input class="form-input" type="text" placeholder="Research collaboration, speaking, …" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea class="form-textarea" placeholder="Tell me about your inquiry…"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary contact-submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Maxwell Konnaris</p>
+    <p class="footer-links">
+      <a href="mailto:maxwellkonnaris@psu.edu">Email</a>
+      <a href="https://scholar.google.com/" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+      <a href="https://www.linkedin.com/in/maxwellkonnaris/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://github.com/maxwellkonnaris" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </p>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Shrink nav on scroll
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      nav.style.padding = window.scrollY > 60 ? '.75rem 3rem' : '1.25rem 3rem';
+    });
+
+    // Form handler (placeholder)
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button');
+      btn.textContent = 'Sent ✓';
+      btn.style.background = '#4a7c40';
+      setTimeout(() => { btn.textContent = 'Send Message'; btn.style.background = ''; }, 3000);
+    }
+
+    // Blog flipbook controls
+    (function() {
+      const book = document.getElementById('flipbook');
+      if (!book) return;
+      const pages = Array.from(book.querySelectorAll('.page'));
+      const nextBtn = document.querySelector('.book-next');
+      const prevBtn = document.querySelector('.book-prev');
+      const toggleBtn = document.querySelector('.book-toggle');
+      const chapterSelect = document.getElementById('chapterSelect');
+      let current = 0;
+
+      function render() {
+        pages.forEach((p, i) => {
+          if (i < current) p.classList.add('flipped'); else p.classList.remove('flipped');
+        });
+      }
+
+      nextBtn && nextBtn.addEventListener('click', () => {
+        current = Math.min(current + 1, pages.length);
+        render();
+      });
+      prevBtn && prevBtn.addEventListener('click', () => {
+        current = Math.max(current - 1, 0);
+        render();
+      });
+
+      toggleBtn && toggleBtn.addEventListener('click', () => {
+        book.classList.toggle('open');
+      });
+
+      chapterSelect && chapterSelect.addEventListener('change', (e) => {
+        const idx = Number(e.target.value);
+        current = Math.max(0, Math.min(idx, pages.length));
+        render();
+      });
+
+      // initialize
+      render();
+    })();
+
+    function toggleNav() {
+      const menu   = document.getElementById('navMenu');
+      const toggle = document.querySelector('.nav-toggle');
+      const open   = menu.classList.toggle('open');
+      toggle.classList.toggle('open', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    }
+
+    function closeNav() {
+      document.getElementById('navMenu').classList.remove('open');
+      document.querySelector('.nav-toggle').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    const TEACHING_TOTAL = 6;
+    let teachingCur = 0;          // spread index: 0..5
+    let teachingView = 'two';     // 'two' or 'one'
+    let teachingSide = 0;         // 0 = left page, 1 = right page
+
+    const teachingSpreadLabels = [
+      'Pages i – ii',
+      'Pages iii – iv',
+      'Pages 1 – 2',
+      'Pages 3 – 4',
+      'Pages 5 – 6',
+      'Pages 7 – 8'
+    ];
+
+    const teachingSingleLabels = [
+      'Page i',
+      'Page ii',
+      'Page iii',
+      'Page iv',
+      'Page 1',
+      'Page 2',
+      'Page 3',
+      'Page 4',
+      'Page 5',
+      'Page 6',
+      'Page 7',
+      'Page 8'
+    ];
+
+    function openTeachingBook() {
+      document.getElementById('closedTeachingBook').style.display = 'none';
+      document.getElementById('openTeachingBook').classList.add('active');
+      document.getElementById('teachingShell').classList.add('book-expanded');
+      teachingCur = 0;
+      teachingSide = 0;
+      renderTeachingBook();
+    }
+
+    function closeTeachingBook() {
+      document.getElementById('openTeachingBook').classList.remove('active');
+      document.getElementById('closedTeachingBook').style.display = 'flex';
+      document.getElementById('teachingShell').classList.remove('book-expanded');
+    }
+
+    function renderTeachingBook() {
+      document.querySelectorAll('#teaching .spread').forEach((s, i) => {
+        const isActive = i === teachingCur;
+        s.classList.toggle('active', isActive);
+
+        const left = s.querySelector('.page-l');
+        const right = s.querySelector('.page-r');
+
+        if (!left || !right) return;
+
+        left.classList.remove('hidden');
+        right.classList.remove('hidden');
+
+        if (teachingView === 'one' && isActive) {
+          if (teachingSide === 0) {
+            right.classList.add('hidden');
+          } else {
+            left.classList.add('hidden');
+          }
+        }
+      });
+
+      const prevDisabled =
+        teachingView === 'two'
+          ? teachingCur === 0
+          : teachingCur === 0 && teachingSide === 0;
+
+      const nextDisabled =
+        teachingView === 'two'
+          ? teachingCur === TEACHING_TOTAL - 1
+          : teachingCur === TEACHING_TOTAL - 1 && teachingSide === 1;
+
+      document.getElementById('teachingPrevBtn').disabled = prevDisabled;
+      document.getElementById('teachingNextBtn').disabled = nextDisabled;
+
+      if (teachingView === 'two') {
+        document.getElementById('teachingPgIndicator').textContent =
+          teachingSpreadLabels[teachingCur];
+      } else {
+        const singleIndex = teachingCur * 2 + teachingSide;
+        document.getElementById('teachingPgIndicator').textContent =
+          teachingSingleLabels[singleIndex];
+      }
+    }
+
+    function prevTeachingSpread() {
+      if (teachingView === 'two') {
+        if (teachingCur > 0) teachingCur--;
+      } else {
+        if (teachingSide === 1) {
+          teachingSide = 0;
+        } else if (teachingCur > 0) {
+          teachingCur--;
+          teachingSide = 1;
+        }
+      }
+      renderTeachingBook();
+    }
+
+    function nextTeachingSpread() {
+      if (teachingView === 'two') {
+        if (teachingCur < TEACHING_TOTAL - 1) teachingCur++;
+      } else {
+        if (teachingSide === 0) {
+          teachingSide = 1;
+        } else if (teachingCur < TEACHING_TOTAL - 1) {
+          teachingCur++;
+          teachingSide = 0;
+        }
+      }
+      renderTeachingBook();
+    }
+
+    function goToTeachingSpread(i) {
+      teachingCur = i;
+      teachingSide = 0;
+      renderTeachingBook();
+    }
+
+    function setTeachingView(mode) {
+      teachingView = mode;
+
+      document.getElementById('teachingBtnTwo').classList.toggle('active', mode === 'two');
+      document.getElementById('teachingBtnOne').classList.toggle('active', mode === 'one');
+      document.getElementById('teachingSpreadsWrapper').classList.toggle('single-mode', mode === 'one');
+
+      if (mode === 'two') {
+        teachingSide = 0;
+      }
+
+      renderTeachingBook();
+    }
+  </script>
+
+</body>
+</html>
