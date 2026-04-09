@@ -2031,6 +2031,23 @@
     .bolder {
       font-weight: 900;
     }
+
+
+    /* Need to delete this when done with construction warning */
+    .construction-banner {
+      width: 100%;
+      text-align: center;
+      padding: .75rem 1.5rem;
+      background: color-mix(in srgb, var(--accent) 12%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+      border-radius: 6px;
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: .02em;
+      margin-bottom: 2.5rem;
+    }
+    
   </style>
 </head>
 <body>
@@ -2051,6 +2068,10 @@
 
   <!-- HERO -->
   <div id="hero">
+    <div class="construction-banner">
+      🚧 This website is under ongoing reconstruction — some sections may be temporarily unfinished.
+    </div>
+    
     <div class="hero-text">
       <span class="hero-eyebrow">Computational Biologist &amp; Statistician</span>
       <h1 class="hero-name">Maxwell<br><em>Konnaris, PhD</em></h1>
