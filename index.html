@@ -1661,31 +1661,63 @@
       <hr class="rule">
     </div>
 
-      <form class="contact-form" onsubmit="handleSubmit(event)">
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">Name</label>
-            <input class="form-input" type="text" placeholder="Your name" />
-          </div>
-          <div class="form-group">
-            <label class="form-label">Email</label>
-            <input class="form-input" type="email" placeholder="your@email.com" />
-          </div>
+    <form
+      class="contact-form"
+      action="https://formspree.io/f/xeepywlr"
+      method="POST"
+    >
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="name">Name</label>
+          <input
+            class="form-input"
+            id="name"
+            name="name"
+            type="text"
+            placeholder="Your name"
+            required
+          />
         </div>
 
         <div class="form-group">
-          <label class="form-label">Subject</label>
-          <input class="form-input" type="text" placeholder="Research collaboration, speaking, …" />
+          <label class="form-label" for="email">Email</label>
+          <input
+            class="form-input"
+            id="email"
+            name="email"
+            type="email"
+            placeholder="your@email.com"
+            required
+          />
         </div>
+      </div>
 
-        <div class="form-group">
-          <label class="form-label">Message</label>
-          <textarea class="form-textarea" placeholder="Tell me about your inquiry…"></textarea>
-        </div>
+      <div class="form-group">
+        <label class="form-label" for="subject">Subject</label>
+        <input
+          class="form-input"
+          id="subject"
+          name="subject"
+          type="text"
+          placeholder="Research collaboration, speaking, …"
+        />
+      </div>
 
-        <button type="submit" class="btn btn-primary contact-submit">Send Message</button>
-      </form>
-    </div>
+      <div class="form-group">
+        <label class="form-label" for="message">Message</label>
+        <textarea
+          class="form-textarea"
+          id="message"
+          name="message"
+          placeholder="Hi Maxwell, I’d like to get in touch about…"
+          required
+        ></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary contact-submit">
+        Send Message
+      </button>
+    </form>
   </section>
 
   <!-- FOOTER -->
@@ -1711,15 +1743,6 @@
     window.addEventListener('scroll', () => {
       nav.style.padding = window.scrollY > 60 ? '.75rem 3rem' : '1.25rem 3rem';
     });
-
-    // Form handler (placeholder)
-    function handleSubmit(e) {
-      e.preventDefault();
-      const btn = e.target.querySelector('button');
-      btn.textContent = 'Sent ✓';
-      btn.style.background = '#4a7c40';
-      setTimeout(() => { btn.textContent = 'Send Message'; btn.style.background = ''; }, 3000);
-    }
 
     // Blog flipbook controls
     (function() {
